@@ -24,7 +24,7 @@ vim.o.undofile = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.termguicolors = true
-vim.o.scrolloff = 12
+vim.o.scrolloff = 4
 vim.o.pumheight = 8
 vim.wo.signcolumn = 'number'
 vim.opt.isfname:append('@-@')
