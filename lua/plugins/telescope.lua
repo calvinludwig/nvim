@@ -6,7 +6,6 @@ local M = {
         "nvim-telescope/telescope-file-browser.nvim",
         "nvim-telescope/telescope-ui-select.nvim",
     },
-    lazy = false,
 }
 
 function M.config()

@@ -8,7 +8,6 @@ local M = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "windwp/nvim-ts-autotag",
         },
-        lazy = false,
     },
 }
 
