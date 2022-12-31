@@ -24,7 +24,6 @@
   "mason.nvim": { "branch": "main", "commit": "1592493e3406c271e9128b4d424731e25f1ff2a1" },
   "mini.nvim": { "branch": "main", "commit": "06eddfd8d6341e6c4f53ec9ae109a376a566329d" },
   "neodev.nvim": { "branch": "main", "commit": "8e06acf88e0621badd9499cfcafbce5ca97dfe8e" },
-  "noice.nvim": { "branch": "main", "commit": "661495acc1cc29f53d2defd1c18c87da1cc8f850" },
   "nui.nvim": { "branch": "main", "commit": "4939282919885e1c83aff68ecb35b3cadf6015a9" },
   "null-ls.nvim": { "branch": "main", "commit": "647a1eeeefc43ce15d941972642210637c370471" },
   "nvim-bufferline.lua": { "branch": "main", "commit": "c7492a76ce8218e3335f027af44930576b561013" },
@@ -48,5 +47,6 @@
   "telescope.nvim": { "branch": "master", "commit": "a606bd10c79ec5989c76c49cc6f736e88b63f0da" },
   "trouble.nvim": { "branch": "main", "commit": "897542f90050c3230856bc6e45de58b94c700bbf" },
   "twilight.nvim": { "branch": "main", "commit": "1ffa6a4d89fb2fbb784c6674044bf54f1fca936f" },
+  "vim-blade": { "branch": "master", "commit": "9534101808cc320eef003129a40cab04b026a20c" },
   "yanky.nvim": { "branch": "main", "commit": "2bb05abe20b5d7af917a48785acfacb602248e36" }
 }

@@ -33,4 +33,5 @@ return {
             use_diagnostic_signs = true, -- en
         },
     },
+    'jwalton512/vim-blade',
 }
