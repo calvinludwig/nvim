@@ -1,24 +1,24 @@
 local M = {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    "catppuccin/nvim",
+    name = "catppuccin",
 }
 
 function M.config()
-    local catppuccin = require('catppuccin')
+    local catppuccin = require("catppuccin")
 
     catppuccin.setup({
-        flavour = 'mocha', -- latte, frappe, macchiato, mocha
+        flavour = "macchiato", -- latte, frappe, macchiato, mocha
         transparent_background = false,
         styles = {
-            comments = { 'italic' },
-            conditionals = { 'italic' },
+            comments = { "italic" },
+            conditionals = { "italic" },
             loops = {},
             functions = {},
-            keywords = { 'italic' },
+            keywords = { "italic" },
             strings = {},
             variables = {},
             numbers = {},
-            booleans = { 'bold' },
+            booleans = { "bold" },
             properties = {},
             types = {},
             operators = {},
@@ -57,7 +57,7 @@ function M.config()
             lsp_trouble = true,
             markdown = true,
             mason = true,
-            mini = false,
+            mini = true,
             neogit = false,
             neotest = false,
             neotree = false,
@@ -89,26 +89,26 @@ function M.config()
             native_lsp = {
                 enabled = true,
                 virtual_text = {
-                    errors = { 'italic' },
-                    hints = { 'italic' },
-                    warnings = { 'italic' },
-                    information = { 'italic' },
+                    errors = { "italic" },
+                    hints = { "italic" },
+                    warnings = { "italic" },
+                    information = { "italic" },
                 },
                 underlines = {
-                    errors = { 'underline' },
-                    hints = { 'underline' },
-                    warnings = { 'underline' },
-                    information = { 'underline' },
+                    errors = { "underline" },
+                    hints = { "underline" },
+                    warnings = { "underline" },
+                    information = { "underline" },
                 },
             },
             navic = {
                 enabled = false,
-                custom_bg = 'NONE',
+                custom_bg = "NONE",
             },
         },
     })
 
-    vim.cmd.colorscheme('catppuccin')
+    vim.cmd.colorscheme("catppuccin")
 end
 
 return M

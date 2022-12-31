@@ -1,6 +1,6 @@
 local M = {
-    'rcarriga/nvim-notify',
-    event = 'VeryLazy',
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
     config = {
         timeout = 3000,
         level = vim.log.levels.INFO,
@@ -9,6 +9,6 @@ local M = {
         max_width = function() return math.floor(vim.o.columns * 0.75) end,
     },
 }
-function M.config() vim.notify = require('notify') end
+function M.config() vim.notify = require("notify") end
 
 return M

@@ -1,10 +1,10 @@
 local M = {
-    'akinsho/nvim-bufferline.lua',
-    event = 'BufAdd',
+    "akinsho/nvim-bufferline.lua",
+    event = "BufAdd",
 }
 
 function M.config()
-    local signs = require('plugins.lsp.diagnostics').signs
+    local signs = require("plugins.lsp.diagnostics").signs
 
     signs = {
         error = signs.Error,
@@ -14,31 +14,31 @@ function M.config()
     }
 
     local severities = {
-        'error',
-        'warning',
+        "error",
+        "warning",
         -- "info",
         -- "hint",
     }
 
-    require('bufferline').setup({
+    require("bufferline").setup({
         options = {
             show_close_icon = true,
-            diagnostics = 'nvim_lsp',
+            diagnostics = "nvim_lsp",
             always_show_bufferline = false,
-            separator_style = 'thick',
+            separator_style = "thick",
             diagnostics_indicator = function(_, _, diag)
                 local s = {}
                 for _, severity in ipairs(severities) do
                     if diag[severity] then table.insert(s, signs[severity] .. diag[severity]) end
                 end
-                return table.concat(s, ' ')
+                return table.concat(s, " ")
             end,
             offsets = {
                 {
-                    filetype = 'neo-tree',
-                    text = 'Neo Tree',
-                    highlight = 'Directory',
-                    text_align = 'left',
+                    filetype = "neo-tree",
+                    text = "Neo Tree",
+                    highlight = "Directory",
+                    text_align = "left",
                 },
             },
         },
