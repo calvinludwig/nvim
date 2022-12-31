@@ -1,3 +1,4 @@
 return {
-    "folke/which-key.nvim",
+    'nvim-lua/plenary.nvim',
+    'kyazdani42/nvim-web-devicons',
 }
