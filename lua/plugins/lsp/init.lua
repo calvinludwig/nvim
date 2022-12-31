@@ -7,6 +7,8 @@ local M = {
         'simrat39/rust-tools.nvim',
         'jose-elias-alvarez/null-ls.nvim',
         'jayp0521/mason-null-ls.nvim',
+        'simrat39/rust-tools.nvim',
+        'folke/neodev.nvim',
     },
 }
 
