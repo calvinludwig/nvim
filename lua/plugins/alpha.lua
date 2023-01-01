@@ -1,10 +1,8 @@
 local M = {
-    'goolord/alpha-nvim',
+    "goolord/alpha-nvim",
+    lazy = false,
 }
 
-function M.config()
-    require("alpha").setup(require("alpha.themes.startify").config)
-
-end
+function M.config() require("alpha").setup(require("alpha.themes.startify").config) end
 
 return M

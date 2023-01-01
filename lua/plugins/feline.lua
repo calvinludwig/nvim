@@ -1,5 +1,6 @@
 local M = {
     "feline-nvim/feline.nvim",
+    lazy = false,
 }
 
 function M.config()
