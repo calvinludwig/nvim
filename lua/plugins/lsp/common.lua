@@ -1,26 +1,40 @@
 M = {}
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-capabilities.textDocument.foldingRange = {
+
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+M.capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
 }
-M.capabilities = capabilities
 
-local function define_signs()
-    vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-    vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+local function open_diagnostics_on_cursor_hover(bufnr)
+    vim.api.nvim_create_autocmd("CursorHold", {
+        buffer = bufnr,
+        callback = function()
+            local opts = {
+                focusable = false,
+                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                border = "rounded",
+                source = "always",
+                prefix = " ",
+                scope = "cursor",
+            }
+            vim.diagnostic.open_float(nil, opts)
+        end,
+    })
 end
 
-M.on_attach = function(_, bufnr)
-    define_signs()
-    local telescope = require("telescope.builtin")
+local Format = function(_)
+    if vim.lsp.buf.format then
+        vim.lsp.buf.format()
+    elseif vim.lsp.buf.formatting then
+        vim.lsp.buf.formatting()
+    end
+end
 
+local function keymaps(bufnr)
+    local telescope = require("telescope.builtin")
     local nmap = function(keys, func, desc)
         if desc then desc = "LSP: " .. desc end
-
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc, remap = false })
     end
 
@@ -46,15 +60,12 @@ M.on_attach = function(_, bufnr)
         "[W]orkspace [L]ist Folders"
     )
 
-    local Format = function(_)
-        if vim.lsp.buf.format then
-            vim.lsp.buf.format()
-        elseif vim.lsp.buf.formatting then
-            vim.lsp.buf.formatting()
-        end
-    end
-
     nmap("<leader>F", Format, "[F]ormat code")
+end
+
+M.on_attach = function(_, bufnr)
+    open_diagnostics_on_cursor_hover(bufnr)
+    keymaps(bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "Format", Format, { desc = "Format current buffer with LSP" })
 
     vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")

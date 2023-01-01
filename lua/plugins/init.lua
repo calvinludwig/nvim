@@ -3,6 +3,7 @@ return {
     "kyazdani42/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
     "folke/twilight.nvim",
+    "ThePrimeagen/refactoring.nvim",
     {
         "stevearc/dressing.nvim",
         init = function()
@@ -33,5 +34,5 @@ return {
             use_diagnostic_signs = true, -- en
         },
     },
-    'jwalton512/vim-blade',
+    "jwalton512/vim-blade",
 }

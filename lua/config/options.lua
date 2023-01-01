@@ -28,7 +28,7 @@ vim.o.scrolloff = 4
 vim.o.pumheight = 8
 vim.wo.signcolumn = "number"
 vim.opt.isfname:append("@-@")
-vim.o.updatetime = 50
+vim.o.updatetime = 250
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.cursorline = true

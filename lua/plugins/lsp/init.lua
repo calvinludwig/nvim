@@ -6,7 +6,7 @@ local M = {
         "williamboman/mason-lspconfig.nvim",
         "simrat39/rust-tools.nvim",
         "jose-elias-alvarez/null-ls.nvim",
-        "jayp0521/mason-null-ls.nvim",
+        "jay-babu/mason-null-ls.nvim",
         "simrat39/rust-tools.nvim",
         "folke/neodev.nvim",
     },
@@ -15,6 +15,7 @@ local M = {
 function M.config()
     require("plugins.lsp.diagnostics").setup()
     require("plugins.lsp.null-ls")
+
     local common = require("plugins.lsp.common")
     local servers = {
         "sumneko_lua",
