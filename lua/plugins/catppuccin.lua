@@ -8,7 +8,11 @@ function M.config()
     local catppuccin = require('catppuccin')
 
     catppuccin.setup({
-        flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+        flavour = "macchiato",
+        background = {
+            light = "latte",
+            dark = "macchiato",
+        },
         transparent_background = false,
         styles = {
             comments = { 'italic' },
@@ -116,6 +120,13 @@ function M.config()
     })
 
     vim.cmd.colorscheme('catppuccin')
+
+    local hour = tonumber(vim.fn.strftime('%H'))
+    if hour >= 18 or hour <= 6 then
+        vim.opt.background = 'light'
+    else
+        vim.opt.background = 'dark'
+    end
 end
 
 return M
