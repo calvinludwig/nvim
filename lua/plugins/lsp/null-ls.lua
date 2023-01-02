@@ -1,6 +1,6 @@
-local null_ls = require("null-ls")
+local null_ls = require('null-ls')
 
-local common = require("plugins.lsp.common")
+local common = require('plugins.lsp.common')
 
 local code_actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
@@ -16,7 +16,7 @@ null_ls.setup({
         diagnostics.php,
         diagnostics.phpstan,
         formatting.pint.with({
-            command = "pint",
+            command = 'pint',
         }),
         -- go
         diagnostics.golangci_lint,

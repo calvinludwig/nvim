@@ -1,18 +1,18 @@
 local M = {
-    "feline-nvim/feline.nvim",
+    'feline-nvim/feline.nvim',
     lazy = false,
 }
 
 function M.config()
-    local feline = require("feline")
-    local ctp_feline = require("catppuccin.groups.integrations.feline")
+    local feline = require('feline')
+    local ctp_feline = require('catppuccin.groups.integrations.feline')
 
     ctp_feline.setup({
         assets = {
-            left_separator = "",
-            right_separator = "",
-            bar = "",
-            mode_icon = " ",
+            left_separator = '',
+            right_separator = '',
+            bar = '',
+            mode_icon = ' ',
         },
     })
 
@@ -20,7 +20,7 @@ function M.config()
         components = ctp_feline.get(),
     })
 
-    local navic = require("nvim-navic")
+    local navic = require('nvim-navic')
 
     local components = {
         active = {},
