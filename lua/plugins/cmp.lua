@@ -30,7 +30,9 @@ function M.config()
             completeopt = "menu,menuone,noinsert",
         },
         snippet = {
-            expand = function(args) luasnip.lsp_expand(args.body) end,
+            expand = function(args)
+                luasnip.lsp_expand(args.body)
+            end,
         },
         mapping = cmp.mapping.preset.insert({
             ["<C-b>"] = cmp.mapping.scroll_docs(-4),

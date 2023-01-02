@@ -19,14 +19,20 @@ function mini.surround()
     })
 end
 
-function mini.jump() require("mini.jump").setup({}) end
+function mini.jump()
+    require("mini.jump").setup({})
+end
 
-function mini.pairs() require("mini.pairs").setup({}) end
+function mini.pairs()
+    require("mini.pairs").setup({})
+end
 
 function mini.comment()
     require("mini.comment").setup({
         hooks = {
-            pre = function() require("ts_context_commentstring.internal").update_commentstring({}) end,
+            pre = function()
+                require("ts_context_commentstring.internal").update_commentstring({})
+            end,
         },
     })
 end
@@ -51,14 +57,11 @@ function mini.ai()
             for dir, d in pairs({ prev = "[", next = "]" }) do
                 local lhs = d .. (side == "right" and text_obj:upper() or text_obj:lower())
                 for _, mode in ipairs({ "n", "x", "o" }) do
-                    vim.keymap.set(
-                        mode,
-                        lhs,
-                        function() ai.move_cursor(side, "a", text_obj, { search_method = dir }) end,
-                        {
-                            desc = dir .. " " .. desc,
-                        }
-                    )
+                    vim.keymap.set(mode, lhs, function()
+                        ai.move_cursor(side, "a", text_obj, { search_method = dir })
+                    end, {
+                        desc = dir .. " " .. desc,
+                    })
                 end
             end
         end
@@ -70,7 +73,7 @@ function mini.ai()
 end
 
 function mini.config()
-    -- M.jump()
+    mini.jump()
     mini.surround()
     mini.ai()
     mini.pairs()
@@ -78,8 +81,12 @@ function mini.config()
 end
 
 function mini.init()
-    vim.keymap.set("n", "<leader>bd", function() require("mini.bufremove").delete(0, false) end)
-    vim.keymap.set("n", "<leader>bD", function() require("mini.bufremove").delete(0, true) end)
+    vim.keymap.set("n", "<leader>bd", function()
+        require("mini.bufremove").delete(0, false)
+    end)
+    vim.keymap.set("n", "<leader>bD", function()
+        require("mini.bufremove").delete(0, true)
+    end)
 end
 
 return M

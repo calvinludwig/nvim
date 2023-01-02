@@ -34,7 +34,9 @@ end
 local function keymaps(bufnr)
     local telescope = require("telescope.builtin")
     local nmap = function(keys, func, desc)
-        if desc then desc = "LSP: " .. desc end
+        if desc then
+            desc = "LSP: " .. desc
+        end
         vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc, remap = false })
     end
 
@@ -54,19 +56,23 @@ local function keymaps(bufnr)
     nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
     nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
     nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-    nmap(
-        "<leader>wl",
-        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-        "[W]orkspace [L]ist Folders"
-    )
+    nmap("<leader>wl", function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, "[W]orkspace [L]ist Folders")
 
     nmap("<leader>F", Format, "[F]ormat code")
 end
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
     open_diagnostics_on_cursor_hover(bufnr)
     keymaps(bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "Format", Format, { desc = "Format current buffer with LSP" })
+
+    local navic = require("nvim-navic")
+
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 
     vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")

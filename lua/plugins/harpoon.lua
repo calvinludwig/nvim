@@ -10,7 +10,9 @@ function M.config()
     vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu, { desc = "Open Harpoon menu" })
 
     for i = 1, 9, 1 do
-        vim.keymap.set("n", "<leader>" .. i, function() ui.nav_file(i) end)
+        vim.keymap.set("n", "<leader>" .. i, function()
+            ui.nav_file(i)
+        end)
     end
 end
 

@@ -3,7 +3,9 @@ local M = {
     event = "BufReadPost",
     dependencies = {
         "kkharji/sqlite.lua",
-        enabled = function() return not jit.os:find("Windows") end,
+        enabled = function()
+            return not jit.os:find("Windows")
+        end,
     },
 }
 
@@ -41,12 +43,9 @@ function M.config()
     vim.keymap.set("n", "[p", "<Plug>(YankyPutBeforeFilter)")
     vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
 
-    vim.keymap.set(
-        "n",
-        "<leader>P",
-        function() require("telescope").extensions.yank_history.yank_history({}) end,
-        { desc = "Paste from Yanky" }
-    )
+    vim.keymap.set("n", "<leader>P", function()
+        require("telescope").extensions.yank_history.yank_history({})
+    end, { desc = "Paste from Yanky" })
 end
 
 return M

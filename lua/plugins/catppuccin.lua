@@ -24,6 +24,12 @@ function M.config()
             types = {},
             operators = {},
         },
+        dim_inactive = {
+            enabled = true,
+            shade = "dark",
+            percentage = 0.5,
+        },
+        term_colors = true,
         no_italic = false,
         no_bold = false,
         highlight_overrides = {
@@ -103,7 +109,7 @@ function M.config()
                 },
             },
             navic = {
-                enabled = false,
+                enabled = true,
                 custom_bg = "NONE",
             },
         },

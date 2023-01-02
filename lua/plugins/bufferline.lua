@@ -20,7 +20,10 @@ function M.config()
         -- "hint",
     }
 
+    local cat_highlights = require("catppuccin.groups.integrations.bufferline").get()
+
     require("bufferline").setup({
+        highlights = cat_highlights,
         options = {
             show_close_icon = true,
             diagnostics = "nvim_lsp",
@@ -29,7 +32,9 @@ function M.config()
             diagnostics_indicator = function(_, _, diag)
                 local s = {}
                 for _, severity in ipairs(severities) do
-                    if diag[severity] then table.insert(s, signs[severity] .. diag[severity]) end
+                    if diag[severity] then
+                        table.insert(s, signs[severity] .. diag[severity])
+                    end
                 end
                 return table.concat(s, " ")
             end,
