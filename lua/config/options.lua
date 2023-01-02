@@ -3,7 +3,14 @@ local indent = 4
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.opt.guifont = "JetbrainsMono Nerd Font"
+vim.opt.guifont = "JetbrainsMono Nerd Font:h16"
+if vim.fn.exists("g:neovide") then
+    vim.g.neovide_refresh_rate = 75
+    vim.g.neovide_cursor_antialiasing = true
+    vim.g.neovide_cursor_vfx_mode = "wireframe"
+    vim.g.neovide_hide_mouse_when_typing = true
+end
+
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.wo.relativenumber = true
 vim.wo.number = true
@@ -14,6 +21,7 @@ vim.o.shiftwidth = indent
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = true
+vim.o.clipboard = "unnamedplus"
 
 vim.o.wrap = false
 vim.o.hidden = true

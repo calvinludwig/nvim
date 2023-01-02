@@ -1,24 +1,26 @@
 local M = {
+    lazy = false,
     "hrsh7th/nvim-cmp",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
-        { "hrsh7th/cmp-cmdline", enabled = cmdline },
-        { "dmitmel/cmp-cmdline-history", enabled = cmdline },
+        { "hrsh7th/cmp-cmdline" },
+        { "dmitmel/cmp-cmdline-history" },
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-emoji",
         "petertriho/cmp-git",
         "hrsh7th/cmp-nvim-lsp-document-symbol",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-nvim-lua",
         "saadparwaiz1/cmp_luasnip",
+        "saecki/crates.nvim",
+        "hrsh7th/cmp-calc",
     },
 }
 
 function M.config()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-
+    require("crates").setup()
     local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -66,7 +68,8 @@ function M.config()
             { name = "luasnip" },
             { name = "buffer", keyword_length = 3 },
             { name = "path" },
-            { name = "emoji" },
+            { name = "crates" },
+            { name = "calc" },
         }),
         window = {
             completion = cmp.config.window.bordered(),
