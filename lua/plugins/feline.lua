@@ -1,6 +1,6 @@
 local M = {
     'feline-nvim/feline.nvim',
-    lazy = false,
+    event = 'VeryLazy',
 }
 
 function M.config()
@@ -21,6 +21,7 @@ function M.config()
     })
 
     local navic = require('nvim-navic')
+    local clrs = require('catppuccin.palettes').get_palette()
 
     local components = {
         active = {},
@@ -34,6 +35,7 @@ function M.config()
     -- Insert two sections (left and right) for the inactive statusline
     table.insert(components.inactive, {})
     table.insert(components.inactive, {})
+
     table.insert(components.active[1], {
         provider = function()
             return navic.get_location()
@@ -41,7 +43,11 @@ function M.config()
         enabled = function()
             return navic.is_available()
         end,
+        hl = {
+            bg = clrs.base,
+        },
     })
+
     feline.winbar.setup({ components = components })
 end
 

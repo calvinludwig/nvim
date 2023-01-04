@@ -1,5 +1,5 @@
 local M = {
-    lazy = false,
+    event = "InsertEnter",
     'hrsh7th/nvim-cmp',
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
@@ -81,9 +81,7 @@ function M.config()
             format = require('plugins.lsp.kind').cmp_format(),
         },
         experimental = {
-            ghost_text = {
-                hl_group = 'LspCodeLens',
-            },
+            ghost_text = true
         },
     })
     cmp.setup.cmdline({ '/', '?' }, {
