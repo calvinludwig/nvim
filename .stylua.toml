@@ -4,6 +4,6 @@ indent_type = "Spaces"
 indent_width = 4
 
 quote_style = "AutoPreferSingle"
-call_parentheses = "Always"
-no_call_parentheses = false
+call_parentheses = "NoSingleTable"
+no_call_parentheses = true
 collapse_simple_statement = "Never"

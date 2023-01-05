@@ -6,7 +6,7 @@ local mini = {
 local M = { mini, 'JoosepAlviste/nvim-ts-context-commentstring' }
 
 function mini.surround()
-    require('mini.surround').setup({
+    require('mini.surround').setup {
         mappings = {
             add = 'gza', -- Add surrounding in Normal and Visual modes
             delete = 'gzd', -- Delete surrounding
@@ -16,30 +16,30 @@ function mini.surround()
             replace = 'gzr', -- Replace surrounding
             update_n_lines = 'gzn', -- Update `n_lines`
         },
-    })
+    }
 end
 
 function mini.jump()
-    require('mini.jump').setup({})
+    require('mini.jump').setup {}
 end
 
 function mini.pairs()
-    require('mini.pairs').setup({})
+    require('mini.pairs').setup {}
 end
 
 function mini.comment()
-    require('mini.comment').setup({
+    require('mini.comment').setup {
         hooks = {
             pre = function()
-                require('ts_context_commentstring.internal').update_commentstring({})
+                require('ts_context_commentstring.internal').update_commentstring {}
             end,
         },
-    })
+    }
 end
 
 function mini.ai()
-    local ai = require('mini.ai')
-    require('mini.ai').setup({
+    local ai = require 'mini.ai'
+    require('mini.ai').setup {
         n_lines = 500,
         -- search_method = "cover_or_next",
         custom_textobjects = {
@@ -50,13 +50,13 @@ function mini.ai()
             f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }, {}),
             c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }, {}),
         },
-    })
+    }
 
     local map = function(text_obj, desc)
-        for _, side in ipairs({ 'left', 'right' }) do
-            for dir, d in pairs({ prev = '[', next = ']' }) do
+        for _, side in ipairs { 'left', 'right' } do
+            for dir, d in pairs { prev = '[', next = ']' } do
                 local lhs = d .. (side == 'right' and text_obj:upper() or text_obj:lower())
-                for _, mode in ipairs({ 'n', 'x', 'o' }) do
+                for _, mode in ipairs { 'n', 'x', 'o' } do
                     vim.keymap.set(mode, lhs, function()
                         ai.move_cursor(side, 'a', text_obj, { search_method = dir })
                     end, {

@@ -1,4 +1,4 @@
-local common = require('plugins.lsp.common')
+local common = require 'plugins.lsp.common'
 local use_rt = false
 
 local settings = {
@@ -31,16 +31,16 @@ local settings = {
 }
 
 if not use_rt then
-    require('lspconfig').rust_analyzer.setup({
+    require('lspconfig').rust_analyzer.setup {
         on_attach = common.on_attach,
         capabilities = common.capabilities,
         settings = settings,
-    })
+    }
     return
 end
 
-local rt = require('rust-tools')
-rt.setup({
+local rt = require 'rust-tools'
+rt.setup {
     server = {
         on_attach = function(client, bufnr)
             common.on_attach(client, bufnr)
@@ -51,4 +51,4 @@ rt.setup({
         capabilities = common.capabilities,
         settings = settings,
     },
-})
+}

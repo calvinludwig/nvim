@@ -4,7 +4,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.opt.guifont = 'JetbrainsMono Nerd Font:h16'
-if vim.fn.exists('g:neovide') then
+if vim.fn.exists 'g:neovide' then
     vim.g.neovide_refresh_rate = 75
     vim.g.neovide_cursor_antialiasing = true
     vim.g.neovide_cursor_vfx_mode = 'railgun'
@@ -27,7 +27,7 @@ vim.o.wrap = false
 vim.o.hidden = true
 vim.o.swapfile = false
 vim.o.backup = false
-vim.o.undodir = os.getenv('HOME') .. '/.vim/undodir'
+vim.o.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 vim.o.undofile = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
@@ -35,7 +35,7 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 4
 vim.o.pumheight = 8
 vim.wo.signcolumn = 'number'
-vim.opt.isfname:append('@-@')
+vim.opt.isfname:append '@-@'
 vim.o.updatetime = 250
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -46,7 +46,7 @@ vim.o.showcmd = false
 vim.o.autoread = true
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.opt.iskeyword:append('-')
+vim.opt.iskeyword:append '-'
 vim.o.fileencoding = 'utf-8'
 vim.o.conceallevel = 0
 vim.o.showmode = false

@@ -11,9 +11,9 @@ local M = {
 
 function M.config()
     require('plugins.lsp.diagnostics').setup()
-    require('plugins.lsp.null-ls')
-    local common = require('plugins.lsp.common')
-    local lspconfig = require('lspconfig')
+    require 'plugins.lsp.null-ls'
+    local common = require 'plugins.lsp.common'
+    local lspconfig = require 'lspconfig'
 
     local servers = {
         'sumneko_lua',
@@ -36,10 +36,10 @@ function M.config()
     for _, server in ipairs(servers) do
         local loaded, _ = pcall(require, 'plugins.lsp.' .. server)
         if not loaded then
-            lspconfig[server].setup({
+            lspconfig[server].setup {
                 on_attach = common.on_attach,
                 capabilities = common.capabilities,
-            })
+            }
         end
     end
 end

@@ -1,11 +1,11 @@
-local common = require('plugins.lsp.common')
+local common = require 'plugins.lsp.common'
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('neodev').setup({})
+require('neodev').setup {}
 
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').sumneko_lua.setup {
     on_attach = common.on_attach,
     capabilities = common.capabilities,
     settings = {
@@ -39,4 +39,4 @@ require('lspconfig').sumneko_lua.setup({
             telemetry = { enable = false },
         },
     },
-})
+}

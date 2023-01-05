@@ -32,7 +32,7 @@ local Format = function(_)
 end
 
 local function keymaps(bufnr)
-    local telescope = require('telescope.builtin')
+    local telescope = require 'telescope.builtin'
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -68,9 +68,9 @@ M.on_attach = function(client, bufnr)
     keymaps(bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', Format, { desc = 'Format current buffer with LSP' })
 
-    local navic = require('nvim-navic')
+    local navic_installed, navic = pcall(require, 'nvim-navic')
 
-    if client.server_capabilities.documentSymbolProvider then
+    if navic_installed and client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
 

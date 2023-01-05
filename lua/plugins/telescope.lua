@@ -10,9 +10,9 @@ local M = {
 }
 
 function M.config()
-    local telescope = require('telescope')
-    local builtin = require('telescope.builtin')
-    local actions = require('telescope.actions')
+    local telescope = require 'telescope'
+    local builtin = require 'telescope.builtin'
+    local actions = require 'telescope.actions'
     local options = {
         defaults = {
             sorting_strategy = 'ascending',
@@ -32,7 +32,7 @@ function M.config()
         },
         extensions = {
             ['ui-select'] = {
-                require('telescope.themes').get_dropdown({}),
+                require('telescope.themes').get_dropdown {},
             },
             file_browser = {
                 theme = 'ivy',
@@ -44,14 +44,14 @@ function M.config()
     }
     telescope.setup(options)
 
-    telescope.load_extension('fzf')
-    telescope.load_extension('file_browser')
-    telescope.load_extension('ui-select')
-    telescope.load_extension('harpoon')
+    telescope.load_extension 'fzf'
+    telescope.load_extension 'file_browser'
+    telescope.load_extension 'ui-select'
+    telescope.load_extension 'harpoon'
 
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>fb', function()
-        require('telescope').extensions.file_browser.file_browser({ path = '%:p:h' })
+        require('telescope').extensions.file_browser.file_browser { path = '%:p:h' }
     end, { desc = '[F]ile [B]rowser' })
     vim.keymap.set('n', '<leader>p', builtin.git_files, { desc = 'Git files' })
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
@@ -63,10 +63,10 @@ function M.config()
     vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
     vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
             winblend = 10,
             previewer = false,
-        }))
+        })
     end, { desc = '[/] Fuzzily search in current buffer]' })
 end
 

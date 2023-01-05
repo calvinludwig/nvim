@@ -4,20 +4,20 @@ local M = {
     dependencies = {
         'kkharji/sqlite.lua',
         enabled = function()
-            return not jit.os:find('Windows')
+            return not jit.os:find 'Windows'
         end,
     },
 }
 
 function M.config()
-    require('yanky').setup({
+    require('yanky').setup {
         highlight = {
             timer = 150,
         },
         ring = {
-            storage = jit.os:find('Windows') and 'shada' or 'sqlite',
+            storage = jit.os:find 'Windows' and 'shada' or 'sqlite',
         },
-    })
+    }
 
     vim.keymap.set({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
 
@@ -44,7 +44,7 @@ function M.config()
     vim.keymap.set({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
 
     vim.keymap.set('n', '<leader>P', function()
-        require('telescope').extensions.yank_history.yank_history({})
+        require('telescope').extensions.yank_history.yank_history {}
     end, { desc = 'Paste from Yanky' })
 end
 

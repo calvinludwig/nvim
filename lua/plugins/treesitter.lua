@@ -12,9 +12,9 @@ local M = {
 }
 
 function M.config()
-    local treesitter = require('nvim-treesitter.configs')
+    local treesitter = require 'nvim-treesitter.configs'
 
-    treesitter.setup({
+    treesitter.setup {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
             'c',
@@ -86,9 +86,9 @@ function M.config()
                 },
             },
         },
-    })
-    local ts_context = require('treesitter-context')
-    ts_context.setup({ enabled = true })
+    }
+    local ts_context = require 'treesitter-context'
+    ts_context.setup { enabled = true }
 
     require('nvim-ts-autotag').setup()
 end

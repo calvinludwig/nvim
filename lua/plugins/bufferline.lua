@@ -19,13 +19,12 @@ function M.config()
         -- "info",
         -- "hint",
     }
+    local hl = require 'rose-pine.plugins.bufferline'
 
-    local cat_highlights = require('catppuccin.groups.integrations.bufferline').get()
-
-    require('bufferline').setup({
-        highlights = cat_highlights,
+    require('bufferline').setup {
+        highlights = hl,
         options = {
-            show_close_icon = true,
+            show_close_icon = false,
             diagnostics = 'nvim_lsp',
             always_show_bufferline = false,
             separator_style = 'thick',
@@ -38,16 +37,8 @@ function M.config()
                 end
                 return table.concat(s, ' ')
             end,
-            offsets = {
-                {
-                    filetype = 'neo-tree',
-                    text = 'Neo Tree',
-                    highlight = 'Directory',
-                    text_align = 'left',
-                },
-            },
         },
-    })
+    }
 end
 
 return M

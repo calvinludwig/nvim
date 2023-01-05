@@ -1,12 +1,12 @@
-local null_ls = require('null-ls')
+local null_ls = require 'null-ls'
 
-local common = require('plugins.lsp.common')
+local common = require 'plugins.lsp.common'
 
 local code_actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
-null_ls.setup({
+null_ls.setup {
     on_attach = common.on_attach,
     sources = {
         code_actions.refactoring,
@@ -15,9 +15,9 @@ null_ls.setup({
         -- php
         diagnostics.php,
         diagnostics.phpstan,
-        formatting.pint.with({
+        formatting.pint.with {
             command = 'pint',
-        }),
+        },
         -- go
         diagnostics.golangci_lint,
         -- diagnostics.revive,
@@ -29,4 +29,4 @@ null_ls.setup({
         -- rust
         formatting.rustfmt,
     },
-})
+}

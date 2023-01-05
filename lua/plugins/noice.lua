@@ -4,7 +4,7 @@ local M = {
     event = 'VeryLazy',
 }
 function M.config()
-    require('noice').setup({
+    require('noice').setup {
         lsp = {
             override = {
                 ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
@@ -16,6 +16,10 @@ function M.config()
             command_palette = true,
             long_message_to_split = true,
         },
-    })
+        cmdline = {
+            view = 'cmdline',
+        },
+    }
 end
+
 return M

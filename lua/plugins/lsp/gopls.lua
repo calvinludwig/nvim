@@ -1,6 +1,6 @@
-local common = require('plugins.lsp.common')
+local common = require 'plugins.lsp.common'
 
-require('lspconfig').gopls.setup({
+require('lspconfig').gopls.setup {
     cmd = { 'gopls' },
     on_attach = common.on_attach,
     capabilities = common.capabilities,
@@ -18,4 +18,4 @@ require('lspconfig').gopls.setup({
     init_options = {
         usePlaceholders = true,
     },
-})
+}

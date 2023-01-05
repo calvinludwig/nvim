@@ -9,7 +9,7 @@ function M.config()
             return true
         end
     end
-    require('gitsigns').setup({
+    require('gitsigns').setup {
         signs = {
             add = { hl = 'GitSignsAdd', text = '▍', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
             change = {
@@ -79,11 +79,11 @@ function M.config()
             map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
             map('n', '<leader>ghp', gs.preview_hunk, 'Preview Hunk')
             map('n', '<leader>ghb', function()
-                gs.blame_line({ full = true })
+                gs.blame_line { full = true }
             end, 'Blame Line')
             map('n', '<leader>ghd', gs.diffthis, 'Diff This')
             map('n', '<leader>ghD', function()
-                gs.diffthis('~')
+                gs.diffthis '~'
             end, 'Diff This ~')
 
             -- Text object
@@ -91,7 +91,7 @@ function M.config()
 
             map('n', '<leader>gg', ':Gitsigns toggle_signs<CR>')
         end,
-    })
+    }
     package.loaded.trouble = nil
     package.preload.trouble = nil
 end

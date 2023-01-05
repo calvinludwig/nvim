@@ -4,7 +4,7 @@ local M = {
         {
             '<leader>nd',
             function()
-                require('notify').dismiss({ silent = true, pending = true })
+                require('notify').dismiss { silent = true, pending = true }
             end,
             desc = 'Delete all Notifications',
         },

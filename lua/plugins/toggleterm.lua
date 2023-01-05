@@ -4,8 +4,9 @@ local M = {
 }
 
 function M.config()
+    local hl = require 'rose-pine.plugins.toggleterm'
     local Terminal = require('toggleterm.terminal').Terminal
-    local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
+    local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
 
     local function lazygit_toggle()
         lazygit:toggle()
@@ -13,7 +14,8 @@ function M.config()
 
     vim.keymap.set('n', '<leader>g', lazygit_toggle, { noremap = true, silent = true })
 
-    require('toggleterm').setup({
+    require('toggleterm').setup {
+        highlights = hl,
         size = 20,
         open_mapping = [[<c-\>]],
         direction = 'float',
@@ -26,7 +28,7 @@ function M.config()
                 return term.name
             end,
         },
-    })
+    }
 end
 
 return M

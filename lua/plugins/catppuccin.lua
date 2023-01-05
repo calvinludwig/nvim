@@ -2,11 +2,13 @@ local M = {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = false,
+    enabled = false,
 }
-function M.config()
-    local catppuccin = require('catppuccin')
 
-    catppuccin.setup({
+function M.config()
+    local catppuccin = require 'catppuccin'
+
+    catppuccin.setup {
         flavour = 'frappe',
         transparent_background = false,
         styles = {
@@ -108,9 +110,9 @@ function M.config()
                 custom_bg = 'NONE',
             },
         },
-    })
+    }
 
-    vim.cmd.colorscheme('catppuccin')
+    vim.cmd.colorscheme 'catppuccin'
 end
 
 return M
