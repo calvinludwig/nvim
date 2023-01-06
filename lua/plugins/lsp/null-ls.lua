@@ -28,5 +28,11 @@ null_ls.setup {
         formatting.golines,
         -- rust
         formatting.rustfmt,
+        -- ts tsx
+        code_actions.eslint,
+        diagnostics.eslint,
+        diagnostics.tsc,
+        formatting.eslint,
+        formatting.prettier,
     },
 }

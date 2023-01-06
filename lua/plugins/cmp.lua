@@ -21,10 +21,12 @@ function M.config()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     require('crates').setup()
+
     local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
     end
+
     cmp.setup {
         completion = {
             completeopt = 'menu,menuone,noinsert',
@@ -63,7 +65,25 @@ function M.config()
             end, { 'i', 's' }),
         },
         sources = cmp.config.sources {
-            { name = 'nvim_lsp' },
+            {
+                name = 'nvim_lsp',
+                entry_filter = function(entry, context)
+                    local kind = entry:get_kind()
+                    local line = context.cursor_line
+                    local col = context.cursor.col
+                    local char_before_cursor = string.sub(line, col - 1, col - 1)
+
+                    if char_before_cursor == '.' then
+                        return kind == 2 or kind == 5
+                    end
+
+                    if string.match(line, '^%s*%w*$') then
+                        return kind == 2 or kind == 5
+                    end
+
+                    return true
+                end,
+            },
             { name = 'nvim_lsp_signature_help' },
             { name = 'nvim_lsp_document_symbol' },
             { name = 'nvim_lua' },
