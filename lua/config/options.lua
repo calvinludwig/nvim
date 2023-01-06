@@ -11,7 +11,7 @@ if vim.fn.exists 'g:neovide' then
     vim.g.neovide_hide_mouse_when_typing = true
 end
 
-vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.completeopt = 'menu,menuone,noinsert'
 vim.wo.relativenumber = true
 vim.wo.number = true
 vim.wo.numberwidth = 1

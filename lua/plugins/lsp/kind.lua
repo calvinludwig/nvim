@@ -25,10 +25,17 @@ M.icons = {
 }
 
 function M.cmp_format()
-    return function(_entry, vim_item)
+    return function(entry, vim_item)
         if M.icons[vim_item.kind] then
             vim_item.kind = M.icons[vim_item.kind] .. vim_item.kind
         end
+
+        local item = entry:get_completion_item()
+
+        if item.detail then
+            vim_item.menu = item.detail
+        end
+
         return vim_item
     end
 end

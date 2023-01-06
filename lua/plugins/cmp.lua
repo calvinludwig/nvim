@@ -14,6 +14,7 @@ local M = {
         'saadparwaiz1/cmp_luasnip',
         'saecki/crates.nvim',
         'hrsh7th/cmp-calc',
+        'octaltree/cmp-look',
     },
 }
 
@@ -26,7 +27,6 @@ function M.config()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
     end
-
     cmp.setup {
         completion = {
             completeopt = 'menu,menuone,noinsert',
@@ -88,14 +88,21 @@ function M.config()
             { name = 'nvim_lsp_document_symbol' },
             { name = 'nvim_lua' },
             { name = 'luasnip' },
+        },
+        {
+            { name = 'look' },
             { name = 'buffer', keyword_length = 3 },
             { name = 'path' },
             { name = 'crates' },
             { name = 'calc' },
         },
         window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered(),
+            completion = cmp.config.window.bordered {
+                border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+            },
+            documentation = cmp.config.window.bordered {
+                border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+            },
         },
         formatting = {
             format = require('plugins.lsp.kind').cmp_format(),
