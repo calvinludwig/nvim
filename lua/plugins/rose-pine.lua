@@ -6,7 +6,7 @@ local M = {
 
 function M.config()
     require('rose-pine').setup {
-        dark_variant = 'moon',
+        dark_variant = 'main',
         dim_nc_background = true,
         disable_float_background = true,
     }

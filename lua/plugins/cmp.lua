@@ -65,25 +65,7 @@ function M.config()
             end, { 'i', 's' }),
         },
         sources = cmp.config.sources {
-            {
-                name = 'nvim_lsp',
-                entry_filter = function(entry, context)
-                    local kind = entry:get_kind()
-                    local line = context.cursor_line
-                    local col = context.cursor.col
-                    local char_before_cursor = string.sub(line, col - 1, col - 1)
-
-                    if char_before_cursor == '.' then
-                        return kind == 2 or kind == 5
-                    end
-
-                    if string.match(line, '^%s*%w*$') then
-                        return kind == 2 or kind == 5
-                    end
-
-                    return true
-                end,
-            },
+            { name = 'nvim_lsp' },
             { name = 'nvim_lsp_signature_help' },
             { name = 'nvim_lsp_document_symbol' },
             { name = 'nvim_lua' },
