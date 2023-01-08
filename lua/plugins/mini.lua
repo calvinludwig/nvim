@@ -72,12 +72,17 @@ function mini.ai()
     map('o', 'block')
 end
 
+function mini.cursorword()
+    require('mini.cursorword').setup()
+end
+
 function mini.config()
     mini.jump()
     mini.surround()
     mini.ai()
     mini.pairs()
     mini.comment()
+    mini.cursorword()
 end
 
 function mini.init()

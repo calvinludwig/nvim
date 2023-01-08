@@ -1,13 +1,11 @@
 local M = {
-    { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        event = 'BufReadPost',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            'windwp/nvim-ts-autotag',
-        },
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    event = 'BufReadPost',
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'windwp/nvim-ts-autotag',
     },
 }
 
