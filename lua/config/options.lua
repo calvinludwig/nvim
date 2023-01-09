@@ -11,7 +11,7 @@ if vim.fn.exists 'g:neovide' then
     vim.g.neovide_hide_mouse_when_typing = true
 end
 
-vim.opt.completeopt = 'menu,menuone,noinsert'
+vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
 vim.wo.relativenumber = true
 vim.wo.number = true
 vim.wo.numberwidth = 1
@@ -23,7 +23,6 @@ vim.o.shiftwidth = indent
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = true
-vim.o.clipboard = 'unnamedplus'
 
 vim.o.wrap = false
 vim.o.hidden = true
