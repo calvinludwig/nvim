@@ -36,4 +36,5 @@ return {
     },
     'jwalton512/vim-blade',
     'styled-components/vim-styled-components',
+    'kovetskiy/sxhkd-vim',
 }

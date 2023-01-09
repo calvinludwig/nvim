@@ -16,6 +16,8 @@ vim.wo.relativenumber = true
 vim.wo.number = true
 vim.wo.numberwidth = 1
 
+vim.g.editorconfig = true
+
 vim.o.tabstop = indent
 vim.o.shiftwidth = indent
 vim.o.expandtab = true

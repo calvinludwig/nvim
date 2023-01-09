@@ -14,7 +14,7 @@ function M.config()
         },
 
         -- Set opacity for cursorline and number background
-        line_opacity = 0.,
+        line_opacity = 0.15,
 
         -- Enable cursor highlights
         set_cursor = true,
