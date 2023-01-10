@@ -18,6 +18,9 @@ function M.setup()
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = border_chars,
     })
+    vim.lsp.handlers['textDocument/codeAction'] = vim.lsp.with(vim.lsp.handlers.code_action, {
+        border = border_chars,
+    })
 
     for type, icon in pairs(M.signs) do
         local hl = 'DiagnosticSign' .. type
