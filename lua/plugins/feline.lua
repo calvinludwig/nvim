@@ -5,35 +5,17 @@ local M = {
 
 function M.config()
     local feline = require 'feline'
-    local rose_pine = {
-        base = '#191724',
-        surface = '#1f1d2e',
-        bg = '#1f1d2e',
-        overlay = '#26233a',
-        muted = '#6e6a86',
-        subtle = '#908caa',
-        text = '#e0def4',
-        fg = '#e0def4',
-        love = '#eb6f92',
-        gold = '#f6c177',
-        rose = '#ebbcba',
-        pine = '#31748f',
-        foam = '#9ccfd8',
-        iris = '#c4a7e7',
-        highlight_low = '#21202e',
-        highlight_med = '#403d52',
-        highlight_high = '#524f67',
-        none = 'NONE',
-    }
+
+    local kanagawa = require 'ui.kanagawa'
 
     local assets = {
         file = '  ',
         lsp = {
             server = '  ',
-            error = '  ',
-            warning = '  ',
-            info = '  ',
-            hint = '  ',
+            error = '  ',
+            warning = '  ',
+            info = '  ',
+            hint = '  ',
         },
         git = {
             branch = '   ',
@@ -44,14 +26,15 @@ function M.config()
     }
 
     local vi_mode_colors = {
-        NORMAL = 'rose',
-        OP = 'foam',
-        INSERT = 'foam',
-        VISUAL = 'iris',
-        LINES = 'iris',
-        BLOCK = 'iris',
-        REPLACE = 'love',
-        COMMAND = 'gold',
+        NORMAL = 'winterGreen',
+        OP = 'winterBlue',
+        INSERT = 'winterBlue',
+        VISUAL = 'winterYellow',
+        LINES = 'winterYellow',
+        BLOCK = 'winterYellow',
+        REPLACE = 'winterRed',
+        COMMAND = 'winterRed',
+        TERM = 'winterRed',
     }
 
     local c = {
@@ -60,7 +43,7 @@ function M.config()
                 name = 'vi_mode',
                 opts = {
                     show_mode_name = true,
-                    padding = 'center', -- Uncomment for extra padding.
+                    -- padding = 'center', -- Uncomment for extra padding.
                 },
             },
             icon = '',
@@ -78,8 +61,8 @@ function M.config()
         gitBranch = {
             provider = 'git_branch',
             hl = {
-                fg = 'rose',
-                bg = 'overlay',
+                fg = 'crystalBlue',
+                bg = 'sumiInk1c',
             },
             left_sep = 'block',
             right_sep = 'block',
@@ -88,8 +71,8 @@ function M.config()
         gitDiffAdded = {
             provider = 'git_diff_added',
             hl = {
-                fg = 'foam',
-                bg = 'overlay',
+                fg = 'autumnGreen',
+                bg = 'sumiInk1c',
             },
             left_sep = 'block',
             right_sep = 'block',
@@ -98,8 +81,8 @@ function M.config()
         gitDiffRemoved = {
             provider = 'git_diff_removed',
             hl = {
-                fg = 'love',
-                bg = 'overlay',
+                fg = 'autumnRed',
+                bg = 'sumiInk1c',
             },
             left_sep = 'block',
             right_sep = 'block',
@@ -108,15 +91,15 @@ function M.config()
         gitDiffChanged = {
             provider = 'git_diff_changed',
             hl = {
-                fg = 'fg',
-                bg = 'overlay',
+                fg = 'autumnYellow',
+                bg = 'sumiInk1c',
             },
             left_sep = 'block',
             right_sep = 'right_filled',
             icon = assets.git.changed,
         },
         separator = {
-            provider = '',
+            provider = ' ',
         },
         fileinfo = {
             provider = {
@@ -127,31 +110,37 @@ function M.config()
             },
             left_sep = ' ',
             right_sep = ' ',
+            hl = {
+                fg = 'sakuraPink',
+            },
         },
         diagnostic_errors = {
             provider = 'diagnostic_errors',
             hl = {
-                fg = 'love',
+                fg = 'samuraiRed',
             },
             icon = assets.lsp.error,
         },
         diagnostic_warnings = {
             provider = 'diagnostic_warnings',
             hl = {
-                fg = 'rose',
+                fg = 'samuraiYellow',
             },
             icon = assets.lsp.warning,
         },
         diagnostic_hints = {
             provider = 'diagnostic_hints',
             hl = {
-                fg = 'pine',
+                fg = 'dragonBlue',
             },
             icon = assets.lsp.hint,
         },
         diagnostic_info = {
             provider = 'diagnostic_info',
             icon = assets.lsp.info,
+            hl = {
+                fg = 'waveAqua1',
+            },
         },
         lsp_load = {
             provider = function()
@@ -187,74 +176,30 @@ function M.config()
                 return ''
             end,
             hl = {
-                fg = 'rose',
+                fg = 'oldWhite',
             },
-        },
-        lsp_client_names = {
-            provider = 'lsp_client_names',
-            hl = {
-                fg = 'iris',
-                bg = 'overlay',
-                style = 'bold',
-            },
-            left_sep = 'left_filled',
-            right_sep = 'block',
-        },
-        file_type = {
-            provider = {
-                name = 'file_type',
-                opts = {
-                    filetype_icon = true,
-                    case = 'titlecase',
-                },
-            },
-            hl = {
-                fg = 'love',
-                bg = 'overlay',
-                style = 'bold',
-            },
-            left_sep = 'block',
-            right_sep = 'block',
-        },
-        file_encoding = {
-            provider = 'file_encoding',
-            hl = {
-                fg = 'gold',
-                bg = 'overlay',
-                style = 'italic',
-            },
-            left_sep = 'block',
-            right_sep = 'block',
         },
         position = {
             provider = 'position',
             hl = {
-                fg = 'foam',
-            },
-            left_sep = 'block',
-            right_sep = 'block',
-        },
-        line_percentage = {
-            provider = 'line_percentage',
-            hl = {
-                fg = 'pine',
-                bg = 'overlay',
+                fg = 'oniViolet',
                 style = 'bold',
             },
             left_sep = 'block',
             right_sep = 'block',
         },
-        scroll_bar = {
-            provider = 'scroll_bar',
+        search_count = {
+            provider = 'search_count',
             hl = {
-                fg = 'rose',
-                style = 'bold',
+                fg = 'autumnYellow',
             },
         },
     }
 
     local left = {
         c.vim_mode,
+        c.separator,
+        c.search_count,
         c.fileinfo,
         c.position,
         c.separator,
@@ -269,15 +214,10 @@ function M.config()
     }
 
     local right = {
-        -- c.lsp_client_names,
-        -- c.file_type,
-        -- c.file_encoding,
         c.gitBranch,
         c.gitDiffAdded,
         c.gitDiffRemoved,
         c.gitDiffChanged,
-        -- c.line_percentage,
-        -- c.scroll_bar,
     }
 
     local components = {
@@ -295,7 +235,7 @@ function M.config()
 
     feline.setup {
         components = components,
-        theme = rose_pine,
+        theme = kanagawa,
         vi_mode_colors = vi_mode_colors,
     }
 end

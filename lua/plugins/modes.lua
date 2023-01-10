@@ -5,19 +5,21 @@ local M = {
 }
 
 function M.config()
+    local kanagawa = require 'ui.kanagawa'
+
     require('modes').setup {
         colors = {
-            copy = '#ebbcba',
-            delete = '#eb6f92',
-            insert = '#9ccfd8',
-            visual = '#c4a7e7',
+            copy = kanagawa.winterGreen,
+            delete = kanagawa.winterRed,
+            insert = kanagawa.winterBlue,
+            visual = kanagawa.winterYellow,
         },
 
         -- Set opacity for cursorline and number background
-        line_opacity = 0.15,
+        line_opacity = 1,
 
         -- Enable cursor highlights
-        set_cursor = true,
+        set_cursor = false,
 
         -- Enable cursorline initially, and disable cursorline for inactive windows
         -- or ignored filetypes

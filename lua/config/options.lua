@@ -14,7 +14,7 @@ end
 vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
 vim.wo.relativenumber = true
 vim.wo.number = true
-vim.wo.numberwidth = 1
+vim.wo.numberwidth = 2
 
 vim.g.editorconfig = true
 
@@ -33,7 +33,7 @@ vim.o.undofile = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.termguicolors = true
-vim.o.scrolloff = 8
+vim.o.scrolloff = 4
 vim.o.pumheight = 8
 vim.wo.signcolumn = 'number'
 vim.opt.isfname:append '@-@'
@@ -56,5 +56,16 @@ vim.o.cmdheight = 1
 vim.o.virtualedit = 'all'
 vim.o.list = false
 vim.o.listchars = 'tab:→ ,leadmultispace:·,eol:↙'
+
 vim.o.laststatus = 3
+vim.opt.fillchars:append {
+    horiz = '━',
+    horizup = '┻',
+    horizdown = '┳',
+    vert = '┃',
+    vertleft = '┨',
+    vertright = '┣',
+    verthoriz = '╋',
+}
+
 vim.o.ch = 1
