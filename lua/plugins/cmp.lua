@@ -27,7 +27,6 @@ function M.config()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
     end
-
     cmp.setup {
         preselect = cmp.PreselectMode.None,
         completion = {
@@ -82,10 +81,10 @@ function M.config()
         },
         window = {
             completion = cmp.config.window.bordered {
-                border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+                border = require('plugins.lsp.diagnostics').border_chars,
             },
             documentation = cmp.config.window.bordered {
-                border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+                border = require('plugins.lsp.diagnostics').border_chars,
             },
         },
         formatting = {

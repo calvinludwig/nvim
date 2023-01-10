@@ -34,7 +34,23 @@ if not use_rt then
 end
 
 local rt = require 'rust-tools'
+local border_chars = require('plugins.lsp.diagnostics').border_chars
+
 rt.setup {
+    tools = {
+        hover_actions = {
+            border = {
+                { border_chars[1], 'FloatBorder' },
+                { border_chars[2], 'FloatBorder' },
+                { border_chars[3], 'FloatBorder' },
+                { border_chars[4], 'FloatBorder' },
+                { border_chars[5], 'FloatBorder' },
+                { border_chars[6], 'FloatBorder' },
+                { border_chars[7], 'FloatBorder' },
+                { border_chars[8], 'FloatBorder' },
+            },
+        },
+    },
     server = {
         on_attach = function(client, bufnr)
             common.on_attach(client, bufnr)

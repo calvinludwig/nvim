@@ -25,7 +25,7 @@ function M.config()
                     mirror = false,
                 },
             },
-            borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+            borderchars = { '━', '┃', '━', '┃', '┏', '┓', '┛', '┗' },
             color_devicons = true,
             file_sorter = require('telescope.sorters').get_fuzzy_file,
             generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
@@ -38,7 +38,7 @@ function M.config()
                 theme = 'ivy',
                 -- disables netrw and use telescope-file-browser in its place
                 hijack_netrw = true,
-                borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+                borderchars = { '━', '┃', '━', '┃', '┏', '┓', '┛', '┗' },
             },
         },
     }

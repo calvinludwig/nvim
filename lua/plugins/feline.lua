@@ -26,7 +26,7 @@ function M.config()
     }
 
     local vi_mode_colors = {
-        NORMAL = 'winterGreen',
+        NORMAL = 'sumiInk1c',
         OP = 'winterBlue',
         INSERT = 'winterBlue',
         VISUAL = 'winterYellow',
