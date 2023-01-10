@@ -5,7 +5,7 @@ local M = {
 function M.config()
     local ui = require 'harpoon.ui'
     local mark = require 'harpoon.mark'
-    local border_chars = require('plugins.lsp.diagnostics').border_chars
+    local border_chars = require('ui.border').chars
     require('harpoon').setup {
         menu = {
             borderchars = {

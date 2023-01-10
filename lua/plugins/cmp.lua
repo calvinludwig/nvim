@@ -81,10 +81,10 @@ function M.config()
         },
         window = {
             completion = cmp.config.window.bordered {
-                border = require('plugins.lsp.diagnostics').border_chars,
+                border = require('ui.border').chars,
             },
             documentation = cmp.config.window.bordered {
-                border = require('plugins.lsp.diagnostics').border_chars,
+                border = require('ui.border').chars,
             },
         },
         formatting = {

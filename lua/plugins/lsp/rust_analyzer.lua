@@ -34,7 +34,7 @@ if not use_rt then
 end
 
 local rt = require 'rust-tools'
-local border_chars = require('plugins.lsp.diagnostics').border_chars
+local border_chars = require('ui.border').chars
 
 rt.setup {
     tools = {
