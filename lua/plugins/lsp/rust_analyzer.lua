@@ -1,5 +1,5 @@
 local common = require 'plugins.lsp.common'
-local use_rt = false
+local use_rt = true
 
 local settings = {
     ['rust-analyzer'] = {
