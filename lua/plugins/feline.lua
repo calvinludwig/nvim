@@ -124,7 +124,7 @@ function M.config()
         diagnostic_warnings = {
             provider = 'diagnostic_warnings',
             hl = {
-                fg = 'samuraiYellow',
+                fg = 'roninYellow',
             },
             icon = assets.lsp.warning,
         },

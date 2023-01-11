@@ -4,6 +4,7 @@ local M = {
 }
 
 function M.config()
+    local kanagawa_colors = require 'ui.kanagawa'
     require('kanagawa').setup {
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
