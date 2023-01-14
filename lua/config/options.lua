@@ -49,7 +49,7 @@ vim.opt.updatetime = 250
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
 
 vim.opt.backspace = 'indent,eol,start'

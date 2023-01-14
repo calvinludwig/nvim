@@ -74,7 +74,7 @@ local border = {
 
 local padding = {
     [[%#StatusColumnBuffer#]], -- HL
-    [[ ]],
+    [[  ]],
 }
 
 local function build_statuscolumn(tbl)

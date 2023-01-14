@@ -19,7 +19,9 @@ function M.config()
         globalStatus = true, -- adjust window separators highlight for laststatus=3
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         colors = {},
-        overrides = {},
+        overrides = {
+            CursorLine = { bg = Kanagawa.sumiInk1 },
+        },
     }
 
     vim.cmd.colorscheme 'kanagawa'
