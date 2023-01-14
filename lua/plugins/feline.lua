@@ -5,23 +5,20 @@ local M = {
 
 function M.config()
     local feline = require 'feline'
-
-    local kanagawa = require 'ui.kanagawa'
-
     local assets = {
-        file = '  ',
+        file = Icons.misc.file,
         lsp = {
-            server = '  ',
-            error = '  ',
-            warning = '  ',
-            info = '  ',
-            hint = '  ',
+            server = Icons.misc.lsp_server,
+            error = Icons.diagnostics.ERROR,
+            warning = Icons.diagnostics.WARNING,
+            info = Icons.diagnostics.INFO,
+            hint = Icons.diagnostics.HINT,
         },
         git = {
-            branch = '   ',
-            added = '   ',
-            changed = '   ',
-            removed = '   ',
+            branch = Icons.git.branch .. ' ',
+            added = Icons.git.status_added .. ' ',
+            changed = Icons.git.status_modified .. ' ',
+            removed = Icons.git.status_removed .. ' ',
         },
     }
 
@@ -157,6 +154,7 @@ function M.config()
                         ' ',
                         ' ',
                         ' ',
+                        ' ',
                     }
                     local success_icon = {
                         ' ',
@@ -235,7 +233,7 @@ function M.config()
 
     feline.setup {
         components = components,
-        theme = kanagawa,
+        theme = Kanagawa,
         vi_mode_colors = vi_mode_colors,
     }
 end

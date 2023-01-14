@@ -5,18 +5,17 @@ local M = {
 function M.config()
     local ui = require 'harpoon.ui'
     local mark = require 'harpoon.mark'
-    local border_chars = require('ui.border').chars
     require('harpoon').setup {
         menu = {
             borderchars = {
-                border_chars[2],
-                border_chars[4],
-                border_chars[6],
-                border_chars[8],
-                border_chars[1],
-                border_chars[3],
-                border_chars[5],
-                border_chars[7],
+                Icons.border[2],
+                Icons.border[4],
+                Icons.border[6],
+                Icons.border[8],
+                Icons.border[1],
+                Icons.border[3],
+                Icons.border[5],
+                Icons.border[7],
             },
         },
     }

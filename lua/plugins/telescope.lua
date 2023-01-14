@@ -10,7 +10,7 @@ local M = {
 }
 
 local function getBorderChars()
-    local border = require('ui.border').chars
+    local border = Icons.border
 
     return {
         border[2],

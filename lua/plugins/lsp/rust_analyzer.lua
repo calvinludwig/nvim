@@ -34,20 +34,18 @@ if not use_rt then
 end
 
 local rt = require 'rust-tools'
-local border_chars = require('ui.border').chars
-
 rt.setup {
     tools = {
         hover_actions = {
             border = {
-                { border_chars[1], 'FloatBorder' },
-                { border_chars[2], 'FloatBorder' },
-                { border_chars[3], 'FloatBorder' },
-                { border_chars[4], 'FloatBorder' },
-                { border_chars[5], 'FloatBorder' },
-                { border_chars[6], 'FloatBorder' },
-                { border_chars[7], 'FloatBorder' },
-                { border_chars[8], 'FloatBorder' },
+                { Icons.boder[1], 'FloatBorder' },
+                { Icons.boder[2], 'FloatBorder' },
+                { Icons.boder[3], 'FloatBorder' },
+                { Icons.boder[4], 'FloatBorder' },
+                { Icons.boder[5], 'FloatBorder' },
+                { Icons.boder[6], 'FloatBorder' },
+                { Icons.boder[7], 'FloatBorder' },
+                { Icons.boder[8], 'FloatBorder' },
             },
         },
     },

@@ -5,14 +5,12 @@ local M = {
 }
 
 function M.config()
-    local kanagawa = require 'ui.kanagawa'
-
     require('modes').setup {
         colors = {
-            copy = kanagawa.winterGreen,
-            delete = kanagawa.winterRed,
-            insert = kanagawa.winterBlue,
-            visual = kanagawa.winterYellow,
+            copy = Kanagawa.winterGreen,
+            delete = Kanagawa.winterRed,
+            insert = Kanagawa.winterBlue,
+            visual = Kanagawa.winterYellow,
         },
 
         -- Set opacity for cursorline and number background

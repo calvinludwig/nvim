@@ -26,7 +26,7 @@ return {
     },
     config = {
         close_if_last_window = true,
-        popup_border_style = require('ui.border').chars,
+        popup_border_style = Icons.border,
         enable_git_status = true,
         enable_diagnostics = true,
         window = {
@@ -78,11 +78,10 @@ return {
                 expander_highlight = 'NeoTreeExpander',
             },
             icon = {
-                folder_closed = '',
-                folder_open = '',
-                folder_empty = 'ﰊ',
-                default = '*',
-                highlight = 'NeoTreeFileIcon',
+                folder_empty = Icons.misc.folder_empty,
+                folder_closed = Icons.misc.folder_closed,
+                folder_open = Icons.misc.folder_open,
+                default = Icons.misc.file,
             },
             modified = {
                 symbol = '[+]',
@@ -94,19 +93,7 @@ return {
                 highlight = 'NeoTreeFileName',
             },
             git_status = {
-                symbols = {
-                    -- Change type
-                    added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
-                    modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-                    deleted = '✖', -- this can only be used in the git_status source
-                    renamed = '', -- this can only be used in the git_status source
-                    -- Status type
-                    untracked = '',
-                    ignored = '',
-                    unstaged = '',
-                    staged = '',
-                    conflict = '',
-                },
+                symbols = Icons.git,
             },
         },
     },

@@ -15,7 +15,7 @@ local M = {
 }
 
 function M.config()
-    local border_chars = require('ui.border').chars
+    local border_chars = require('config.utils.icons').border
     require('dressing').setup {
         input = {
             enabled = true,

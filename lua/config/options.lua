@@ -12,60 +12,60 @@ if vim.fn.exists 'g:neovide' then
 end
 
 vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
-vim.wo.relativenumber = true
-vim.wo.number = true
-vim.wo.numberwidth = 2
+
+-- vim.opt.relativenumber = true
+-- vim.opt.number = true
+-- vim.opt.numberwidth = 2
 
 vim.g.editorconfig = true
 
-vim.o.tabstop = indent
-vim.o.shiftwidth = indent
-vim.o.expandtab = true
-vim.o.autoindent = true
-vim.o.smartindent = true
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99 -- was 1
+vim.opt.foldlevelstart = 99
+vim.opt.foldnestmax = 10
 
-vim.o.wrap = false
-vim.o.hidden = true
-vim.o.swapfile = false
-vim.o.backup = false
-vim.o.undodir = os.getenv 'HOME' .. '/.vim/undodir'
-vim.o.undofile = true
-vim.o.hlsearch = true
-vim.o.incsearch = true
-vim.o.termguicolors = true
-vim.o.scrolloff = 4
-vim.o.pumheight = 8
-vim.wo.signcolumn = 'number'
+vim.opt.mouse = 'a'
+
+vim.opt.tabstop = indent
+vim.opt.shiftwidth = indent
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+vim.opt.hidden = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
+vim.opt.undofile = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 4
+vim.opt.pumheight = 8
+vim.opt.signcolumn = 'number'
 vim.opt.isfname:append '@-@'
-vim.o.updatetime = 250
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.cursorline = true
-vim.o.cursorcolumn = false
-vim.o.backspace = 'indent,eol,start'
-vim.o.showcmd = false
-vim.o.autoread = true
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.updatetime = 250
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = false
+vim.opt.backspace = 'indent,eol,start'
+vim.opt.showcmd = false
+vim.opt.autoread = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.opt.iskeyword:append '-'
-vim.o.fileencoding = 'utf-8'
-vim.o.conceallevel = 0
-vim.o.showmode = false
-vim.o.timeoutlen = 500
-vim.o.cmdheight = 1
-vim.o.virtualedit = 'all'
-vim.o.list = false
-vim.o.listchars = 'tab:→ ,leadmultispace:·,eol:↙'
+vim.opt.fileencoding = 'utf-8'
+vim.opt.conceallevel = 0
+vim.opt.showmode = false
+vim.opt.timeoutlen = 500
+vim.opt.cmdheight = 1
+vim.opt.virtualedit = 'all'
+vim.opt.list = true
+vim.opt.listchars = Icons.listchars
 
-vim.o.laststatus = 3
-vim.opt.fillchars:append {
-    horiz = '━',
-    horizup = '┻',
-    horizdown = '┳',
-    vert = '┃',
-    vertleft = '┨',
-    vertright = '┣',
-    verthoriz = '╋',
-}
+vim.opt.laststatus = 3
+vim.opt.fillchars = Icons.fillchars
 
-vim.o.ch = 1
+vim.opt.ch = 1
