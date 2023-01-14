@@ -19,10 +19,6 @@ function mini.surround()
     }
 end
 
-function mini.jump()
-    require('mini.jump').setup {}
-end
-
 function mini.pairs()
     require('mini.pairs').setup {}
 end
@@ -77,7 +73,6 @@ function mini.cursorword()
 end
 
 function mini.config()
-    mini.jump()
     mini.surround()
     mini.ai()
     mini.pairs()
@@ -86,10 +81,10 @@ function mini.config()
 end
 
 function mini.init()
-    vim.keymap.set('n', '<leader>bd', function()
+    vim.keymap.set('n', '<leader>q', function()
         require('mini.bufremove').delete(0, false)
     end)
-    vim.keymap.set('n', '<leader>bD', function()
+    vim.keymap.set('n', '<leader>Q', function()
         require('mini.bufremove').delete(0, true)
     end)
 end

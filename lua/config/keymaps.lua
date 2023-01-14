@@ -70,4 +70,3 @@ vim.keymap.set('n', '<leader>sx', ':close<CR>', { desc = 'Close current window' 
 
 vim.keymap.set('n', '<leader><Tab>', ':bn<CR>', { desc = 'Next buffer' }) --  go to next buffer
 vim.keymap.set('n', '<leader><s-Tab>', ':bp<CR>', { desc = 'Previous buffer' }) --  go to previous buffer
-vim.keymap.set('n', '<leader>q', ':bd<CR>', { desc = 'Close buffer' }) --  go to previous buffer

@@ -15,13 +15,15 @@ function M.config()
     treesitter.setup {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
+            'rust',
+            'lua',
             'c',
             'cpp',
             'go',
-            'lua',
+            'php',
             'python',
-            'rust',
             'typescript',
+            'comment',
             'help',
             'regex',
             'bash',

@@ -9,10 +9,26 @@ local M = {
     lazy = false,
 }
 
+local function getBorderChars()
+    local border = require('ui.border').chars
+
+    return {
+        border[2],
+        border[4],
+        border[6],
+        border[8],
+        border[1],
+        border[3],
+        border[5],
+        border[7],
+    }
+end
+
 function M.config()
     local telescope = require 'telescope'
     local builtin = require 'telescope.builtin'
     local actions = require 'telescope.actions'
+
     local options = {
         defaults = {
             sorting_strategy = 'ascending',
@@ -25,10 +41,15 @@ function M.config()
                     mirror = false,
                 },
             },
-            borderchars = { '━', '┃', '━', '┃', '┏', '┓', '┛', '┗' },
+            borderchars = getBorderChars(),
             color_devicons = true,
             file_sorter = require('telescope.sorters').get_fuzzy_file,
             generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
+        },
+        pickers = {
+            find_files = {
+                theme = 'ivy',
+            },
         },
         extensions = {
             ['ui-select'] = {
@@ -38,7 +59,7 @@ function M.config()
                 theme = 'ivy',
                 -- disables netrw and use telescope-file-browser in its place
                 hijack_netrw = true,
-                borderchars = { '━', '┃', '━', '┃', '┏', '┓', '┛', '┗' },
+                borderchars = getBorderChars(),
             },
         },
     }
