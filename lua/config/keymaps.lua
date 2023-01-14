@@ -12,7 +12,6 @@ vim.keymap.set({ 'i', 'n' }, '<down>', '<Nop>')
 vim.keymap.set({ 'i', 'n' }, '<left>', '<Nop>')
 vim.keymap.set({ 'i', 'n' }, '<right>', '<Nop>')
 
--- Move to window using the <ALT> arrow keys
 vim.keymap.set('n', '<A-left>', '<C-w>h')
 vim.keymap.set('n', '<A-down>', '<C-w>j')
 vim.keymap.set('n', '<A-up>', '<C-w>k')
