@@ -1,4 +1,4 @@
 require 'config.options'
 require 'config.keymaps'
 require 'config.lazy'
-require 'config.ui.status-column'
+-- require 'config.ui.status-column'

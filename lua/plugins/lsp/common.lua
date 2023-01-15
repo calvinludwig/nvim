@@ -63,20 +63,13 @@ local function keymaps(bufnr)
     nmap('<leader>F', Format, '[F]ormat code')
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(_, bufnr)
     open_diagnostics_on_cursor_hover(bufnr)
     keymaps(bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', Format, { desc = 'Format current buffer with LSP' })
-
-    local navic_installed, navic = pcall(require, 'nvim-navic')
-
-    if navic_installed and client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-    end
-
-    vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+    -- vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
 end
 
 return M

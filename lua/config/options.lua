@@ -13,9 +13,9 @@ end
 
 vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
 
--- vim.opt.relativenumber = true
--- vim.opt.number = true
--- vim.opt.numberwidth = 2
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.numberwidth = 2
 
 vim.g.editorconfig = true
 

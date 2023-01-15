@@ -6,6 +6,7 @@ local M = {
         'nvim-treesitter/nvim-treesitter-context',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'windwp/nvim-ts-autotag',
+        'nvim-treesitter/playground',
     },
 }
 
@@ -26,6 +27,7 @@ function M.config()
             'comment',
             'help',
             'regex',
+            'query',
             'bash',
             'markdown',
             'markdown_inline',
