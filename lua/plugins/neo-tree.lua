@@ -9,20 +9,6 @@ return {
         'nvim-lua/plenary.nvim',
         'MunifTanjim/nui.nvim',
         'nvim-tree/nvim-web-devicons',
-        {
-            's1n7ax/nvim-window-picker',
-            branch = 'v1.*',
-            config = {
-                autoselect_one = true,
-                include_current = false,
-                filter_rules = {
-                    bo = {
-                        filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
-                        buftype = { 'terminal', 'quickfix' },
-                    },
-                },
-            },
-        },
     },
     config = {
         close_if_last_window = true,

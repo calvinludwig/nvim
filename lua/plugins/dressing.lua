@@ -15,21 +15,20 @@ local M = {
 }
 
 function M.config()
-    local border_chars = require('config.utils.icons').border
     require('dressing').setup {
         input = {
             enabled = true,
-            border = border_chars,
+            border = Icons.border,
         },
         select = {
             enabled = true,
             nui = {
                 border = {
-                    style = border_chars,
+                    style = Icons.border,
                 },
             },
             builtin = {
-                border = border_chars,
+                border = Icons.border,
             },
         },
     }

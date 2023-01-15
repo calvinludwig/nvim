@@ -91,4 +91,11 @@ local function build_statuscolumn(tbl)
     return table.concat(statuscolumn)
 end
 
-vim.opt.statuscolumn = build_statuscolumn { sign_column, line_number, spacing, folds, border, padding }
+vim.opt.statuscolumn = build_statuscolumn {
+    sign_column,
+    line_number,
+    spacing,
+    folds,
+    border,
+    padding,
+}
