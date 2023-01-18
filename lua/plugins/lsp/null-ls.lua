@@ -20,7 +20,6 @@ null_ls.setup {
         },
         -- go
         diagnostics.golangci_lint,
-        -- diagnostics.revive,
         diagnostics.staticcheck,
         formatting.gofmt,
         formatting.goimports,
@@ -29,10 +28,11 @@ null_ls.setup {
         -- rust
         formatting.rustfmt,
         -- ts tsx
-        code_actions.eslint,
-        diagnostics.eslint,
+        code_actions.eslint_d,
+        diagnostics.eslint_d,
         diagnostics.tsc,
-        formatting.eslint,
-        formatting.prettier,
+        formatting.eslint_d,
+        -- css
+        formatting.prettierd,
     },
 }
