@@ -1,2 +1,2 @@
-require('utils')
-require('config')
+require 'utils'
+require 'config'

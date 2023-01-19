@@ -5,10 +5,10 @@ vim.g.maplocalleader = ' '
 
 vim.opt.guifont = 'JetbrainsMono Nerd Font:h16'
 if vim.fn.exists 'g:neovide' then
-    vim.g.neovide_refresh_rate = 75
-    vim.g.neovide_cursor_antialiasing = true
-    vim.g.neovide_cursor_vfx_mode = 'railgun'
-    vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_refresh_rate = 75
+	vim.g.neovide_cursor_antialiasing = true
+	vim.g.neovide_cursor_vfx_mode = 'railgun'
+	vim.g.neovide_hide_mouse_when_typing = true
 end
 
 vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
@@ -28,7 +28,7 @@ vim.opt.mouse = 'a'
 
 vim.opt.tabstop = indent
 vim.opt.shiftwidth = indent
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
