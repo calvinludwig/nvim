@@ -215,9 +215,9 @@ function M.config()
 	local Ruler = {
 		provider = ' %7(%l/%3L%):%2c %P ',
 		condition = function()
-			return conditions.buffer_not_empty() and conditions.hide_in_width()
+			return conditions.buffer_not_empty()
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.sakuraPink },
+		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.katanaGray },
 	}
 
 	local LSPActive = {
@@ -400,12 +400,11 @@ function M.config()
 				local head_stat = vim.loop.fs_stat(git_dir .. '/HEAD')
 
 				if head_stat and head_stat.mtime then
-					if
-						head_cache[git_root]
+					if head_cache[git_root]
 						and head_cache[git_root].mtime == head_stat.mtime.sec
 						and head_cache[git_root].branch
 					then
-						return ' ' .. head_cache[git_root].branch
+						return Icons.git.branch .. ' ' .. head_cache[git_root].branch
 					else
 						local head_file = vim.loop.fs_open(git_dir .. '/HEAD', 'r', 438)
 						if not head_file then
@@ -436,28 +435,28 @@ function M.config()
 				end
 
 				head_cache[git_root].branch = branch_name
-				return ' ' .. branch_name
+				return Icons.git.branch .. ' ' .. branch_name
 			end,
 			hl = { bold = true },
 		},
 		{
 			provider = function(self)
 				local count = self.status_dict.added or 0
-				return count > 0 and ('  ' .. count)
+				return count > 0 and (' ' .. Icons.git.status_added .. ' ' .. count)
 			end,
 			hl = { fg = Kanagawa.autumnGreen },
 		},
 		{
 			provider = function(self)
 				local count = self.status_dict.removed or 0
-				return count > 0 and ('  ' .. count)
+				return count > 0 and (' ' .. Icons.git.status_removed .. ' ' .. count)
 			end,
 			hl = { fg = Kanagawa.autumnRed },
 		},
 		{
 			provider = function(self)
 				local count = self.status_dict.changed or 0
-				return count > 0 and ('  ' .. count)
+				return count > 0 and (' ' .. Icons.git.status_modified .. ' ' .. count)
 			end,
 			hl = { fg = Kanagawa.surimiOrange },
 		},
@@ -527,8 +526,140 @@ function M.config()
 		Git,
 	}
 
+	local BufferlineFileName = {
+		provider = function(self)
+			local filename = self.filename
+			filename = filename == '' and '[No Name]' or vim.fn.fnamemodify(filename, ':t')
+			return filename
+		end,
+		hl = function(self)
+			return {
+				fg = Kanagawa.fujiWhite,
+				bold = self.is_active or self.is_visible,
+				italic = false,
+			}
+		end,
+	}
+
+	local BufferlineFileFlags = {
+		{
+			provider = function(self)
+				return vim.api.nvim_buf_get_option(self.bufnr, 'modified') and ' ● ' or '   '
+			end,
+			hl = { fg = Kanagawa.fujiWhite },
+		},
+		{
+			condition = function(self)
+				return not vim.api.nvim_buf_get_option(self.bufnr, 'modifiable')
+					or vim.api.nvim_buf_get_option(self.bufnr, 'readonly')
+			end,
+			provider = function(self)
+				if vim.api.nvim_buf_get_option(self.bufnr, 'buftype') == 'terminal' then
+					return '  '
+				else
+					return '  '
+				end
+			end,
+			hl = { fg = Kanagawa.surimiOrange },
+		},
+	}
+
+	local BufferlineFileIcon = {
+		init = function(self)
+			local filename = self.filename
+			local extension = vim.fn.fnamemodify(filename, ':e')
+			self.icon, self.icon_color = require('nvim-web-devicons').get_icon_color(
+				vim.fn.fnamemodify(filename, ':t'),
+				extension,
+				{ default = true }
+			)
+		end,
+		provider = function(self)
+			return self.icon and (self.icon .. ' ')
+		end,
+		hl = function(self)
+			return { fg = self.icon_color }
+		end,
+	}
+
+	local BufferlineFileNameBlock = {
+		init = function(self)
+			self.filename = vim.api.nvim_buf_get_name(self.bufnr)
+		end,
+		hl = function(self)
+			if self.is_active then
+				local background = Kanagawa.sumiInk1
+				return { bg = background }
+			else
+				return { bg = Kanagawa.sumiInk3 }
+			end
+		end,
+		on_click = {
+			callback = function(_, minwid)
+				vim.api.nvim_win_set_buf(0, minwid)
+			end,
+			minwid = function(self)
+				return self.bufnr
+			end,
+			name = 'heirline_tabline_buffer_callback',
+		},
+		{ provider = '   ' },
+		BufferlineFileIcon,
+		BufferlineFileName,
+		BufferlineFileFlags,
+	}
+
+	local BufferLine = utils.make_buflist(
+		BufferlineFileNameBlock,
+		{ provider = '  ', hl = { fg = Kanagawa.fujiWhite } },
+		{ provider = '  ', hl = { fg = Kanagawa.fujiWhite } }
+	)
+
+	local Tabpage = {
+		provider = function(self)
+			return '%' .. self.tabnr .. 'T ' .. self.tabnr .. ' %T'
+		end,
+		hl = function(self)
+			if self.is_active then
+				return { bg = Kanagawa.sumiInk1, bold = true }
+			else
+				return { bg = Kanagawa.sumiInk3 }
+			end
+		end,
+	}
+
+	local TabPages = {
+		condition = function()
+			return #vim.api.nvim_list_tabpages() >= 2
+		end,
+		{ provider = '%=', hl = { bg = Kanagawa.sumiInk0 } },
+		utils.make_tablist(Tabpage),
+	}
+
+	local TabLineOffset = {
+		condition = function(self)
+			local win = vim.api.nvim_tabpage_list_wins(0)[1]
+			local bufnr = vim.api.nvim_win_get_buf(win)
+			self.winid = win
+
+			if vim.bo[bufnr].filetype == 'NvimTree' then
+				return true
+			end
+		end,
+		provider = function(self)
+			local width = vim.api.nvim_win_get_width(self.winid)
+			return string.rep(' ', width)
+		end,
+		hl = 'NvimTreeNormal',
+	}
+
+	local TabLine = { TabLineOffset, BufferLine, Align, TabPages }
+
+	vim.o.showtabline = 2
+
 	heirline.setup {
 		statusline = StatusLine,
+		tabline = TabLine,
 	}
 end
 

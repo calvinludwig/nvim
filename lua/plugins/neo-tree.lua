@@ -17,7 +17,6 @@ return {
 		enable_diagnostics = true,
 		window = {
 			position = 'right',
-			width = 60,
 			mappings = {
 				['o'] = 'open',
 			},
