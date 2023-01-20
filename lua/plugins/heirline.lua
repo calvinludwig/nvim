@@ -22,6 +22,7 @@ function M.config()
 	end
 
 	local Align = { provider = '%=', hl = { bg = Kanagawa.sumiInk0 } }
+	local AlignTabLine = { provider = '%=', hl = { bg = Kanagawa.winterYellow } }
 	local Space = { provider = ' ' }
 
 	local VIMODE_COLORS = {
@@ -218,6 +219,46 @@ function M.config()
 			return conditions.buffer_not_empty()
 		end,
 		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.katanaGray },
+	}
+
+	local LSPLoad = {
+		provider = function()
+			local Lsp = vim.lsp.util.get_progress_messages()[1]
+
+			if Lsp then
+				local msg = Lsp.message or ''
+				local percentage = Lsp.percentage
+				if not percentage then
+					return ''
+				end
+				local title = Lsp.title or ''
+				local spinners = {
+					' ',
+					' ',
+					' ',
+					' ',
+				}
+				local success_icon = {
+					' ',
+					' ',
+					' ',
+					' ',
+				}
+				local ms = vim.loop.hrtime() / 1000000
+				local frame = math.floor(ms / 120) % #spinners
+
+				if percentage >= 70 then
+					return string.format(' %%<%s %s %s (%s%%%%) ', success_icon[frame + 1], title, msg, percentage)
+				end
+
+				return string.format(' %%<%s %s %s (%s%%%%) ', spinners[frame + 1], title, msg, percentage)
+			end
+
+			return ''
+		end,
+		hl = function(_)
+			return { bg = Kanagawa.sumiInk0, fg = Kanagawa.fujiGray }
+		end,
 	}
 
 	local LSPActive = {
@@ -516,6 +557,7 @@ function M.config()
 		FileNameBlock,
 		FileSize,
 		Ruler,
+		LSPLoad,
 		Align,
 		LSPActive,
 		Diagnostics,
@@ -533,8 +575,12 @@ function M.config()
 			return filename
 		end,
 		hl = function(self)
+			local foreground = Kanagawa.sumiInk0
+			if self.is_active then
+				foreground = Kanagawa.fujiWhite
+			end
 			return {
-				fg = Kanagawa.fujiWhite,
+				fg = foreground,
 				bold = self.is_active or self.is_visible,
 				italic = false,
 			}
@@ -588,10 +634,9 @@ function M.config()
 		end,
 		hl = function(self)
 			if self.is_active then
-				local background = Kanagawa.sumiInk1
-				return { bg = background }
+				return { bg = Kanagawa.sumiInk1 }
 			else
-				return { bg = Kanagawa.sumiInk3 }
+				return { bg = Kanagawa.boatYellow1, fg = Kanagawa.sumiInk0 }
 			end
 		end,
 		on_click = {
@@ -621,9 +666,9 @@ function M.config()
 		end,
 		hl = function(self)
 			if self.is_active then
-				return { bg = Kanagawa.sumiInk1, bold = true }
+				return { bg = Kanagawa.sumiInk1 }
 			else
-				return { bg = Kanagawa.sumiInk3 }
+				return { bg = Kanagawa.boatYellow1, fg = Kanagawa.sumiInk0 }
 			end
 		end,
 	}
@@ -653,7 +698,7 @@ function M.config()
 		hl = 'NvimTreeNormal',
 	}
 
-	local TabLine = { TabLineOffset, BufferLine, Align, TabPages }
+	local TabLine = { TabLineOffset, BufferLine, AlignTabLine, TabPages }
 
 	vim.o.showtabline = 2
 
