@@ -1,73 +1,77 @@
-local indent = 4
+local g = vim.g
+local opt = vim.opt
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+g.mapleader = " "
+g.maplocalleader = " "
+g.editorconfig = true
 
-vim.opt.guifont = 'JetbrainsMono Nerd Font:h16'
-if vim.fn.exists 'g:neovide' then
-	vim.g.neovide_refresh_rate = 75
-	vim.g.neovide_cursor_antialiasing = true
-	vim.g.neovide_cursor_vfx_mode = 'railgun'
-	vim.g.neovide_hide_mouse_when_typing = true
+
+opt.autowrite = true -- enable auto write
+opt.cmdheight = 1
+opt.completeopt = 'menu,menuone,noinsert,noselect'
+opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.confirm = true -- confirm to save changes before exiting modified buffer
+opt.cursorline = true -- Enable highlighting of the current line
+
+opt.expandtab = false -- Use spaces instead of tabs
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 4 -- Size of an indent
+opt.tabstop = 4 -- Number of spaces tabs count for
+
+opt.formatoptions = "jcroqlnt" -- tcqj
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.hidden = true
+opt.hidden = true -- Enable modified buffers in background
+opt.ignorecase = true -- Ignore case
+opt.inccommand = "nosplit" -- preview incremental substitute
+opt.joinspaces = false -- No double spaces with join after a dot
+opt.laststatus = 3
+opt.list = true -- Show some invisible characters (tabs...
+opt.listchars = Icons.listchars
+opt.fillchars = Icons.fillchars
+opt.mouse = "a" -- enable mouse mode
+opt.number = true -- Print line number
+opt.pumblend = 10 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.relativenumber = true -- Relative line numbers
+opt.scrolloff = 8 -- Lines of context
+opt.sidescrolloff = 8 -- Columns of context
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.showmode = false -- dont show mode since we have a statusline
+opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spelllang = { "en", "pt" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 300
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200 -- save swap file and trigger CursorHold
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- minimum window width
+opt.wrap = false -- Disable line wrap
+
+opt.foldenable = true
+opt.foldlevel = 99 -- was 1
+opt.foldlevelstart = 99
+opt.foldnestmax = 10
+
+opt.hlsearch = true
+opt.incsearch = true
+opt.isfname:append '@-@'
+opt.backspace = 'indent,eol,start'
+opt.iskeyword:append '-'
+opt.fileencoding = 'utf-8'
+opt.virtualedit = 'all'
+opt.ch = 1
+
+if vim.fn.has("nvim-0.9.0") == 1 then
+	opt.splitkeep = "screen"
+	opt.shortmess = "filnxtToOFWIcC"
 end
 
-vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
-
-vim.opt.relativenumber = true
-vim.opt.number = true
-vim.opt.numberwidth = 2
-
-vim.g.editorconfig = true
-
-vim.opt.foldenable = true
-vim.opt.foldlevel = 99 -- was 1
-vim.opt.foldlevelstart = 99
-vim.opt.foldnestmax = 10
-
-vim.opt.mouse = 'a'
-
-vim.opt.tabstop = indent
-vim.opt.shiftwidth = indent
-vim.opt.expandtab = false
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-
-vim.opt.wrap = false
-vim.opt.hidden = true
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
-vim.opt.undofile = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 4
-vim.opt.pumheight = 8
-vim.opt.signcolumn = 'number'
-vim.opt.isfname:append '@-@'
-vim.opt.updatetime = 250
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = false
-
-vim.opt.backspace = 'indent,eol,start'
-vim.opt.showcmd = false
-vim.opt.autoread = true
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.iskeyword:append '-'
-vim.opt.fileencoding = 'utf-8'
-vim.opt.conceallevel = 0
-vim.opt.showmode = false
-vim.opt.timeoutlen = 500
-vim.opt.cmdheight = 1
-vim.opt.virtualedit = 'all'
-vim.opt.list = true
-vim.opt.listchars = Icons.listchars
-
-vim.opt.laststatus = 3
-vim.opt.fillchars = Icons.fillchars
-
-vim.opt.ch = 1
+-- fix markdown indentation settings
+g.markdown_recommended_style = 0
