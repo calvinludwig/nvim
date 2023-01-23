@@ -31,6 +31,7 @@ function M.config()
 		'marksman',
 		'clangd',
 		'cmake',
+		'dockerls',
 	}
 
 	for _, server in ipairs(servers) do

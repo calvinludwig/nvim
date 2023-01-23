@@ -441,7 +441,8 @@ function M.config()
 				local head_stat = vim.loop.fs_stat(git_dir .. '/HEAD')
 
 				if head_stat and head_stat.mtime then
-					if head_cache[git_root]
+					if
+						head_cache[git_root]
 						and head_cache[git_root].mtime == head_stat.mtime.sec
 						and head_cache[git_root].branch
 					then
