@@ -88,7 +88,13 @@ function M.config()
 			},
 		},
 		formatting = {
-			format = require('plugins.lsp.kind').cmp_format(),
+			format = function(_, item)
+				local icons = Icons.cmp
+				if icons[item.kind] then
+					item.kind = icons[item.kind] .. item.kind
+				end
+				return item
+			end,
 		},
 		experimental = {
 			ghost_text = true,
