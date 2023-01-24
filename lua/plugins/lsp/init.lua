@@ -18,6 +18,7 @@ function M.config()
 	local servers = {
 		'sumneko_lua',
 		'rust_analyzer',
+		'ruby_ls',
 		'intelephense',
 		'gopls',
 		'tsserver',

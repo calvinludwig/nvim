@@ -18,6 +18,7 @@ function M.config()
 		ensure_installed = {
 			'rust',
 			'lua',
+			'ruby',
 			'c',
 			'cpp',
 			'go',
