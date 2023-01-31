@@ -2,9 +2,7 @@ local M = {
 	'neovim/nvim-lspconfig',
 	event = 'BufReadPre',
 	dependencies = {
-		'simrat39/rust-tools.nvim',
 		'jose-elias-alvarez/null-ls.nvim',
-		'simrat39/rust-tools.nvim',
 		'folke/neodev.nvim',
 	},
 }
