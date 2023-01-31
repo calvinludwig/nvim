@@ -1,4 +1,5 @@
 local M = {
+	enabled = false,
 	'rebelot/kanagawa.nvim',
 	lazy = false,
 }

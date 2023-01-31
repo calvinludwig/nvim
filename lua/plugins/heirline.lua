@@ -21,45 +21,52 @@ function M.config()
 		return vim.api.nvim_get_option 'columns' > (size or 140)
 	end
 
-	local Align = { provider = '%=', hl = { bg = Kanagawa.sumiInk0 } }
-	local AlignTabLine = { provider = '%=', hl = { bg = Kanagawa.winterYellow } }
+	local Align = { provider = '%=', hl = { bg = Colors.Neutral[900] } }
+	local AlignTabLine = { provider = '%=', hl = { bg = Colors.Neutral[900] } }
 	local Space = { provider = ' ' }
 
 	local VIMODE_COLORS = {
-		['n'] = Kanagawa.waveBlue2,
-		['no'] = Kanagawa.sakuraPink,
-		['nov'] = Kanagawa.sakuraPink,
-		['noV'] = Kanagawa.sakuraPink,
-		['no'] = Kanagawa.sakuraPink,
-		['niI'] = Kanagawa.waveBlue2,
-		['niR'] = Kanagawa.waveBlue2,
-		['niV'] = Kanagawa.waveBlue2,
-		['v'] = Kanagawa.oniViolet,
-		['vs'] = Kanagawa.oniViolet,
-		['V'] = Kanagawa.crystalBlue,
-		['Vs'] = Kanagawa.crystalBlue,
-		[''] = Kanagawa.autumnYellow,
-		['s'] = Kanagawa.autumnYellow,
-		['s'] = Kanagawa.waveAqua,
-		['S'] = Kanagawa.waveAqua,
-		[''] = Kanagawa.autumnYellow,
-		['i'] = Kanagawa.autumnGreen,
-		['ic'] = Kanagawa.autumnGreen,
-		['ix'] = Kanagawa.autumnGreen,
-		['R'] = Kanagawa.springViolet1,
-		['Rc'] = Kanagawa.springViolet1,
-		['Rv'] = Kanagawa.springViolet2,
-		['Rx'] = Kanagawa.springViolet1,
-		['c'] = Kanagawa.surimiOrange,
-		['cv'] = Kanagawa.surimiOrange,
-		['ce'] = Kanagawa.surimiOrange,
-		['r'] = Kanagawa.waveAqua,
-		['rm'] = Kanagawa.springBlue,
-		['r?'] = Kanagawa.fujiGray,
-		['!'] = Kanagawa.fujiGray,
-		['t'] = Kanagawa.autumnRed,
-		['nt'] = Kanagawa.autumnRed,
-		['null'] = Kanagawa.sakuraPink,
+		['n'] = Colors.Blue[500],
+		['no'] = Colors.Pink[500],
+		['nov'] = Colors.Pink[500],
+		['noV'] = Colors.Pink[500],
+		['no'] = Colors.Pink[500],
+
+		['niI'] = Colors.Blue[500],
+		['niR'] = Colors.Blue[500],
+		['niV'] = Colors.Blue[500],
+
+		['v'] = Colors.Violet[500],
+		['vs'] = Colors.Violet[500],
+		['V'] = Colors.Violet[500],
+		['Vs'] = Colors.Violet[500],
+		[''] = Colors.Violet[500],
+		['s'] = Colors.Violet[500],
+
+		['s'] = Colors.Cyan[500],
+		['S'] = Colors.Cyan[500],
+		[''] = Colors.Cyan[500],
+
+		['i'] = Colors.Green[500],
+		['ic'] = Colors.Green[500],
+		['ix'] = Colors.Green[500],
+
+		['R'] = Colors.Red[500],
+		['Rc'] = Colors.Red[500],
+		['Rv'] = Colors.Red[500],
+		['Rx'] = Colors.Red[500],
+
+		['c'] = Colors.Orange[500],
+		['cv'] = Colors.Orange[500],
+		['ce'] = Colors.Orange[500],
+
+		['r'] = Colors.Fuchsia[500],
+		['rm'] = Colors.Fuchsia[500],
+		['r?'] = Colors.Fuchsia[500],
+		['!'] = Colors.Fuchsia[500],
+		['t'] = Colors.Fuchsia[500],
+		['nt'] = Colors.Fuchsia[500],
+		['null'] = Colors.Neutral[100],
 	}
 
 	local ViMode = {
@@ -116,7 +123,7 @@ function M.config()
 		end,
 		hl = function(self)
 			local mode = self.mode:sub(1, 1)
-			return { bg = VIMODE_COLORS[mode], fg = Kanagawa.sumiInk1b, bold = true }
+			return { fg = VIMODE_COLORS[mode], bg = Colors.Neutral[900], bold = true }
 		end,
 		update = {
 			'ModeChanged',
@@ -128,7 +135,7 @@ function M.config()
 			self.filename = vim.api.nvim_buf_get_name(0)
 		end,
 		condition = conditions.buffer_not_empty,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.oldWhite },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Yellow[200] },
 	}
 
 	local FileIcon = {
@@ -160,7 +167,7 @@ function M.config()
 			end
 			return filename
 		end,
-		hl = { fg = Kanagawa.oldWhite, bold = true },
+		hl = { fg = Colors.Neutral[500], bold = true },
 	}
 
 	local FileFlags = {
@@ -169,21 +176,21 @@ function M.config()
 				return vim.bo.modified
 			end,
 			provider = ' ● ',
-			hl = { fg = Kanagawa.crystalBlue },
+			hl = { fg = Colors.Sky[500] },
 		},
 		{
 			condition = function()
 				return not vim.bo.modifiable or vim.bo.readonly
 			end,
 			provider = '',
-			hl = { fg = Kanagawa.autumnRed },
+			hl = { fg = Colors.Rose[500] },
 		},
 	}
 
 	local FileNameModifer = {
 		hl = function()
 			if vim.bo.modified then
-				return { fg = Kanagawa.fujiWhite, bold = true, force = true }
+				return { fg = Colors.Neutral[50], bold = true, force = true }
 			end
 		end,
 	}
@@ -210,7 +217,7 @@ function M.config()
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.sumiInk3 },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[500] },
 	}
 
 	local Ruler = {
@@ -218,7 +225,7 @@ function M.config()
 		condition = function()
 			return conditions.buffer_not_empty()
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.katanaGray },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[500] },
 	}
 
 	local LSPLoad = {
@@ -257,7 +264,7 @@ function M.config()
 			return ''
 		end,
 		hl = function(_)
-			return { bg = Kanagawa.sumiInk0, fg = Kanagawa.fujiGray }
+			return { bg = Colors.Neutral[900], fg = Colors.Neutral[200] }
 		end,
 	}
 
@@ -275,7 +282,7 @@ function M.config()
 			end
 			return '  ' .. table.concat(names, ' ') .. ' '
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.oldWhite, bold = true, italic = false },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[200], italic = false },
 	}
 
 	local Diagnostics = {
@@ -295,31 +302,31 @@ function M.config()
 			self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 		end,
 		update = { 'DiagnosticChanged', 'BufEnter' },
-		hl = { bg = Kanagawa.sumiInk0 },
+		hl = { bg = Colors.Neutral[900] },
 		Space,
 		{
 			provider = function(self)
 				return self.errors > 0 and (self.error_icon .. self.errors .. ' ')
 			end,
-			hl = { fg = Kanagawa.autumnRed },
+			hl = { fg = Colors.diagnostic.error },
 		},
 		{
 			provider = function(self)
 				return self.warnings > 0 and (self.warn_icon .. self.warnings .. ' ')
 			end,
-			hl = { fg = Kanagawa.autumnYellow },
+			hl = { fg = Colors.diagnostic.warn },
 		},
 		{
 			provider = function(self)
 				return self.info > 0 and (self.info_icon .. self.info .. ' ')
 			end,
-			hl = { fg = Kanagawa.crystalBlue },
+			hl = { fg = Colors.diagnostic.info },
 		},
 		{
 			provider = function(self)
 				return self.hints > 0 and (self.hint_icon .. self.hints)
 			end,
-			hl = { fg = Kanagawa.springBlue },
+			hl = { fg = Colors.diagnostic.hint },
 		},
 		Space,
 	}
@@ -415,7 +422,7 @@ function M.config()
 				or self.status_dict.removed ~= 0
 				or self.status_dict.changed ~= 0
 		end,
-		hl = { bg = Kanagawa.sumiInk1b, fg = Kanagawa.oniViolet },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Violet[500] },
 		Space,
 		{
 			provider = function()
@@ -441,8 +448,7 @@ function M.config()
 				local head_stat = vim.loop.fs_stat(git_dir .. '/HEAD')
 
 				if head_stat and head_stat.mtime then
-					if
-						head_cache[git_root]
+					if head_cache[git_root]
 						and head_cache[git_root].mtime == head_stat.mtime.sec
 						and head_cache[git_root].branch
 					then
@@ -477,40 +483,32 @@ function M.config()
 				end
 
 				head_cache[git_root].branch = branch_name
-				return Icons.git.branch .. ' ' .. branch_name
+				return Icons.git.branch ..  branch_name
 			end,
 			hl = { bold = true },
 		},
 		{
 			provider = function(self)
 				local count = self.status_dict.added or 0
-				return count > 0 and (' ' .. Icons.git.status_added .. ' ' .. count)
+				return count > 0 and (' ' .. Icons.git.status_added .. count)
 			end,
-			hl = { fg = Kanagawa.autumnGreen },
+			hl = { fg = Colors.git.add },
 		},
 		{
 			provider = function(self)
 				local count = self.status_dict.removed or 0
-				return count > 0 and (' ' .. Icons.git.status_removed .. ' ' .. count)
+				return count > 0 and (' ' .. Icons.git.status_removed .. count)
 			end,
-			hl = { fg = Kanagawa.autumnRed },
+			hl = { fg = Colors.git.delete },
 		},
 		{
 			provider = function(self)
 				local count = self.status_dict.changed or 0
-				return count > 0 and (' ' .. Icons.git.status_modified .. ' ' .. count)
+				return count > 0 and (' ' .. Icons.git.status_modified .. count)
 			end,
-			hl = { fg = Kanagawa.surimiOrange },
+			hl = { fg = Colors.git.change },
 		},
 		Space,
-	}
-
-	local GitArrow = {
-		provider = '',
-		hl = { fg = Kanagawa.sumiInk1b, bg = Kanagawa.sumiInk0 },
-		condition = function()
-			return conditions.buffer_not_empty() and conditions.is_git_repo()
-		end,
 	}
 
 	local FileEncoding = {
@@ -521,7 +519,7 @@ function M.config()
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.sumiInk3 },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[700] },
 	}
 
 	local FileFormat = {
@@ -535,7 +533,7 @@ function M.config()
 				return ' CRLF '
 			end
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.sumiInk3 },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[700] },
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
@@ -547,7 +545,7 @@ function M.config()
 			local indent_size = vim.api.nvim_buf_get_option(0, 'tabstop')
 			return (' %s: %s '):format(indent_type, indent_size)
 		end,
-		hl = { bg = Kanagawa.sumiInk0, fg = Kanagawa.sumiInk3 },
+		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[700] },
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
@@ -565,7 +563,6 @@ function M.config()
 		FileEncoding,
 		FileFormat,
 		IndentSizes,
-		GitArrow,
 		Git,
 	}
 
@@ -576,12 +573,8 @@ function M.config()
 			return filename
 		end,
 		hl = function(self)
-			local foreground = Kanagawa.sumiInk0
-			if self.is_active then
-				foreground = Kanagawa.fujiWhite
-			end
 			return {
-				fg = foreground,
+				fg = Colors.Neutral[200],
 				bold = self.is_active or self.is_visible,
 				italic = false,
 			}
@@ -593,7 +586,7 @@ function M.config()
 			provider = function(self)
 				return vim.api.nvim_buf_get_option(self.bufnr, 'modified') and ' ● ' or '   '
 			end,
-			hl = { fg = Kanagawa.fujiWhite },
+			hl = { fg = Colors.Sky[500] },
 		},
 		{
 			condition = function(self)
@@ -607,7 +600,7 @@ function M.config()
 					return '  '
 				end
 			end,
-			hl = { fg = Kanagawa.surimiOrange },
+			hl = { fg = Colors.Orange[500] },
 		},
 	}
 
@@ -635,9 +628,9 @@ function M.config()
 		end,
 		hl = function(self)
 			if self.is_active then
-				return { bg = Kanagawa.sumiInk1 }
+				return { bg = Colors.Neutral.bg, fg = Colors.Neutral[100] }
 			else
-				return { bg = Kanagawa.boatYellow1, fg = Kanagawa.sumiInk0 }
+				return { bg = Colors.Neutral[800], fg = Colors.Neutral[100] }
 			end
 		end,
 		on_click = {
@@ -657,8 +650,8 @@ function M.config()
 
 	local BufferLine = utils.make_buflist(
 		BufferlineFileNameBlock,
-		{ provider = '  ', hl = { fg = Kanagawa.fujiWhite } },
-		{ provider = '  ', hl = { fg = Kanagawa.fujiWhite } }
+		{ provider = '  ', hl = { fg = Colors.Neutral[100] } },
+		{ provider = '  ', hl = { fg = Colors.Neutral[100] } }
 	)
 
 	local Tabpage = {
@@ -667,9 +660,9 @@ function M.config()
 		end,
 		hl = function(self)
 			if self.is_active then
-				return { bg = Kanagawa.sumiInk1 }
+				return { bg = Colors.Neutral.bg, fg = Colors.Neutral[100] }
 			else
-				return { bg = Kanagawa.boatYellow1, fg = Kanagawa.sumiInk0 }
+				return { bg = Colors.Neutral[800], fg = Colors.Neutral[100] }
 			end
 		end,
 	}
@@ -678,7 +671,7 @@ function M.config()
 		condition = function()
 			return #vim.api.nvim_list_tabpages() >= 2
 		end,
-		{ provider = '%=', hl = { bg = Kanagawa.sumiInk0 } },
+		{ provider = '%=', hl = { bg = Colors.Neutral[900] } },
 		utils.make_tablist(Tabpage),
 	}
 

@@ -3,7 +3,6 @@ local M = {
 	build = ':TSUpdate',
 	event = 'BufReadPost',
 	dependencies = {
-		'nvim-treesitter/nvim-treesitter-context',
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		'windwp/nvim-ts-autotag',
 		'nvim-treesitter/playground',
@@ -90,8 +89,6 @@ function M.config()
 			},
 		},
 	}
-	local ts_context = require 'treesitter-context'
-	ts_context.setup { enabled = true }
 
 	require('nvim-ts-autotag').setup()
 end
