@@ -21,8 +21,8 @@ function M.config()
 		return vim.api.nvim_get_option 'columns' > (size or 140)
 	end
 
-	local Align = { provider = '%=', hl = { bg = Colors.Neutral[900] } }
-	local AlignTabLine = { provider = '%=', hl = { bg = Colors.Neutral[900] } }
+	local Align = { provider = '%=', hl = { bg = Colors.Neutral[950] } }
+	local AlignTabLine = { provider = '%=', hl = { bg = Colors.Neutral[950] } }
 	local Space = { provider = ' ' }
 
 	local VIMODE_COLORS = {
@@ -123,7 +123,7 @@ function M.config()
 		end,
 		hl = function(self)
 			local mode = self.mode:sub(1, 1)
-			return { fg = VIMODE_COLORS[mode], bg = Colors.Neutral[900], bold = true }
+			return { fg = VIMODE_COLORS[mode], bg = Colors.Neutral[950], bold = true }
 		end,
 		update = {
 			'ModeChanged',
@@ -135,7 +135,7 @@ function M.config()
 			self.filename = vim.api.nvim_buf_get_name(0)
 		end,
 		condition = conditions.buffer_not_empty,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Yellow[200] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Yellow[200] },
 	}
 
 	local FileIcon = {
@@ -217,7 +217,7 @@ function M.config()
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[500] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Neutral[500] },
 	}
 
 	local Ruler = {
@@ -225,7 +225,7 @@ function M.config()
 		condition = function()
 			return conditions.buffer_not_empty()
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[500] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Neutral[500] },
 	}
 
 	local LSPLoad = {
@@ -264,7 +264,7 @@ function M.config()
 			return ''
 		end,
 		hl = function(_)
-			return { bg = Colors.Neutral[900], fg = Colors.Neutral[200] }
+			return { bg = Colors.Neutral[950], fg = Colors.Neutral[200] }
 		end,
 	}
 
@@ -282,7 +282,7 @@ function M.config()
 			end
 			return '  ' .. table.concat(names, ' ') .. ' '
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[200], italic = false },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Neutral[200], italic = false },
 	}
 
 	local Diagnostics = {
@@ -302,7 +302,7 @@ function M.config()
 			self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 		end,
 		update = { 'DiagnosticChanged', 'BufEnter' },
-		hl = { bg = Colors.Neutral[900] },
+		hl = { bg = Colors.Neutral[950] },
 		Space,
 		{
 			provider = function(self)
@@ -422,7 +422,7 @@ function M.config()
 				or self.status_dict.removed ~= 0
 				or self.status_dict.changed ~= 0
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Violet[500] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Violet[500] },
 		Space,
 		{
 			provider = function()
@@ -519,7 +519,7 @@ function M.config()
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[700] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Neutral[700] },
 	}
 
 	local FileFormat = {
@@ -533,7 +533,7 @@ function M.config()
 				return ' CRLF '
 			end
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[700] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Neutral[700] },
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
@@ -545,7 +545,7 @@ function M.config()
 			local indent_size = vim.api.nvim_buf_get_option(0, 'tabstop')
 			return (' %s: %s '):format(indent_type, indent_size)
 		end,
-		hl = { bg = Colors.Neutral[900], fg = Colors.Neutral[700] },
+		hl = { bg = Colors.Neutral[950], fg = Colors.Neutral[700] },
 		condition = function()
 			return conditions.buffer_not_empty() and conditions.hide_in_width()
 		end,
@@ -628,7 +628,7 @@ function M.config()
 		end,
 		hl = function(self)
 			if self.is_active then
-				return { bg = Colors.Neutral.bg, fg = Colors.Neutral[100] }
+				return { bg = Colors.Neutral[900], fg = Colors.Neutral[100] }
 			else
 				return { bg = Colors.Neutral[800], fg = Colors.Neutral[100] }
 			end
@@ -660,7 +660,7 @@ function M.config()
 		end,
 		hl = function(self)
 			if self.is_active then
-				return { bg = Colors.Neutral.bg, fg = Colors.Neutral[100] }
+				return { bg = Colors.Neutral[950], fg = Colors.Neutral[100] }
 			else
 				return { bg = Colors.Neutral[800], fg = Colors.Neutral[100] }
 			end
@@ -671,7 +671,7 @@ function M.config()
 		condition = function()
 			return #vim.api.nvim_list_tabpages() >= 2
 		end,
-		{ provider = '%=', hl = { bg = Colors.Neutral[900] } },
+		{ provider = '%=', hl = { bg = Colors.Neutral[950] } },
 		utils.make_tablist(Tabpage),
 	}
 

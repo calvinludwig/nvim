@@ -1,49 +1,64 @@
 local M = {
 	enabled = true,
-	'jesseleite/nvim-noirbuddy',
-	dependencies = { 'tjdevries/colorbuddy.nvim', branch = 'dev' },
+	'EdenEast/nightfox.nvim',
 	lazy = false,
 }
 
 function M.config()
-	require('noirbuddy').setup {
-		colors = {
-			background = Colors.Neutral.bg,
-			primary = Colors.Fuchsia[500],
-			secondary = Colors.Sky[500],
-			noir_0 = Colors.Neutral[50],
-			noir_1 = Colors.Neutral[100],
-			noir_2 = Colors.Neutral[200],
-			noir_3 = Colors.Neutral[300],
-			noir_4 = Colors.Neutral[400],
-			noir_5 = Colors.Neutral[500],
-			noir_6 = Colors.Neutral[600],
-			noir_7 = Colors.Neutral[700],
-			noir_8 = Colors.Neutral[800],
-			noir_9 = Colors.Neutral[900],
-			diagnostic_error = Colors.diagnostic.error,
-			diagnostic_warning = Colors.diagnostic.warn,
-			diagnostic_info = Colors.diagnostic.info,
-			diagnostic_hint = Colors.diagnostic.hint,
-			diff_add = Colors.git.add,
-			diff_change = Colors.git.change,
-			diff_delete = Colors.git.delete,
+	require('nightfox').setup {
+		palettes = {
+			carbonfox = {
+				black = { base = Colors.Neutral[800], bright = Colors.Neutral[700], dim = Colors.Neutral[500] },
+				red = { base = Colors.Red[400], bright = Colors.Red[300], dim = Colors.Red[500] },
+				green = { base = Colors.Green[400], bright = Colors.Green[300], dim = Colors.Green[500] },
+				yellow = { base = Colors.Yellow[200], bright = Colors.Yellow[100], dim = Colors.Yellow[300] },
+				blue = { base = Colors.Blue[400], bright = Colors.Blue[300], dim = Colors.Blue[500] },
+				magenta = { base = Colors.Purple[400], bright = Colors.Purple[300], dim = Colors.Purple[500] },
+				cyan = { base = Colors.Cyan[400], bright = Colors.Cyan[300], dim = Colors.Cyan[500] },
+				orange = { base = Colors.Orange[300], bright = Colors.Orange[200], dim = Colors.Orange[400] },
+				pink = { base = Colors.Pink[400], bright = Colors.Pink[300], dim = Colors.Pink[500] },
+				white = { base = Colors.Neutral[100], bright = Colors.Neutral[50], dim = Colors.Neutral[200] },
+				bg0 = Colors.Neutral[950],
+				bg1 = Colors.Neutral[900],
+				bg2 = Colors.Neutral[800],
+				comment = Colors.Neutral[800],
+				bg3 = Colors.Neutral[700],
+				bg4 = Colors.Green[600],
+				sel1 = Colors.Blue[800],
+				sel0 = Colors.Blue[900],
+				fg3 = Colors.Neutral[300],
+				fg2 = Colors.Neutral[200],
+				fg1 = Colors.Neutral[100],
+				fg0 = Colors.Neutral[50],
+			},
+		},
+		specs = {
+			carbonfox = {
+				diagnostic = {
+					error = Colors.diagnostic.error,
+					warn = Colors.diagnostic.warn,
+					info = Colors.diagnostic.info,
+					hint = Colors.diagnostic.hint,
+				},
+				git = {
+					changed = Colors.git.change,
+					add = Colors.git.add,
+					removed = Colors.git.delete,
+				},
+			},
+		},
+		groups = {
+			carbonfox = {
+				Whitespace = { fg = Colors.Neutral[800] },
+				CursorLine = { bg = Colors.Neutral[950] },
+				CursorLineNr = { bg = Colors.Neutral[950] },
+				CursorLineFold = { bg = Colors.Neutral[950] },
+				CursorLineSign = { bg = Colors.Neutral[950] },
+			},
 		},
 	}
 
-	local Color, colors, Group, groups, styles = require('colorbuddy').setup {}
-
-	Color.new('string', Colors.Emerald[500])
-	Color.new('keyword', Colors.Purple[500])
-
-	Group.new('@string', colors.string)
-	Group.new('@keyword', colors.keyword)
-
-	Group.new('Searchlight', nil, colors.secondary)
-
-	Group.link('SignifySignAdd', groups.DiffAdd)
-	Group.link('SignifySignChange', groups.DiffChange)
-	Group.link('SignifySignDelete', groups.DiffDelete)
+	vim.cmd.colorscheme 'carbonfox'
 end
 
 return M
