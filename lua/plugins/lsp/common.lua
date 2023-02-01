@@ -6,23 +6,6 @@ M.capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true,
 }
 
-local function open_diagnostics_on_cursor_hover(bufnr)
-	vim.api.nvim_create_autocmd('CursorHold', {
-		buffer = bufnr,
-		callback = function()
-			local opts = {
-				focusable = false,
-				close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-				border = 'rounded',
-				source = 'always',
-				prefix = ' ',
-				scope = 'cursor',
-			}
-			vim.diagnostic.open_float(nil, opts)
-		end,
-	})
-end
-
 local Format = function(_)
 	if vim.lsp.buf.format then
 		vim.lsp.buf.format()
@@ -51,6 +34,7 @@ local function keymaps(bufnr)
 	nmap('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+	nmap('L', vim.diagnostic.open_float, 'Hover Documentation')
 	nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
 	nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -64,12 +48,8 @@ local function keymaps(bufnr)
 end
 
 M.on_attach = function(_, bufnr)
-	open_diagnostics_on_cursor_hover(bufnr)
 	keymaps(bufnr)
 	vim.api.nvim_buf_create_user_command(bufnr, 'Format', Format, { desc = 'Format current buffer with LSP' })
-	-- vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
-	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	-- vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
 end
 
 return M
