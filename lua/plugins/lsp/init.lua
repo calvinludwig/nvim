@@ -4,15 +4,12 @@ local M = {
 	dependencies = {
 		'jose-elias-alvarez/null-ls.nvim',
 		'folke/neodev.nvim',
+		'williamboman/mason.nvim',
+		'williamboman/mason-lspconfig.nvim',
 	},
 }
 
 function M.config()
-	require('plugins.lsp.diagnostics').setup()
-	require 'plugins.lsp.null-ls'
-	local common = require 'plugins.lsp.common'
-	local lspconfig = require 'lspconfig'
-
 	local servers = {
 		'sumneko_lua',
 		'rust_analyzer',
@@ -32,6 +29,17 @@ function M.config()
 		'cmake',
 		'dockerls',
 	}
+
+	require('plugins.lsp.diagnostics').setup()
+	require 'plugins.lsp.null-ls'
+
+	require('mason').setup()
+	require('mason-lspconfig').setup {
+		ensure_installed = servers
+	}
+
+	local common = require 'plugins.lsp.common'
+	local lspconfig = require 'lspconfig'
 
 	for _, server in ipairs(servers) do
 		local loaded, _ = pcall(require, 'plugins.lsp.' .. server)
