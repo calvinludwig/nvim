@@ -22,6 +22,7 @@ function M.config()
 			'cpp',
 			'go',
 			'php',
+			'sql',
 			'python',
 			'typescript',
 			'comment',

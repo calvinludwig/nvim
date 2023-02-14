@@ -1,52 +1,59 @@
 return {
 	{
-		'shaunsingh/nord.nvim',
+		'catppuccin/nvim',
+		name = 'catppuccin',
 		enabled = true,
-		lazy = false,
+		lazy = true,
+		event = 'UIEnter',
 		priority = 1000,
 		config = function()
-			vim.g.nord_contrast = true
-			vim.g.nord_borders = true
-			vim.g.nord_disable_background = false
-			vim.g.nord_italic = true
-			vim.g.nord_uniform_diff_background = true
-			vim.g.nord_bold = true
-			require('nord').set()
-			vim.cmd.colorscheme 'nord'
+			require('catppuccin').setup {
+				flavour = 'frappe',
+				transparent_background = false,
+				show_end_of_buffer = false,
+				term_colors = true,
+				dim_inactive = {
+					enabled = false,
+					shade = 'dark',
+					percentage = 0.15,
+				},
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					telescope = true,
+					harpoon = true,
+					fidget = true,
+					mason = true,
+					neotree = true,
+					native_lsp = {
+						enabled = true,
+						virtual_text = {
+							errors = { 'italic' },
+							hints = { 'italic' },
+							warnings = { 'italic' },
+							information = { 'italic' },
+						},
+						underlines = {
+							errors = { 'underline' },
+							hints = { 'underline' },
+							warnings = { 'underline' },
+							information = { 'underline' },
+						},
+					},
+				},
+			}
+			vim.cmd.colorscheme 'catppuccin'
 		end,
 	},
 	{
 		'nvim-lualine/lualine.nvim',
 		enabled = true,
-		event = 'UIEnter',
+		event = 'VeryLazy',
 		config = function()
 			require('lualine').setup {
 				options = {
-					theme = 'nord',
+					theme = 'catppuccin',
 				},
-			}
-		end,
-	},
-	{
-		'akinsho/bufferline.nvim',
-		enabled = true,
-		event = 'UIEnter',
-		config = function()
-			local highlights = require('nord').bufferline.highlights {
-				fill = Nord.nord2_gui,
-				indicator = Nord.nord9_gui,
-				bg = Nord.nord1_gui,
-				buffer_bg = Nord.nord1_gui,
-				buffer_bg_selected = Nord.nord0_gui,
-				italic = true,
-				bold = true,
-			}
-
-			require('bufferline').setup {
-				options = {
-					separator_style = 'slant',
-				},
-				highlights = highlights,
 			}
 		end,
 	},
@@ -55,7 +62,11 @@ return {
 		enabled = true,
 		event = 'UIEnter',
 		config = function()
-			require('fidget').setup {}
+			require('fidget').setup {
+				window = {
+					blend = 0,
+				},
+			}
 		end,
 	},
 }
