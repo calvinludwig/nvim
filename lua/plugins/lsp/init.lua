@@ -11,7 +11,7 @@ local M = {
 
 function M.config()
 	local servers = {
-		'sumneko_lua',
+		'lua_ls',
 		'rust_analyzer',
 		'ruby_ls',
 		'intelephense',
