@@ -10,7 +10,7 @@ return {
 		'MunifTanjim/nui.nvim',
 		'nvim-tree/nvim-web-devicons',
 	},
-	config = {
+	opts = {
 		close_if_last_window = true,
 		popup_border_style = Icons.border,
 		enable_git_status = true,

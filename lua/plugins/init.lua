@@ -12,7 +12,7 @@ return {
 	{
 		'folke/trouble.nvim',
 		cmd = { 'TroubleToggle', 'Trouble' },
-		config = {
+		opts = {
 			mode = 'document_diagnostics',
 			auto_open = false,
 			auto_close = true,
