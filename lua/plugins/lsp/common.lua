@@ -6,9 +6,14 @@ M.capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true,
 }
 
-local Format = function(_)
+local lsp_formatting = function(_)
 	if vim.lsp.buf.format then
-		vim.lsp.buf.format()
+		vim.lsp.buf.format {
+			filter = function(client)
+				-- apply whatever logic you want (in this example, we'll only use null-ls)
+				return client.name ~= 'tsserver'
+			end,
+		}
 	elseif vim.lsp.buf.formatting then
 		vim.lsp.buf.formatting()
 	end
@@ -44,12 +49,29 @@ local function keymaps(bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, '[W]orkspace [L]ist Folders')
 
-	nmap('<leader>F', Format, '[F]ormat code')
+	nmap('<leader>F', lsp_formatting, '[F]ormat code')
 end
 
-M.on_attach = function(_, bufnr)
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+M.on_attach = function(client, bufnr)
 	keymaps(bufnr)
-	vim.api.nvim_buf_create_user_command(bufnr, 'Format', Format, { desc = 'Format current buffer with LSP' })
+	if client.supports_method 'textDocument/formatting' then
+		vim.api.nvim_buf_create_user_command(
+			bufnr,
+			'Format',
+			lsp_formatting,
+			{ desc = 'Format current buffer with LSP' }
+		)
+		vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+		vim.api.nvim_create_autocmd('BufWritePre', {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
 end
 
 return M

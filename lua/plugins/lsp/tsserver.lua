@@ -1,8 +1,13 @@
 local common = require 'plugins.lsp.common'
 
-require('lspconfig').tsserver.setup {
-	on_attatch = common.on_attach,
-	capabilities = common.capabilities,
-	filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-	cmd = { 'typescript-language-server', '--stdio' },
+require('typescript').setup {
+	disable_commands = false, -- prevent the plugin from creating Vim commands
+	debug = false, -- enable debug logging for commands
+	go_to_source_definition = {
+		fallback = true, -- fall back to standard LSP definition on failure
+	},
+	server = { -- pass options to lspconfig's setup method
+		on_attatch = common.on_attach,
+		capabilities = common.capabilities,
+	},
 }

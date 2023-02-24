@@ -3,7 +3,7 @@ return {
 	cmd = 'Neotree',
 	branch = 'v2.x',
 	keys = {
-		{ '<leader>ft', '<cmd>Neotree toggle<cr>', desc = 'Neotree' },
+		{ '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Neotree' },
 	},
 	dependencies = {
 		'nvim-lua/plenary.nvim',
@@ -22,9 +22,31 @@ return {
 			},
 		},
 		filesystem = {
+			filtered_items = {
+				visible = true, -- when true, they will just be displayed differently than normal items
+				hide_dotfiles = false,
+				hide_gitignored = true,
+				hide_by_name = {
+					"node_modules"
+				},
+				hide_by_pattern = { -- uses glob style patterns
+					--"*.meta",
+					--"*/src/*/tsconfig.json",
+				},
+				always_show = { -- remains visible even if other settings would normally hide it
+					--".gitignored",
+				},
+				never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+					--".DS_Store",
+					--"thumbs.db"
+				},
+				never_show_by_pattern = { -- uses glob style patterns
+					--".null-ls_*",
+				},
+			},
 			follow_current_file = true,
 			components = {
-				harpoon_index = function(config, node, state)
+				harpoon_index = function(config, node, _)
 					local Marked = require 'harpoon.mark'
 					local path = node:get_id()
 					local succuss, index = pcall(Marked.get_index_of, path)
@@ -41,10 +63,10 @@ return {
 			renderers = {
 				file = {
 					{ 'icon' },
-					{ 'name', use_git_status_colors = true },
+					{ 'name',         use_git_status_colors = true },
 					{ 'harpoon_index' }, --> This is what actually adds the component in where you want it
 					{ 'diagnostics' },
-					{ 'git_status', highlight = 'NeoTreeDimText' },
+					{ 'git_status',   highlight = 'NeoTreeDimText' },
 				},
 			},
 		},

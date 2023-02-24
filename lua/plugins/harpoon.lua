@@ -20,8 +20,8 @@ function M.config()
 		},
 	}
 
-	vim.keymap.set('n', '<leader>e', mark.add_file, { desc = 'Add file to Harpoon' })
-	vim.keymap.set('n', '<C-e>', ui.toggle_quick_menu, { desc = 'Open Harpoon menu' })
+	vim.keymap.set('n', '<leader>h', mark.add_file, { desc = 'Add file to Harpoon' })
+	vim.keymap.set('n', '<C-h>', ui.toggle_quick_menu, { desc = 'Open Harpoon menu' })
 
 	for i = 1, 9, 1 do
 		vim.keymap.set('n', '<leader>' .. i, function()

@@ -5,7 +5,6 @@ g.mapleader = " "
 g.maplocalleader = " "
 g.editorconfig = true
 
-
 opt.autowrite = true -- enable auto write
 opt.cmdheight = 1
 opt.completeopt = 'menu,menuone,noinsert,noselect'

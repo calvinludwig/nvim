@@ -2,10 +2,12 @@ local M = {
 	'neovim/nvim-lspconfig',
 	event = 'BufReadPre',
 	dependencies = {
+		'jose-elias-alvarez/typescript.nvim',
 		'jose-elias-alvarez/null-ls.nvim',
 		'folke/neodev.nvim',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
+		'jay-babu/mason-null-ls.nvim'
 	},
 }
 

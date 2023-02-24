@@ -24,6 +24,7 @@ function M.config()
 			'php',
 			'sql',
 			'python',
+			'javascript',
 			'typescript',
 			'comment',
 			'help',
