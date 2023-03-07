@@ -18,7 +18,6 @@ null_ls.setup {
 		formatting.stylua,
 		-- php
 		diagnostics.php,
-		diagnostics.phpstan,
 		formatting.pint.with {
 			command = 'pint',
 		},
