@@ -30,6 +30,7 @@ function M.config()
 		'clangd',
 		'cmake',
 		'dockerls',
+		'prismals'
 	}
 
 	require('plugins.lsp.diagnostics').setup()

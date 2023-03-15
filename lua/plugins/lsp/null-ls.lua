@@ -7,7 +7,7 @@ local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
 require('mason-null-ls').setup {
-	ensure_installed = { 'eslint_d' },
+	ensure_installed = { 'eslint_d', 'eslint' },
 }
 
 null_ls.setup {
@@ -32,8 +32,8 @@ null_ls.setup {
 		formatting.rustfmt,
 		-- ts tsx
 		require 'typescript.extensions.null-ls.code-actions',
-		code_actions.eslint_d,
-		diagnostics.eslint_d,
+		code_actions.eslint,
+		diagnostics.eslint,
 		diagnostics.tsc,
 		formatting.eslint_d,
 	},

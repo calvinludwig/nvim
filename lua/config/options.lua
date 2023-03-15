@@ -63,7 +63,7 @@ opt.isfname:append '@-@'
 opt.backspace = 'indent,eol,start'
 opt.iskeyword:append '-'
 opt.fileencoding = 'utf-8'
-opt.virtualedit = 'all'
+opt.virtualedit = 'block'
 opt.ch = 1
 
 if vim.fn.has("nvim-0.9.0") == 1 then
