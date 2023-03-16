@@ -8,7 +8,7 @@ g.editorconfig = true
 opt.autowrite = true -- enable auto write
 opt.cmdheight = 1
 opt.completeopt = 'menu,menuone,noinsert,noselect'
-opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.conceallevel = 0 -- Hide * markup for bold and italic
 opt.confirm = true -- confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 

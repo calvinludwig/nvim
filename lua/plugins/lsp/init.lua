@@ -30,7 +30,7 @@ function M.config()
 		'clangd',
 		'cmake',
 		'dockerls',
-		'prismals'
+		'prismals',
 	}
 
 	require('plugins.lsp.diagnostics').setup()
@@ -40,6 +40,8 @@ function M.config()
 	require('mason-lspconfig').setup {
 		ensure_installed = servers
 	}
+
+	table.insert(servers, 'dartls')
 
 	local common = require 'plugins.lsp.common'
 	local lspconfig = require 'lspconfig'

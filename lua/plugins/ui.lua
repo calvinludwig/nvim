@@ -1,8 +1,30 @@
 return {
 	{
+		'rose-pine/neovim',
+		name = 'rose-pine',
+		enabled = true,
+		lazy = true,
+		event = 'UIEnter',
+		priority = 1000,
+		config = function()
+			require('rose-pine').setup {
+				--- @usage 'auto'|'main'|'moon'|'dawn'
+				variant = 'auto',
+				--- @usage 'main'|'moon'|'dawn'
+				dark_variant = 'main',
+				bold_vert_split = false,
+				dim_nc_background = true,
+				disable_background = false,
+				disable_float_background = true,
+				disable_italics = false,
+			}
+			vim.cmd.colorscheme 'rose-pine'
+		end,
+	},
+	{
 		'catppuccin/nvim',
 		name = 'catppuccin',
-		enabled = true,
+		enabled = false,
 		lazy = true,
 		event = 'UIEnter',
 		priority = 1000,
@@ -52,7 +74,7 @@ return {
 		config = function()
 			require('lualine').setup {
 				options = {
-					theme = 'catppuccin',
+					theme = 'rose-pine',
 				},
 			}
 		end,
@@ -84,5 +106,20 @@ return {
 			create_autocmd = true,
 			show_modified = true,
 		},
+	},
+	{
+		'shortcuts/no-neck-pain.nvim',
+		version = '*',
+		enabled = true,
+		event = 'UIEnter',
+		config = function()
+			require('no-neck-pain').setup {
+				buffers = {
+					right = {
+						enabled = false,
+					},
+				},
+			}
+		end,
 	},
 }
