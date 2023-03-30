@@ -1,8 +1,45 @@
+local colorschemes = { 'poimandres', 'rose-pine', 'catppuccin' }
+
+local colorscheme = colorschemes[2]
+
 return {
+	{
+		'nvim-lualine/lualine.nvim',
+		enabled = true,
+		event = 'VeryLazy',
+		dependencies = {
+			'MunifTanjim/nui.nvim',
+			'rcarriga/nvim-notify',
+		},
+		config = function()
+			require('lualine').setup {
+				options = {
+					theme = colorscheme,
+				},
+			}
+		end,
+	},
+	{
+		'olivercederborg/poimandres.nvim',
+		enabled = colorscheme == 'poimandres',
+		lazy = true,
+		event = 'UIEnter',
+		priority = 1000,
+		config = function()
+			require('poimandres').setup {
+				bold_vert_split = false, -- use bold vertical separators
+				dim_nc_background = false, -- dim 'non-current' window backgrounds
+				disable_background = false, -- disable background
+				disable_float_background = false, -- disable background for floats
+				disable_italics = false, -- disable italics
+			}
+			vim.cmd.colorscheme 'poimandres'
+		end,
+	},
 	{
 		'rose-pine/neovim',
 		name = 'rose-pine',
-		enabled = true,
+		enabled = colorscheme == 'rose-pine',
 		lazy = true,
 		event = 'UIEnter',
 		priority = 1000,
@@ -11,7 +48,7 @@ return {
 				--- @usage 'auto'|'main'|'moon'|'dawn'
 				variant = 'auto',
 				--- @usage 'main'|'moon'|'dawn'
-				dark_variant = 'main',
+				dark_variant = 'moon',
 				bold_vert_split = false,
 				dim_nc_background = true,
 				disable_background = false,
@@ -24,7 +61,7 @@ return {
 	{
 		'catppuccin/nvim',
 		name = 'catppuccin',
-		enabled = false,
+		enabled = colorscheme == 'catppuccin',
 		lazy = true,
 		event = 'UIEnter',
 		priority = 1000,
@@ -65,18 +102,6 @@ return {
 				},
 			}
 			vim.cmd.colorscheme 'catppuccin'
-		end,
-	},
-	{
-		'nvim-lualine/lualine.nvim',
-		enabled = true,
-		event = 'VeryLazy',
-		config = function()
-			require('lualine').setup {
-				options = {
-					theme = 'rose-pine',
-				},
-			}
 		end,
 	},
 	{
