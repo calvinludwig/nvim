@@ -7,7 +7,7 @@ local M = {
 		'folke/neodev.nvim',
 		'williamboman/mason.nvim',
 		'williamboman/mason-lspconfig.nvim',
-		'jay-babu/mason-null-ls.nvim'
+		'jay-babu/mason-null-ls.nvim',
 	},
 }
 
@@ -38,14 +38,13 @@ function M.config()
 
 	require('mason').setup()
 	require('mason-lspconfig').setup {
-		ensure_installed = servers
+		ensure_installed = servers,
 	}
-
-	table.insert(servers, 'dartls')
 
 	local common = require 'plugins.lsp.common'
 	local lspconfig = require 'lspconfig'
 
+	table.insert(servers, 'dartls')
 	for _, server in ipairs(servers) do
 		local loaded, _ = pcall(require, 'plugins.lsp.' .. server)
 		if not loaded then

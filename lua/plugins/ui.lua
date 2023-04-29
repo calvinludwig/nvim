@@ -1,4 +1,4 @@
-local colorschemes = { 'poimandres', 'rose-pine', 'catppuccin' }
+local colorschemes = { 'gruvbox-material', 'gruvbox-baby', 'rose-pine', 'catppuccin' }
 
 local colorscheme = colorschemes[2]
 
@@ -17,6 +17,26 @@ return {
 					theme = colorscheme,
 				},
 			}
+		end,
+	},
+	{
+		'luisiacc/gruvbox-baby',
+		enabled = colorscheme == 'gruvbox-baby',
+		lazy = true,
+		event = 'UIEnter',
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme 'gruvbox-baby'
+		end,
+	},
+	{
+		'sainnhe/gruvbox-material',
+		enabled = colorscheme == 'gruvbox-material',
+		lazy = true,
+		event = 'UIEnter',
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme 'gruvbox-material'
 		end,
 	},
 	{
