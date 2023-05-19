@@ -44,7 +44,6 @@ function M.config()
 	local common = require 'plugins.lsp.common'
 	local lspconfig = require 'lspconfig'
 
-	table.insert(servers, 'dartls')
 	for _, server in ipairs(servers) do
 		local loaded, _ = pcall(require, 'plugins.lsp.' .. server)
 		if not loaded then

@@ -16,9 +16,9 @@ return {
 		enable_git_status = true,
 		enable_diagnostics = true,
 		window = {
-			position = 'left',
+			position = 'right',
 			mappings = {
-				['o'] = 'open',
+					['o'] = 'open',
 			},
 		},
 		filesystem = {
@@ -27,7 +27,7 @@ return {
 				hide_dotfiles = false,
 				hide_gitignored = true,
 				hide_by_name = {
-					"node_modules"
+					'node_modules',
 				},
 				hide_by_pattern = { -- uses glob style patterns
 					--"*.meta",

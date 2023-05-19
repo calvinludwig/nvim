@@ -1,6 +1,6 @@
-local colorschemes = { 'gruvbox-material', 'gruvbox-baby', 'rose-pine', 'catppuccin' }
+local colorschemes = { 'github', 'gruvbox-material', 'gruvbox-baby', 'rose-pine', 'catppuccin' }
 
-local colorscheme = colorschemes[2]
+local colorscheme = colorschemes[1]
 
 return {
 	{
@@ -12,11 +12,17 @@ return {
 			'rcarriga/nvim-notify',
 		},
 		config = function()
-			require('lualine').setup {
-				options = {
-					theme = colorscheme,
-				},
-			}
+			require('lualine').setup {}
+		end,
+	},
+	{
+		'projekt0n/github-nvim-theme',
+		enabled = colorscheme == 'github',
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require('github-theme').setup {}
+			vim.cmd 'colorscheme github_light'
 		end,
 	},
 	{
