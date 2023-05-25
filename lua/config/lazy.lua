@@ -11,7 +11,7 @@ require("lazy").setup("plugins", {
 		enabled = false,
 	},
 	ui = {
-		border = "rounded",
+		border = Icons.border,
 	},
 })
 
