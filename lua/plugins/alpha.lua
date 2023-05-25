@@ -1,10 +1,7 @@
-local M = {
+return {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
+	config = function()
+		require("alpha").setup(require("alpha.themes.startify").config)
+	end,
 }
-
-function M.config()
-	require("alpha").setup(require("alpha.themes.startify").config)
-end
-
-return M

@@ -1,4 +1,4 @@
-local M = {
+return {
 	"luukvbaal/statuscol.nvim",
 	event = "VeryLazy",
 	opts = function()
@@ -33,5 +33,3 @@ local M = {
 		}
 	end,
 }
-
-return M

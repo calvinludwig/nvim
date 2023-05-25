@@ -1,10 +1,7 @@
-local M = {
+return {
 	"numToStr/Comment.nvim",
 	event = "BufEnter",
-}
-
-function M.config()
-	require("Comment").setup {
+	opts = {
 		padding = true,
 		sticky = true,
 		toggler = {
@@ -24,7 +21,5 @@ function M.config()
 			basic = true,
 			extra = true,
 		},
-	}
-end
-
-return M
+	},
+}

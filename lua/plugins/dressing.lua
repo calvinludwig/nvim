@@ -1,5 +1,6 @@
-local M = {
+return {
 	"stevearc/dressing.nvim",
+	lazy = true,
 	init = function()
 		---@diagnostic disable-next-line: duplicate-set-field
 		vim.ui.select = function(...)
@@ -12,10 +13,7 @@ local M = {
 			return vim.ui.input(...)
 		end
 	end,
-}
-
-function M.config()
-	require("dressing").setup {
+	opts = {
 		input = {
 			enabled = true,
 			border = Icons.border,
@@ -31,7 +29,5 @@ function M.config()
 				border = Icons.border,
 			},
 		},
-	}
-end
-
-return M
+	},
+}

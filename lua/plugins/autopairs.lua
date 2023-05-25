@@ -1,11 +1,6 @@
-local M = {
+return {
 	enabled = true,
 	"windwp/nvim-autopairs",
 	event = "BufReadPost",
+	opts = {},
 }
-
-function M.config()
-	require("nvim-autopairs").setup {}
-end
-
-return M
