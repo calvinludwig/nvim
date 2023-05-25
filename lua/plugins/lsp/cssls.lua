@@ -1,7 +1,7 @@
-local common = require 'plugins.lsp.common'
+local common = require "plugins.lsp.common"
 
-require('lspconfig').cssls.setup {
+require("lspconfig").cssls.setup {
 	on_attatch = common.on_attach,
 	capabilities = common.capabilities,
-	cmd = { 'css-languageserver', '--stdio' },
+	cmd = { "css-languageserver", "--stdio" },
 }

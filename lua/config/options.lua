@@ -7,7 +7,7 @@ g.editorconfig = true
 
 opt.autowrite = true -- enable auto write
 opt.cmdheight = 1
-opt.completeopt = 'menu,menuone,noinsert,noselect'
+opt.completeopt = "menu,menuone,noinsert,noselect"
 opt.conceallevel = 0 -- Hide * markup for bold and italic
 opt.confirm = true -- confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
@@ -59,14 +59,14 @@ opt.foldnestmax = 10
 
 opt.hlsearch = true
 opt.incsearch = true
-opt.isfname:append '@-@'
-opt.backspace = 'indent,eol,start'
-opt.iskeyword:append '-'
-opt.fileencoding = 'utf-8'
-opt.virtualedit = 'block'
+opt.isfname:append "@-@"
+opt.backspace = "indent,eol,start"
+opt.iskeyword:append "-"
+opt.fileencoding = "utf-8"
+opt.virtualedit = "all"
 opt.ch = 1
 
-if vim.fn.has("nvim-0.9.0") == 1 then
+if vim.fn.has "nvim-0.9.0" == 1 then
 	opt.splitkeep = "screen"
 	opt.shortmess = "filnxtToOFWIcC"
 end

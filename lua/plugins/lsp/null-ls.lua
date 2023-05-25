@@ -1,13 +1,13 @@
-local null_ls = require 'null-ls'
+local null_ls = require "null-ls"
 
-local common = require 'plugins.lsp.common'
+local common = require "plugins.lsp.common"
 
 local code_actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
-require('mason-null-ls').setup {
-	ensure_installed = { 'eslint_d', 'eslint' },
+require("mason-null-ls").setup {
+	ensure_installed = { "eslint_d", "eslint" },
 }
 
 null_ls.setup {
@@ -19,7 +19,7 @@ null_ls.setup {
 		-- php
 		diagnostics.php,
 		formatting.pint.with {
-			command = 'pint',
+			command = "pint",
 		},
 		-- go
 		diagnostics.golangci_lint,
@@ -31,7 +31,7 @@ null_ls.setup {
 		-- rust
 		formatting.rustfmt,
 		-- ts tsx
-		require 'typescript.extensions.null-ls.code-actions',
+		require "typescript.extensions.null-ls.code-actions",
 		code_actions.eslint,
 		diagnostics.eslint,
 		diagnostics.tsc,

@@ -1,7 +1,7 @@
-local common = require 'plugins.lsp.common'
+local common = require "plugins.lsp.common"
 
-require('lspconfig').yamlls.setup {
+require("lspconfig").yamlls.setup {
 	on_attatch = common.on_attach,
 	capabilities = common.capabilities,
-	cmd = { 'yaml-language-server', '--stdio' },
+	cmd = { "yaml-language-server", "--stdio" },
 }

@@ -1,51 +1,52 @@
 local M = {
-	'neovim/nvim-lspconfig',
-	event = 'BufReadPre',
+	"neovim/nvim-lspconfig",
+	event = "BufReadPre",
 	dependencies = {
-		'jose-elias-alvarez/typescript.nvim',
-		'jose-elias-alvarez/null-ls.nvim',
-		'folke/neodev.nvim',
-		'williamboman/mason.nvim',
-		'williamboman/mason-lspconfig.nvim',
-		'jay-babu/mason-null-ls.nvim',
+		"jose-elias-alvarez/typescript.nvim",
+		"jose-elias-alvarez/null-ls.nvim",
+		"folke/neodev.nvim",
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"jay-babu/mason-null-ls.nvim",
 	},
 }
 
 function M.config()
 	local servers = {
-		'lua_ls',
-		'rust_analyzer',
-		'ruby_ls',
-		'intelephense',
-		'gopls',
-		'tsserver',
-		'taplo',
-		'bashls',
-		'jsonls',
-		'tailwindcss',
-		'cssls',
-		'yamlls',
-		'pyright',
-		'marksman',
-		'clangd',
-		'cmake',
-		'dockerls',
-		'prismals',
+		"lua_ls",
+		"rust_analyzer",
+		"ruby_ls",
+		"intelephense",
+		"volar",
+		"gopls",
+		"tsserver",
+		"taplo",
+		"bashls",
+		"jsonls",
+		"tailwindcss",
+		"cssls",
+		"yamlls",
+		"pyright",
+		"marksman",
+		"clangd",
+		"cmake",
+		"dockerls",
+		"prismals",
 	}
 
-	require('plugins.lsp.diagnostics').setup()
-	require 'plugins.lsp.null-ls'
+	require("plugins.lsp.diagnostics").setup()
+	require "plugins.lsp.null-ls"
 
-	require('mason').setup()
-	require('mason-lspconfig').setup {
+	require("mason").setup()
+	require("mason-lspconfig").setup {
 		ensure_installed = servers,
 	}
 
-	local common = require 'plugins.lsp.common'
-	local lspconfig = require 'lspconfig'
+	local common = require "plugins.lsp.common"
+	local lspconfig = require "lspconfig"
 
 	for _, server in ipairs(servers) do
-		local loaded, _ = pcall(require, 'plugins.lsp.' .. server)
+		local loaded, _ = pcall(require, "plugins.lsp." .. server)
 		if not loaded then
 			lspconfig[server].setup {
 				on_attach = common.on_attach,

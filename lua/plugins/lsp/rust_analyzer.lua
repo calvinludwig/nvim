@@ -1,31 +1,31 @@
-local common = require 'plugins.lsp.common'
+local common = require "plugins.lsp.common"
 
 local settings = {
-	['rust-analyzer'] = {
+	["rust-analyzer"] = {
 		imports = {
 			granularity = {
-				group = 'module',
+				group = "module",
 			},
-			prefix = 'self',
+			prefix = "self",
 		},
 		cargo = {
 			allFeatures = true,
 			buildScripts = { enable = true },
 		},
 		checkOnSave = {
-			command = 'clippy',
+			command = "clippy",
 			extraArgs = {
-				'--',
-				'-W',
-				'clippy::all',
+				"--",
+				"-W",
+				"clippy::all",
 			},
 		},
 	},
 }
 
-require('lspconfig').rust_analyzer.setup {
+require("lspconfig").rust_analyzer.setup {
 	on_attach = common.on_attach,
 	capabilities = common.capabilities,
-	cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
+	cmd = { "rustup", "run", "stable", "rust-analyzer" },
 	settings = settings,
 }

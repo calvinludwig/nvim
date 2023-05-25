@@ -1,7 +1,7 @@
-local common = require 'plugins.lsp.common'
+local common = require "plugins.lsp.common"
 
-require('lspconfig').gopls.setup {
-	cmd = { 'gopls' },
+require("lspconfig").gopls.setup {
+	cmd = { "gopls" },
 	on_attach = common.on_attach,
 	capabilities = common.capabilities,
 	settings = {

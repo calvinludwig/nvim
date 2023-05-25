@@ -1,1 +1,1 @@
-Icons = require 'config.ui.icons'
+Icons = require "config.ui.icons"

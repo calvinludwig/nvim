@@ -1,14 +1,14 @@
 return {
-	'nvim-neo-tree/neo-tree.nvim',
-	cmd = 'Neotree',
-	branch = 'v2.x',
+	"nvim-neo-tree/neo-tree.nvim",
+	cmd = "Neotree",
+	branch = "v2.x",
 	keys = {
-		{ '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Neotree' },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Neotree" },
 	},
 	dependencies = {
-		'nvim-lua/plenary.nvim',
-		'MunifTanjim/nui.nvim',
-		'nvim-tree/nvim-web-devicons',
+		"nvim-lua/plenary.nvim",
+		"MunifTanjim/nui.nvim",
+		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
 		close_if_last_window = true,
@@ -16,9 +16,9 @@ return {
 		enable_git_status = true,
 		enable_diagnostics = true,
 		window = {
-			position = 'right',
+			position = "right",
 			mappings = {
-					['o'] = 'open',
+				["o"] = "open",
 			},
 		},
 		filesystem = {
@@ -27,7 +27,7 @@ return {
 				hide_dotfiles = false,
 				hide_gitignored = true,
 				hide_by_name = {
-					'node_modules',
+					"node_modules",
 				},
 				hide_by_pattern = { -- uses glob style patterns
 					--"*.meta",
@@ -47,13 +47,13 @@ return {
 			follow_current_file = true,
 			components = {
 				harpoon_index = function(config, node, _)
-					local Marked = require 'harpoon.mark'
+					local Marked = require "harpoon.mark"
 					local path = node:get_id()
 					local succuss, index = pcall(Marked.get_index_of, path)
 					if succuss and index and index > 0 then
 						return {
-							text = string.format(' ⥤ %d', index), -- <-- Add your favorite harpoon like arrow here
-							highlight = config.highlight or 'NeoTreeDirectoryIcon',
+							text = string.format(" ⥤ %d", index), -- <-- Add your favorite harpoon like arrow here
+							highlight = config.highlight or "NeoTreeDirectoryIcon",
 						}
 					else
 						return {}
@@ -62,11 +62,11 @@ return {
 			},
 			renderers = {
 				file = {
-					{ 'icon' },
-					{ 'name',         use_git_status_colors = true },
-					{ 'harpoon_index' }, --> This is what actually adds the component in where you want it
-					{ 'diagnostics' },
-					{ 'git_status',   highlight = 'NeoTreeDimText' },
+					{ "icon" },
+					{ "name", use_git_status_colors = true },
+					{ "harpoon_index" }, --> This is what actually adds the component in where you want it
+					{ "diagnostics" },
+					{ "git_status", highlight = "NeoTreeDimText" },
 				},
 			},
 		},
@@ -78,11 +78,11 @@ return {
 				indent_size = 4,
 				padding = 0, -- extra padding on left hand side
 				with_markers = false,
-				highlight = 'NeoTreeIndentMarker',
+				highlight = "NeoTreeIndentMarker",
 				with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-				expander_collapsed = '',
-				expander_expanded = '',
-				expander_highlight = 'NeoTreeExpander',
+				expander_collapsed = "",
+				expander_expanded = "",
+				expander_highlight = "NeoTreeExpander",
 			},
 			icon = {
 				folder_empty = Icons.misc.folder_empty,
@@ -91,13 +91,13 @@ return {
 				default = Icons.misc.file,
 			},
 			modified = {
-				symbol = '[+]',
-				highlight = 'NeoTreeModified',
+				symbol = "[+]",
+				highlight = "NeoTreeModified",
 			},
 			name = {
 				trailing_slash = false,
 				use_git_status_colors = true,
-				highlight = 'NeoTreeFileName',
+				highlight = "NeoTreeFileName",
 			},
 			git_status = {
 				symbols = Icons.git,

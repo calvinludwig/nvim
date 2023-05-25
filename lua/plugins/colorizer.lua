@@ -1,9 +1,9 @@
 return {
-	'NvChad/nvim-colorizer.lua',
-	event = 'BufReadPre',
+	"NvChad/nvim-colorizer.lua",
+	event = "BufReadPre",
 	opts = {
-		filetypes = { '*', '!lazy' },
-		buftype = { '*', '!prompt', '!nofile' },
+		filetypes = { "*", "!lazy" },
+		buftype = { "*", "!prompt", "!nofile" },
 		user_default_options = {
 			RGB = true, -- #RGB hex codes
 			RRGGBB = true, -- #RRGGBB hex codes
@@ -16,8 +16,8 @@ return {
 			css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
 			-- Available modes: foreground, background
 			-- Available modes for `mode`: foreground, background,  virtualtext
-			mode = 'background', -- Set the display mode.
-			virtualtext = '■',
+			mode = "background", -- Set the display mode.
+			virtualtext = "■",
 		},
 	},
 }
