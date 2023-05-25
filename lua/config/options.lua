@@ -1,75 +1,58 @@
-local g = vim.g
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local opt = vim.opt
 
-g.mapleader = " "
-g.maplocalleader = " "
-g.editorconfig = true
-
-opt.autowrite = true -- enable auto write
-opt.cmdheight = 1
-opt.completeopt = "menu,menuone,noinsert,noselect"
-opt.conceallevel = 0 -- Hide * markup for bold and italic
-opt.confirm = true -- confirm to save changes before exiting modified buffer
-opt.cursorline = true -- Enable highlighting of the current line
-
-opt.expandtab = false -- Use spaces instead of tabs
-opt.shiftround = true -- Round indent
-opt.shiftwidth = 4 -- Size of an indent
-opt.tabstop = 4 -- Number of spaces tabs count for
-
+opt.autowrite = true           -- Enable auto write
+opt.clipboard = "unnamedplus"  -- Sync with system clipboard
+opt.completeopt = "menu,menuone,noselect"
+opt.conceallevel = 3           -- Hide * markup for bold and italic
+opt.confirm = true             -- Confirm to save changes before exiting modified buffer
+opt.cursorline = true          -- Enable highlighting of the current line
+opt.expandtab = false          -- NOT Use spaces instead of tabs
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
-opt.hidden = true
-opt.hidden = true -- Enable modified buffers in background
-opt.ignorecase = true -- Ignore case
+opt.ignorecase = true      -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
-opt.joinspaces = false -- No double spaces with join after a dot
-opt.laststatus = 3
-opt.list = false -- Show some invisible characters (tabs...
-opt.listchars = Icons.listchars
-opt.fillchars = Icons.fillchars
-opt.mouse = "a" -- enable mouse mode
-opt.number = true -- Print line number
-opt.pumblend = 10 -- Popup blend
-opt.pumheight = 10 -- Maximum number of entries in a popup
-opt.relativenumber = true -- Relative line numbers
-opt.scrolloff = 8 -- Lines of context
-opt.sidescrolloff = 8 -- Columns of context
+opt.laststatus = 0
+opt.list = true            -- Show some invisible characters (tabs...
+opt.mouse = "a"            -- Enable mouse mode
+opt.number = true          -- Print line number
+opt.pumblend = 10          -- Popup blend
+opt.pumheight = 10         -- Maximum number of entries in a popup
+opt.relativenumber = true  -- Relative line numbers
+opt.scrolloff = 4          -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
-opt.showmode = false -- dont show mode since we have a statusline
-opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
-opt.smartcase = true -- Don't ignore case with capitals
-opt.smartindent = true -- Insert indents automatically
-opt.splitbelow = true -- Put new windows below current
-opt.splitright = true -- Put new windows right of current
-opt.termguicolors = true -- True color support
+opt.shiftround = true      -- Round indent
+opt.shiftwidth = 4         -- Size of an indent
+opt.shortmess:append { W = true, I = true, c = true }
+opt.showmode = false       -- Dont show mode since we have a statusline
+opt.sidescrolloff = 8      -- Columns of context
+opt.signcolumn = "yes"     -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true       -- Don't ignore case with capitals
+opt.smartindent = true     -- Insert indents automatically
+opt.spelllang = { "en" }
+opt.splitbelow = true      -- Put new windows below current
+opt.splitright = true      -- Put new windows right of current
+opt.tabstop = 4            -- Number of spaces tabs count for
+opt.termguicolors = true   -- True color support
 opt.timeoutlen = 300
 opt.undofile = true
 opt.undolevels = 10000
-opt.updatetime = 200 -- save swap file and trigger CursorHold
+opt.updatetime = 200               -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
-opt.winminwidth = 5 -- minimum window width
-opt.wrap = false -- Disable line wrap
+opt.winminwidth = 5                -- Minimum window width
+opt.wrap = false                   -- Disable line wrap
+opt.splitkeep = "screen"
+opt.shortmess:append { C = true }
+opt.colorcolumn = "80"
 
-opt.foldenable = true
-opt.foldlevel = 99 -- was 1
-opt.foldlevelstart = 99
-opt.foldnestmax = 10
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
 
-opt.hlsearch = true
-opt.incsearch = true
-opt.isfname:append "@-@"
-opt.backspace = "indent,eol,start"
-opt.iskeyword:append "-"
-opt.fileencoding = "utf-8"
-opt.virtualedit = "all"
-opt.ch = 1
-
-if vim.fn.has "nvim-0.9.0" == 1 then
-	opt.splitkeep = "screen"
-	opt.shortmess = "filnxtToOFWIcC"
+if vim.g.neovide then
+	vim.o.guifont = "Iosevka Term:h18"
+	vim.g.neovide_refresh_rate = 75
+	vim.g.neovide_fullscreen = true
 end
-
--- fix markdown indentation settings
-g.markdown_recommended_style = 0
