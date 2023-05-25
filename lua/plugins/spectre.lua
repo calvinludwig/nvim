@@ -1,4 +1,4 @@
-local M = {
+return {
 	"nvim-pack/nvim-spectre",
 	event = "BufEnter",
 	keys = {
@@ -11,5 +11,3 @@ local M = {
 		},
 	},
 }
-
-return M

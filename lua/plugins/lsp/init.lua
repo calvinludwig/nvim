@@ -1,4 +1,4 @@
-local M = {
+return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
@@ -26,51 +26,48 @@ local M = {
 			severity_sort = true,
 		},
 	},
-}
+	config = function()
+		local servers = {
+			"lua_ls",
+			"rust_analyzer",
+			"ruby_ls",
+			"intelephense",
+			"volar",
+			"gopls",
+			"tsserver",
+			"taplo",
+			"bashls",
+			"jsonls",
+			"tailwindcss",
+			"cssls",
+			"yamlls",
+			"pyright",
+			"marksman",
+			"clangd",
+			"cmake",
+			"dockerls",
+			"prismals",
+		}
 
-function M.config()
-	local servers = {
-		"lua_ls",
-		"rust_analyzer",
-		"ruby_ls",
-		"intelephense",
-		"volar",
-		"gopls",
-		"tsserver",
-		"taplo",
-		"bashls",
-		"jsonls",
-		"tailwindcss",
-		"cssls",
-		"yamlls",
-		"pyright",
-		"marksman",
-		"clangd",
-		"cmake",
-		"dockerls",
-		"prismals",
-	}
+		require("plugins.lsp.diagnostics").setup()
+		require "plugins.lsp.null-ls"
 
-	require("plugins.lsp.diagnostics").setup()
-	require "plugins.lsp.null-ls"
+		require("mason").setup()
+		require("mason-lspconfig").setup {
+			ensure_installed = servers,
+		}
 
-	require("mason").setup()
-	require("mason-lspconfig").setup {
-		ensure_installed = servers,
-	}
+		local common = require "plugins.lsp.common"
+		local lspconfig = require "lspconfig"
 
-	local common = require "plugins.lsp.common"
-	local lspconfig = require "lspconfig"
-
-	for _, server in ipairs(servers) do
-		local loaded, _ = pcall(require, "plugins.lsp." .. server)
-		if not loaded then
-			lspconfig[server].setup {
-				on_attach = common.on_attach,
-				capabilities = common.capabilities,
-			}
+		for _, server in ipairs(servers) do
+			local loaded, _ = pcall(require, "plugins.lsp." .. server)
+			if not loaded then
+				lspconfig[server].setup {
+					on_attach = common.on_attach,
+					capabilities = common.capabilities,
+				}
+			end
 		end
-	end
-end
-
-return M
+	end,
+}

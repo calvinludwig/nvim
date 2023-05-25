@@ -24,11 +24,18 @@ return {
 	},
 	diagnostics = {
 		ERROR = " ",
+		Error = " ",
 		WARNING = " ",
+		Warning = " ",
+		Warn = " ",
 		INFO = " ",
+		Info = " ",
 		HINT = " ",
+		Hint = " ",
 		DEBUG = " ",
+		Debug = " ",
 		TRACE = " ",
+		Trace = " ",
 	},
 	dap = {
 		breakpoint = " ",
