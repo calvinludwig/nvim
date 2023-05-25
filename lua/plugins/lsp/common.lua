@@ -1,5 +1,7 @@
 M = {}
 
+local navic = require "nvim-navic"
+
 M.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 M.capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
@@ -71,6 +73,10 @@ M.on_attach = function(client, bufnr)
 				lsp_formatting(bufnr)
 			end,
 		})
+	end
+
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
 	end
 end
 

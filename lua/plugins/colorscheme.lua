@@ -1,20 +1,5 @@
 return {
 	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-		config = function()
-			require("lualine").setup {
-				options = {
-					theme = "catppuccin",
-				},
-			}
-		end,
-	},
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = true,
@@ -39,6 +24,10 @@ return {
 					fidget = true,
 					mason = true,
 					neotree = true,
+					navic = {
+						enabled = true,
+						custom_bg = "#1e2030",
+					},
 					native_lsp = {
 						enabled = true,
 						virtual_text = {
@@ -70,21 +59,5 @@ return {
 				},
 			}
 		end,
-	},
-	{
-		"utilyre/barbecue.nvim",
-		enabled = true,
-		name = "barbecue",
-		event = "VeryLazy",
-		version = "*",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
-		opts = {
-			theme = "catppuccin",
-			create_autocmd = true,
-			show_modified = true,
-		},
 	},
 }
