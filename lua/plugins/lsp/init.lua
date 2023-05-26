@@ -61,7 +61,7 @@ return {
 		local lspconfig = require "lspconfig"
 
 		for _, server in ipairs(servers) do
-			local loaded, _ = pcall(require, "plugins.lsp." .. server)
+			local loaded, _ = pcall(require, "plugins.lsp.langs." .. server)
 			if not loaded then
 				lspconfig[server].setup {
 					on_attach = common.on_attach,
