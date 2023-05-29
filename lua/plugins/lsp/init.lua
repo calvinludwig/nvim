@@ -1,3 +1,15 @@
+function loadServer(server)
+	local common = require "plugins.lsp.common"
+	local lspconfig = require "lspconfig"
+	local loaded, _ = pcall(require, "plugins.lsp.langs." .. server)
+	if not loaded then
+		lspconfig[server].setup {
+			on_attach = common.on_attach,
+			capabilities = common.capabilities,
+		}
+	end
+end
+
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
@@ -27,6 +39,10 @@ return {
 		},
 	},
 	config = function()
+		require("plugins.lsp.diagnostics").setup()
+		require "plugins.lsp.null-ls"
+		require("mason").setup()
+
 		local servers = {
 			"lua_ls",
 			"rust_analyzer",
@@ -49,25 +65,13 @@ return {
 			"prismals",
 		}
 
-		require("plugins.lsp.diagnostics").setup()
-		require "plugins.lsp.null-ls"
-
-		require("mason").setup()
 		require("mason-lspconfig").setup {
 			ensure_installed = servers,
 		}
 
-		local common = require "plugins.lsp.common"
-		local lspconfig = require "lspconfig"
-
 		for _, server in ipairs(servers) do
-			local loaded, _ = pcall(require, "plugins.lsp.langs." .. server)
-			if not loaded then
-				lspconfig[server].setup {
-					on_attach = common.on_attach,
-					capabilities = common.capabilities,
-				}
-			end
+			loadServer(server)
 		end
+		loadServer "ocamllsp"
 	end,
 }

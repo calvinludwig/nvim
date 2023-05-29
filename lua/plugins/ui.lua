@@ -1,66 +1,75 @@
 return {
 	{
-		{
-			"catppuccin/nvim",
-			name = "catppuccin",
-			lazy = true,
-			event = "UIEnter",
-			priority = 1000,
-			config = function()
-				require("catppuccin").setup {
-					flavour = "frappe",
-					transparent_background = false,
-					show_end_of_buffer = false,
-					term_colors = true,
-					dim_inactive = {
-						enabled = false,
-						shade = "dark",
-						percentage = 0.15,
+		"rebelot/kanagawa.nvim",
+		lazy = true,
+		enabled = false,
+		event = "UIEnter",
+		config = function()
+			require("kanagawa").setup {}
+			require("kanagawa").load "wave"
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		enabled = true,
+		name = "catppuccin",
+		lazy = true,
+		event = "UIEnter",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup {
+				flavour = "macchiato",
+				transparent_background = false,
+				show_end_of_buffer = false,
+				term_colors = true,
+				dim_inactive = {
+					enabled = false,
+					shade = "dark",
+					percentage = 0.15,
+				},
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					telescope = true,
+					harpoon = true,
+					fidget = true,
+					mason = true,
+					neotree = true,
+					navic = {
+						enabled = true,
+						custom_bg = "#1e2030",
 					},
-					integrations = {
-						cmp = true,
-						gitsigns = true,
-						telescope = true,
-						harpoon = true,
-						fidget = true,
-						mason = true,
-						neotree = true,
-						navic = {
-							enabled = true,
-							custom_bg = "#1e2030",
+					native_lsp = {
+						enabled = true,
+						virtual_text = {
+							errors = { "italic" },
+							hints = { "italic" },
+							warnings = { "italic" },
+							information = { "italic" },
 						},
-						native_lsp = {
-							enabled = true,
-							virtual_text = {
-								errors = { "italic" },
-								hints = { "italic" },
-								warnings = { "italic" },
-								information = { "italic" },
-							},
-							underlines = {
-								errors = { "underline" },
-								hints = { "underline" },
-								warnings = { "underline" },
-								information = { "underline" },
-							},
+						underlines = {
+							errors = { "underline" },
+							hints = { "underline" },
+							warnings = { "underline" },
+							information = { "underline" },
 						},
 					},
-				}
-				vim.cmd.colorscheme "catppuccin-macchiato"
-			end,
-		},
-		{
-			"j-hui/fidget.nvim",
-			enabled = true,
-			event = "UIEnter",
-			config = function()
-				require("fidget").setup {
-					window = {
-						blend = 0,
-					},
-				}
-			end,
-		},
+				},
+			}
+			vim.cmd.colorscheme "catppuccin"
+		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		enabled = true,
+		event = "UIEnter",
+		config = function()
+			require("fidget").setup {
+				window = {
+					blend = 0,
+				},
+			}
+		end,
 	},
 	{
 		"karb94/neoscroll.nvim",
@@ -87,7 +96,7 @@ return {
 			}
 			require("lualine").setup {
 				options = {
-					theme = "catppuccin",
+					theme = "auto",
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 					section_separators = { left = "█", right = "█" },
@@ -115,7 +124,7 @@ return {
 								right = 0,
 							},
 						},
-						{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+						{ "filename", path = 1, symbols = { modified = " ●", readonly = "", unnamed = "" } },
 						-- stylua: ignore
 						{
 							function() return require("nvim-navic").get_location() end,
