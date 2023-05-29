@@ -57,10 +57,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "<leader>y", '"+y')
 
 -- window management
-vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })                   -- split window vertically
-vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })                 -- split window horizontally
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split windows equal width and height" }) -- make split windows equal width & height
-vim.keymap.set("n", "<leader>sx", ":close<CR>", { desc = "Close current window" })                  -- close current split window
+vim.keymap.set("n", "<leader>sx", ":close<CR>", { desc = "Close current window" }) -- close current split window
 
-vim.keymap.set("n", "<leader><Tab>", ":bn<CR>", { desc = "Next buffer" })                           --  go to next buffer
-vim.keymap.set("n", "<leader><s-Tab>", ":bp<CR>", { desc = "Previous buffer" })                     --  go to previous buffer
+vim.keymap.set("n", "<leader><Tab>", ":bn<CR>", { desc = "Next buffer" }) --  go to next buffer
+vim.keymap.set("n", "<leader><s-Tab>", ":bp<CR>", { desc = "Previous buffer" }) --  go to previous buffer
