@@ -52,7 +52,7 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<C-CR>"] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					["<S-CR>"] = cmp.mapping.confirm {
+					["<C-j>"] = cmp.mapping.confirm {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -102,7 +102,7 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		build = (not jit.os:find "Windows")
-				and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
+			and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
 			or nil,
 		dependencies = {
 			"rafamadriz/friendly-snippets",

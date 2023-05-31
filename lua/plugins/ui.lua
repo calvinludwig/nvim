@@ -2,16 +2,16 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
-		enabled = false,
+		enabled = true,
 		event = "UIEnter",
 		config = function()
 			require("kanagawa").setup {}
-			require("kanagawa").load "wave"
+			require("kanagawa").load "dragon"
 		end,
 	},
 	{
 		"catppuccin/nvim",
-		enabled = true,
+		enabled = false,
 		name = "catppuccin",
 		lazy = true,
 		event = "UIEnter",
@@ -35,10 +35,6 @@ return {
 					fidget = true,
 					mason = true,
 					neotree = true,
-					navic = {
-						enabled = true,
-						custom_bg = "#1e2030",
-					},
 					native_lsp = {
 						enabled = true,
 						virtual_text = {
@@ -87,13 +83,9 @@ return {
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
 		dependencies = {
-			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("nvim-navic").setup {
-				highlight = true,
-			}
 			require("lualine").setup {
 				options = {
 					theme = "auto",
@@ -125,14 +117,6 @@ return {
 							},
 						},
 						{ "filename", path = 1, symbols = { modified = " ●", readonly = "", unnamed = "" } },
-						-- stylua: ignore
-						{
-							function() return require("nvim-navic").get_location() end,
-							cond = function()
-								return package.loaded["nvim-navic"] and
-									require("nvim-navic").is_available()
-							end,
-						},
 					},
 					lualine_x = {
 						{
@@ -145,7 +129,7 @@ return {
 						},
 					},
 					lualine_y = {
-						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+						{ "progress", separator = " ",                  padding = { left = 1, right = 0 } },
 						{ "location", padding = { left = 0, right = 1 } },
 					},
 					lualine_z = {
