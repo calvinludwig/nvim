@@ -15,7 +15,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-		{ "folke/neodev.nvim", opts = {} },
+		{ "folke/neodev.nvim",  opts = {} },
 		"jose-elias-alvarez/typescript.nvim",
 		"jose-elias-alvarez/null-ls.nvim",
 		"williamboman/mason.nvim",
@@ -35,7 +35,7 @@ return {
 				-- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
 				-- prefix = "icons",
 			},
-			severity_sort = true,
+			severity_sort = false,
 		},
 	},
 	config = function()

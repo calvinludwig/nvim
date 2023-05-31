@@ -5,8 +5,36 @@ return {
 		enabled = true,
 		event = "UIEnter",
 		config = function()
-			require("kanagawa").setup {}
-			require("kanagawa").load "dragon"
+			require("kanagawa").setup {
+				transparent = true,
+				dim_inactive = true,
+				colors = {
+					theme = {
+						all = {
+							ui = {
+								bg_gutter = "none",
+							},
+						},
+					},
+				},
+				overrides = function(colors)
+					local theme = colors.theme
+					return {
+						NormalFloat = { bg = "none" },
+						FloatBorder = { bg = "none" },
+						FloatTitle = { bg = "none" },
+
+						TelescopeTitle = { fg = theme.ui.special, bold = true },
+						TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+						TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+						TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+						TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+						TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+					}
+				end,
+			}
+			require("kanagawa").load "dragon" -- dragon lotus wave
 		end,
 	},
 	{
@@ -80,7 +108,35 @@ return {
 		end,
 	},
 	{
+		"tamton-aquib/staline.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("staline").setup {
+				sections = {
+					left = { "  ", "mode", " ", "branch", " ", "lsp" },
+					mid = {},
+					right = { "file_name", "line_column" },
+				},
+				mode_colors = {
+					i = "#c4b28a",
+					n = "#8ea4a2",
+					c = "#87a987",
+					v = "#b6927b",
+				},
+				defaults = {
+					true_colors = true,
+					line_column = " [%l/%L] :%c  ",
+					branch_symbol = "  ",
+				},
+			}
+		end,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -144,6 +200,10 @@ return {
 	},
 	{
 		"rcarriga/nvim-notify",
+		lazy = false,
+		config = function()
+			vim.notify = require "notify"
+		end,
 		keys = {
 			{
 				"<leader>un",
