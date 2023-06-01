@@ -337,11 +337,4 @@ return {
 			disable_diagnostics = true,
 		},
 	},
-	{
-		"m4xshen/hardtime.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		opts = {
-			disable_mouse = false,
-		},
-	},
 }

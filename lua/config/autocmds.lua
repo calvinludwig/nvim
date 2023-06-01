@@ -54,3 +54,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.spell = true
 	end,
 })
+
+-- show status line only when not alpha
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter", "CmdwinEnter" }, {
+	callback = function()
+		if string.len(vim.api.nvim_buf_get_name(0)) > 0 then
+			vim.opt.laststatus = 3
+		end
+	end,
+})

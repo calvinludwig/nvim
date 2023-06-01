@@ -38,52 +38,6 @@ return {
 		end,
 	},
 	{
-		"catppuccin/nvim",
-		enabled = false,
-		name = "catppuccin",
-		lazy = true,
-		event = "UIEnter",
-		priority = 1000,
-		config = function()
-			require("catppuccin").setup {
-				flavour = "macchiato",
-				transparent_background = false,
-				show_end_of_buffer = false,
-				term_colors = true,
-				dim_inactive = {
-					enabled = false,
-					shade = "dark",
-					percentage = 0.15,
-				},
-				integrations = {
-					cmp = true,
-					gitsigns = true,
-					telescope = true,
-					harpoon = true,
-					fidget = true,
-					mason = true,
-					neotree = true,
-					native_lsp = {
-						enabled = true,
-						virtual_text = {
-							errors = { "italic" },
-							hints = { "italic" },
-							warnings = { "italic" },
-							information = { "italic" },
-						},
-						underlines = {
-							errors = { "underline" },
-							hints = { "underline" },
-							warnings = { "underline" },
-							information = { "underline" },
-						},
-					},
-				},
-			}
-			vim.cmd.colorscheme "catppuccin"
-		end,
-	},
-	{
 		"j-hui/fidget.nvim",
 		enabled = true,
 		event = "UIEnter",
@@ -94,11 +48,6 @@ return {
 				},
 			}
 		end,
-	},
-	{
-		"karb94/neoscroll.nvim",
-		lazy = false,
-		opts = {},
 	},
 	{
 		"luukvbaal/statuscol.nvim",
@@ -197,31 +146,6 @@ return {
 				extensions = { "neo-tree", "lazy" },
 			}
 		end,
-	},
-	{
-		"rcarriga/nvim-notify",
-		lazy = false,
-		config = function()
-			vim.notify = require "notify"
-		end,
-		keys = {
-			{
-				"<leader>un",
-				function()
-					require("notify").dismiss { silent = true, pending = true }
-				end,
-				desc = "Dismiss all Notifications",
-			},
-		},
-		opts = {
-			timeout = 3000,
-			max_height = function()
-				return math.floor(vim.o.lines * 0.75)
-			end,
-			max_width = function()
-				return math.floor(vim.o.columns * 0.75)
-			end,
-		},
 	},
 	{
 		"goolord/alpha-nvim",
