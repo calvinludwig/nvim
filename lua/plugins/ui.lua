@@ -1,13 +1,27 @@
 return {
 	{
-		"rebelot/kanagawa.nvim",
+		"rose-pine/neovim",
+		name = "rose-pine",
 		lazy = true,
 		enabled = true,
 		event = "UIEnter",
 		config = function()
+			require("rose-pine").setup {
+				variant = "moon",
+				dim_nc_background = true,
+			}
+			vim.cmd "colorscheme rose-pine"
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = true,
+		enabled = false,
+		event = "UIEnter",
+		config = function()
 			require("kanagawa").setup {
-				transparent = true,
-				dim_inactive = true,
+				transparent = false,
+				dim_inactive = false,
 				colors = {
 					theme = {
 						all = {
@@ -34,7 +48,7 @@ return {
 					}
 				end,
 			}
-			require("kanagawa").load "dragon" -- dragon lotus wave
+			require("kanagawa").load "wave" -- dragon lotus wave
 		end,
 	},
 	{
@@ -59,6 +73,7 @@ return {
 	{
 		"tamton-aquib/staline.nvim",
 		event = "VeryLazy",
+		enabled = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -85,7 +100,7 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		enabled = false,
+		enabled = true,
 		event = "VeryLazy",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -93,7 +108,7 @@ return {
 		config = function()
 			require("lualine").setup {
 				options = {
-					theme = "auto",
+					theme = "rose-pine",
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 					section_separators = { left = "█", right = "█" },
@@ -134,7 +149,7 @@ return {
 						},
 					},
 					lualine_y = {
-						{ "progress", separator = " ",                  padding = { left = 1, right = 0 } },
+						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
 						{ "location", padding = { left = 0, right = 1 } },
 					},
 					lualine_z = {

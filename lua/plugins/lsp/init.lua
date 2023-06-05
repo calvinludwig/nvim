@@ -15,7 +15,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-		{ "folke/neodev.nvim",  opts = {} },
+		{ "folke/neodev.nvim", opts = {} },
 		"jose-elias-alvarez/typescript.nvim",
 		"jose-elias-alvarez/null-ls.nvim",
 		"williamboman/mason.nvim",
