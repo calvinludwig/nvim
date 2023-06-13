@@ -3,7 +3,7 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		lazy = true,
-		enabled = true,
+		enabled = false,
 		event = "UIEnter",
 		config = function()
 			require("rose-pine").setup {
@@ -16,7 +16,7 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
-		enabled = false,
+		enabled = true,
 		event = "UIEnter",
 		config = function()
 			require("kanagawa").setup {
@@ -53,6 +53,7 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
+		branch = "legacy",
 		enabled = true,
 		event = "UIEnter",
 		config = function()
@@ -108,7 +109,7 @@ return {
 		config = function()
 			require("lualine").setup {
 				options = {
-					theme = "rose-pine",
+					theme = "kanagawa",
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 					section_separators = { left = "█", right = "█" },
