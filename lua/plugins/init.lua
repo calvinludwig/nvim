@@ -9,17 +9,13 @@ return {
 		keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
 		config = true,
 	},
-	{
-		"folke/trouble.nvim",
-		cmd = { "TroubleToggle", "Trouble" },
-		opts = {
-			mode = "document_diagnostics",
-			auto_open = false,
-			auto_close = true,
-			use_diagnostic_signs = true, -- en
-		},
-	},
 	"jwalton512/vim-blade",
 	"styled-components/vim-styled-components",
 	"kovetskiy/sxhkd-vim",
+	{
+		"yamatsum/nvim-nonicons",
+		config = function ()
+			require("nvim-nonicons").setup {}
+		end
+	},
 }

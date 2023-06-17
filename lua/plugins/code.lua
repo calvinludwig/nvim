@@ -148,6 +148,7 @@ return {
 					"javascript",
 					"typescript",
 					"tsx",
+					"c_sharp",
 					"ocaml",
 					"lua",
 					"rust",

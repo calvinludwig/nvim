@@ -1,22 +1,18 @@
 return {
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
+		"savq/melange-nvim",
 		lazy = true,
-		enabled = false,
+		enabled = true,
 		event = "UIEnter",
 		config = function()
-			require("rose-pine").setup {
-				variant = "moon",
-				dim_nc_background = true,
-			}
-			vim.cmd "colorscheme rose-pine"
+			vim.opt.background = "light"
+			vim.cmd.colorscheme "melange"
 		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
-		enabled = true,
+		enabled = false,
 		event = "UIEnter",
 		config = function()
 			require("kanagawa").setup {
@@ -32,6 +28,7 @@ return {
 					},
 				},
 			}
+			vim.opt.background = "dark"
 			require("kanagawa").load "wave" -- dragon lotus wave
 		end,
 	},
@@ -56,34 +53,6 @@ return {
 		end,
 	},
 	{
-		"tamton-aquib/staline.nvim",
-		event = "VeryLazy",
-		enabled = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("staline").setup {
-				sections = {
-					left = { "  ", "mode", " ", "branch", " ", "lsp" },
-					mid = {},
-					right = { "file_name", "line_column" },
-				},
-				mode_colors = {
-					i = "#c4b28a",
-					n = "#8ea4a2",
-					c = "#87a987",
-					v = "#b6927b",
-				},
-				defaults = {
-					true_colors = true,
-					line_column = " [%l/%L] :%c  ",
-					branch_symbol = "  ",
-				},
-			}
-		end,
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		enabled = true,
 		event = "VeryLazy",
@@ -91,18 +60,23 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
+			local icons = require "nvim-nonicons"
+			local nonicons_extention = require "nvim-nonicons.extentions.lualine"
 			require("lualine").setup {
 				options = {
-					theme = "kanagawa",
+					theme = "auto",
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 					section_separators = { left = "█", right = "█" },
 					component_separators = "|",
 				},
 				sections = {
-					lualine_a = { "mode", "searchcount", "selectioncount" },
+					lualine_a = { nonicons_extention.mode, "searchcount", "selectioncount" },
 					lualine_b = {
-						"branch",
+						{
+							"branch",
+							icon = icons.get "git-branch",
+						},
 						{
 							"diff",
 							symbols = {
