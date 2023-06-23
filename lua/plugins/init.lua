@@ -12,10 +12,4 @@ return {
 	"jwalton512/vim-blade",
 	"styled-components/vim-styled-components",
 	"kovetskiy/sxhkd-vim",
-	{
-		"yamatsum/nvim-nonicons",
-		config = function ()
-			require("nvim-nonicons").setup {}
-		end
-	},
 }

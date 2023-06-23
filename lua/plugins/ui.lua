@@ -1,18 +1,8 @@
 return {
 	{
-		"savq/melange-nvim",
-		lazy = true,
-		enabled = true,
-		event = "UIEnter",
-		config = function()
-			vim.opt.background = "light"
-			vim.cmd.colorscheme "melange"
-		end,
-	},
-	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
-		enabled = false,
+		enabled = true,
 		event = "UIEnter",
 		config = function()
 			require("kanagawa").setup {
@@ -60,8 +50,6 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			local icons = require "nvim-nonicons"
-			local nonicons_extention = require "nvim-nonicons.extentions.lualine"
 			require("lualine").setup {
 				options = {
 					theme = "auto",
@@ -71,11 +59,10 @@ return {
 					component_separators = "|",
 				},
 				sections = {
-					lualine_a = { nonicons_extention.mode, "searchcount", "selectioncount" },
+					lualine_a = { "mode", "searchcount", "selectioncount" },
 					lualine_b = {
 						{
 							"branch",
-							icon = icons.get "git-branch",
 						},
 						{
 							"diff",

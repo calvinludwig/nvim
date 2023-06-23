@@ -15,7 +15,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-		{ "folke/neodev.nvim",  opts = {} },
+		{ "folke/neodev.nvim", opts = {} },
 		"jose-elias-alvarez/typescript.nvim",
 		"jose-elias-alvarez/null-ls.nvim",
 		"williamboman/mason.nvim",
@@ -44,13 +44,10 @@ return {
 		require("mason").setup()
 
 		local servers = {
-			"crystalline",
 			"lua_ls",
 			"rust_analyzer",
-			"ruby_ls",
 			"intelephense",
 			"volar",
-			"gopls",
 			"tsserver",
 			"taplo",
 			"bashls",
@@ -58,13 +55,9 @@ return {
 			"tailwindcss",
 			"cssls",
 			"yamlls",
-			"pyright",
 			"marksman",
-			"clangd",
-			"cmake",
 			"dockerls",
 			"prismals",
-			"csharp_ls",
 		}
 
 		require("mason-lspconfig").setup {

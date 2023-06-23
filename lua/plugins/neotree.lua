@@ -18,7 +18,7 @@ return {
 			enable_git_status = true,
 			enable_diagnostics = true,
 			window = {
-				position = "right",
+				position = "float",
 				mappings = {
 					["o"] = "open",
 				},
@@ -101,10 +101,10 @@ return {
 				renderers = {
 					file = {
 						{ "icon" },
-						{ "name",         use_git_status_colors = true },
+						{ "name", use_git_status_colors = true },
 						{ "harpoon_index" }, --> This is what actually adds the component in where you want it
 						{ "diagnostics" },
-						{ "git_status",   highlight = "NeoTreeDimText" },
+						{ "git_status", highlight = "NeoTreeDimText" },
 					},
 				},
 			},
