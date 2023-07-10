@@ -1,4 +1,4 @@
-function loadServer(server)
+local function loadServer(server)
 	local common = require "plugins.lsp.common"
 	local lspconfig = require "lspconfig"
 	local loaded, _ = pcall(require, "plugins.lsp.langs." .. server)
@@ -21,6 +21,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"jay-babu/mason-null-ls.nvim",
+		"simrat39/rust-tools.nvim",
 	},
 	opts = {
 		-- options for vim.diagnostic.config()

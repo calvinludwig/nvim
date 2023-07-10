@@ -3,10 +3,6 @@ vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.echo()
 end)
 
-vim.keymap.set("n", "<leader>li", function()
-	vim.o.list = not vim.o.list
-end)
-
 vim.keymap.set({ "i", "n" }, "<up>", "<Nop>")
 vim.keymap.set({ "i", "n" }, "<down>", "<Nop>")
 vim.keymap.set({ "i", "n" }, "<left>", "<Nop>")
