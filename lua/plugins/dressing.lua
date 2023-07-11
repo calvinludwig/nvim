@@ -1,5 +1,4 @@
-return
-{
+return {
 	"stevearc/dressing.nvim",
 	lazy = true,
 	init = function()

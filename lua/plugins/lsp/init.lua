@@ -47,18 +47,15 @@ return {
 		local servers = {
 			"lua_ls",
 			"rust_analyzer",
-			"intelephense",
 			"volar",
 			"tsserver",
 			"taplo",
 			"bashls",
 			"jsonls",
-			"tailwindcss",
 			"cssls",
 			"yamlls",
 			"marksman",
 			"dockerls",
-			"prismals",
 		}
 
 		require("mason-lspconfig").setup {
@@ -68,6 +65,5 @@ return {
 		for _, server in ipairs(servers) do
 			loadServer(server)
 		end
-		loadServer "ocamllsp"
 	end,
 }

@@ -13,7 +13,7 @@ return {
 					base = "#FFFFFF",
 					mantle = "#EFF1F5",
 					crust = "#E6E9EF",
-				}
+				},
 			},
 			integrations = {
 				cmp = true,
@@ -27,7 +27,7 @@ return {
 				treesitter_context = true,
 				which_key = true,
 				illuminate = true,
-			}
+			},
 		}
 		vim.cmd.colorscheme "catppuccin"
 	end,

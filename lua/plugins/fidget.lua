@@ -1,5 +1,4 @@
-return
-{
+return {
 	"j-hui/fidget.nvim",
 	branch = "legacy",
 	enabled = true,

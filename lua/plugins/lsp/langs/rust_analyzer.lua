@@ -1,5 +1,5 @@
 local common = require "plugins.lsp.common"
-local rt = require('rust-tools')
+local rt = require "rust-tools"
 
 local settings = {
 	["rust-analyzer"] = {
@@ -40,7 +40,7 @@ rt.setup {
 		hover_actions = {
 			auto_focus = true,
 		},
-	}
+	},
 }
 
 -- require("lspconfig").rust_analyzer.setup {
