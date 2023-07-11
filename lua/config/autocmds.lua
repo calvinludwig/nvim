@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { comma
 -- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	callback = function()
-		vim.cmd "tabdo wincmd ="
+		vim.cmd("tabdo wincmd =")
 	end,
 })
 

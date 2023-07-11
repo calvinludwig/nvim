@@ -11,7 +11,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	opts = function()
-		local highlights = require "neo-tree.ui.highlights"
+		local highlights = require("neo-tree.ui.highlights")
 		return {
 			close_if_last_window = true,
 			popup_border_style = Icons.border,
@@ -85,7 +85,7 @@ return {
 						}
 					end,
 					harpoon_index = function(config, node, _)
-						local Marked = require "harpoon.mark"
+						local Marked = require("harpoon.mark")
 						local path = node:get_id()
 						local succuss, index = pcall(Marked.get_index_of, path)
 						if succuss and index and index > 0 then

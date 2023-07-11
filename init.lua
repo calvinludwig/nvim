@@ -1,6 +1,6 @@
 if vim.g.vscode then
-    return
+	return
 end
 
-require 'utils'
-require 'config'
+require("utils")
+require("config")

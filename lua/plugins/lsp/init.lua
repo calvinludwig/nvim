@@ -1,12 +1,12 @@
 local function loadServer(server)
-	local common = require "plugins.lsp.common"
-	local lspconfig = require "lspconfig"
+	local common = require("plugins.lsp.common")
+	local lspconfig = require("lspconfig")
 	local loaded, _ = pcall(require, "plugins.lsp.langs." .. server)
 	if not loaded then
-		lspconfig[server].setup {
+		lspconfig[server].setup({
 			on_attach = common.on_attach,
 			capabilities = common.capabilities,
-		}
+		})
 	end
 end
 
@@ -41,7 +41,7 @@ return {
 	},
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
-		require "plugins.lsp.null-ls"
+		require("plugins.lsp.null-ls")
 		require("mason").setup()
 
 		local servers = {
@@ -58,9 +58,9 @@ return {
 			"dockerls",
 		}
 
-		require("mason-lspconfig").setup {
+		require("mason-lspconfig").setup({
 			ensure_installed = servers,
-		}
+		})
 
 		for _, server in ipairs(servers) do
 			loadServer(server)

@@ -1,9 +1,9 @@
-local Util = require "utils"
+local Util = require("utils")
 
 return {
 	"nvim-telescope/telescope.nvim",
 	cmd = { "Telescope" },
-	commit = vim.fn.has "nvim-0.9.0" == 0 and "057ee0f8783" or nil,
+	commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
 	version = false,
 	dependencies = {
 		"nvim-telescope/telescope-file-browser.nvim",
@@ -14,7 +14,7 @@ return {
 		{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 		{
 			"<leader>/",
-			Util.telescope "live_grep",
+			Util.telescope("live_grep"),
 			desc = "Grep (root dir)",
 		},
 		{
@@ -24,14 +24,14 @@ return {
 		},
 		{
 			"<leader><space>",
-			Util.telescope "files",
+			Util.telescope("files"),
 			desc = "Find Files (root dir)",
 		},
 		-- find
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 		{
 			"<leader>ff",
-			Util.telescope "files",
+			Util.telescope("files"),
 			desc = "Find Files (root dir)",
 		},
 		{
@@ -72,7 +72,7 @@ return {
 		},
 		{
 			"<leader>sg",
-			Util.telescope "live_grep",
+			Util.telescope("live_grep"),
 			desc = "Grep (root dir)",
 		},
 		{ "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
@@ -87,7 +87,7 @@ return {
 		{ "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
 		{ "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
 		{ "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-		{ "<leader>sw", Util.telescope "grep_string", desc = "Word (root dir)" },
+		{ "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
 		{ "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
 		{
 			"<leader>uC",
@@ -132,7 +132,7 @@ return {
 		},
 	},
 	config = function()
-		local telescope = require "telescope"
+		local telescope = require("telescope")
 		local opts = {
 			defaults = {
 				selection_caret = " ",
@@ -145,12 +145,12 @@ return {
 							return require("trouble.providers.telescope").open_selected_with_trouble(...)
 						end,
 						["<a-i>"] = function()
-							local action_state = require "telescope.actions.state"
+							local action_state = require("telescope.actions.state")
 							local line = action_state.get_current_line()
 							Util.telescope("find_files", { no_ignore = true, default_text = line })()
 						end,
 						["<a-h>"] = function()
-							local action_state = require "telescope.actions.state"
+							local action_state = require("telescope.actions.state")
 							local line = action_state.get_current_line()
 							Util.telescope("find_files", { hidden = true, default_text = line })()
 						end,
@@ -189,7 +189,7 @@ return {
 			},
 			extensions = {
 				["ui-select"] = {
-					require("telescope.themes").get_dropdown {},
+					require("telescope.themes").get_dropdown({}),
 				},
 				file_browser = {
 					theme = "ivy",
@@ -210,8 +210,8 @@ return {
 		}
 		telescope.setup(opts)
 
-		telescope.load_extension "file_browser"
-		telescope.load_extension "ui-select"
-		telescope.load_extension "harpoon"
+		telescope.load_extension("file_browser")
+		telescope.load_extension("ui-select")
+		telescope.load_extension("harpoon")
 	end,
 }

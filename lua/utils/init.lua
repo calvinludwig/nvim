@@ -1,4 +1,4 @@
-Icons = require "config.ui.icons"
+Icons = require("config.ui.icons")
 
 local M = {}
 
@@ -28,7 +28,7 @@ function M.get_root()
 	---@type string[]
 	local roots = {}
 	if path then
-		for _, client in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+		for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
 			local workspace = client.config.workspace_folders
 			local paths = workspace
 					and vim.tbl_map(function(ws)
@@ -76,7 +76,7 @@ function M.telescope(builtin, opts)
 		if opts.cwd and opts.cwd ~= vim.loop.cwd() then
 			opts.attach_mappings = function(_, map)
 				map("i", "<a-c>", function()
-					local action_state = require "telescope.actions.state"
+					local action_state = require("telescope.actions.state")
 					local line = action_state.get_current_line()
 					M.telescope(
 						params.builtin,

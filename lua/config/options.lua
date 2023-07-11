@@ -26,7 +26,7 @@ vim.opt.sidescrolloff = 8 -- Columns of context
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 vim.opt.shiftround = true -- Round indent
 vim.opt.shiftwidth = 4 -- Size of an indent
-vim.opt.shortmess:append { W = true, I = true, c = true }
+vim.opt.shortmess:append({ W = true, I = true, c = true })
 vim.opt.showmode = false -- Dont show mode since we have a statusline
 vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 vim.opt.smartcase = true -- Don't ignore case with capitals
@@ -45,7 +45,7 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 5 -- Minimum window width
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.splitkeep = "screen"
-vim.opt.shortmess:append { C = true }
+vim.opt.shortmess:append({ C = true })
 vim.opt.virtualedit = "block"
 
 -- Fix markdown indentation settings

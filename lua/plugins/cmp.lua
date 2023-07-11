@@ -12,20 +12,20 @@ return {
 			dependencies = "copilot.lua",
 			opts = {},
 			config = function(_, opts)
-				local copilot_cmp = require "copilot_cmp"
+				local copilot_cmp = require("copilot_cmp")
 				copilot_cmp.setup(opts)
 				-- attach cmp source whenever copilot attaches
 				-- fixes lazy-loading issues with the copilot cmp source
 				require("utils").on_attach(function(client)
 					if client.name == "copilot" then
-						copilot_cmp._on_insert_enter {}
+						copilot_cmp._on_insert_enter({})
 					end
 				end)
 			end,
 		},
 	},
 	opts = function()
-		local cmp = require "cmp"
+		local cmp = require("cmp")
 		return {
 			completion = {
 				completeopt = "menu,menuone,noinsert",
@@ -36,33 +36,33 @@ return {
 				end,
 			},
 			window = {
-				completion = cmp.config.window.bordered {
+				completion = cmp.config.window.bordered({
 					border = Icons.border,
-				},
-				documentation = cmp.config.window.bordered {
+				}),
+				documentation = cmp.config.window.bordered({
 					border = Icons.border,
-				},
+				}),
 			},
-			mapping = cmp.mapping.preset.insert {
-				["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-				["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+			mapping = cmp.mapping.preset.insert({
+				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<C-CR>"] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				["<C-j>"] = cmp.mapping.confirm {
+				["<C-CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				["<C-j>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
-				}, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			},
-			sources = cmp.config.sources {
+				}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			}),
+			sources = cmp.config.sources({
 				{ name = "copilot", group_index = 2 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
-			},
+			}),
 			formatting = {
 				format = function(_, item)
 					local icons = Icons.cmp

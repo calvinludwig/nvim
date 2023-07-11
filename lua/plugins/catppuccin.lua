@@ -5,7 +5,7 @@ return {
 	enabled = true,
 	event = "UIEnter",
 	config = function()
-		require("catppuccin").setup {
+		require("catppuccin").setup({
 			flavour = "latte",
 			term_colors = true,
 			color_overrides = {
@@ -28,7 +28,7 @@ return {
 				which_key = true,
 				illuminate = true,
 			},
-		}
-		vim.cmd.colorscheme "catppuccin"
+		})
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }

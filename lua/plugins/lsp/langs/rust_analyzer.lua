@@ -1,5 +1,5 @@
-local common = require "plugins.lsp.common"
-local rt = require "rust-tools"
+local common = require("plugins.lsp.common")
+local rt = require("rust-tools")
 
 local settings = {
 	["rust-analyzer"] = {
@@ -24,7 +24,7 @@ local settings = {
 	},
 }
 
-rt.setup {
+rt.setup({
 	server = {
 		on_attach = function(client, bufnr)
 			common.on_attach(client, bufnr)
@@ -41,7 +41,7 @@ rt.setup {
 			auto_focus = true,
 		},
 	},
-}
+})
 
 -- require("lspconfig").rust_analyzer.setup {
 -- 	on_attach = common.on_attach,

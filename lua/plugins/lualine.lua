@@ -6,7 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		require("lualine").setup {
+		require("lualine").setup({
 			options = {
 				theme = "catppuccin",
 				globalstatus = true,
@@ -63,6 +63,6 @@ return {
 				lualine_z = {},
 			},
 			extensions = { "neo-tree", "lazy" },
-		}
+		})
 	end,
 }

@@ -8,13 +8,13 @@ M.signs = {
 }
 
 function M.setup()
-	vim.diagnostic.config {
+	vim.diagnostic.config({
 		underline = true,
 		update_in_insert = false,
 		virtual_text = { spacing = 4, prefix = "● " },
 		severity_sort = true,
 		float = { border = Icons.border },
-	}
+	})
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = Icons.border,

@@ -2,6 +2,6 @@ return {
 	"luukvbaal/statuscol.nvim",
 	event = "VeryLazy",
 	config = function()
-		require("statuscol").setup {}
+		require("statuscol").setup({})
 	end,
 }

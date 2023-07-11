@@ -8,19 +8,19 @@ M.capabilities.textDocument.foldingRange = {
 
 local lsp_formatting = function(_)
 	if vim.lsp.buf.format then
-		vim.lsp.buf.format {
+		vim.lsp.buf.format({
 			filter = function(client)
 				-- apply whatever logic you want (in this example, we'll only use null-ls)
 				return client.name ~= "tsserver"
 			end,
-		}
+		})
 	elseif vim.lsp.buf.formatting then
 		vim.lsp.buf.formatting()
 	end
 end
 
 local function keymaps(bufnr)
-	local telescope = require "telescope.builtin"
+	local telescope = require("telescope.builtin")
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -56,7 +56,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 M.on_attach = function(client, bufnr)
 	keymaps(bufnr)
-	if client.supports_method "textDocument/formatting" then
+	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_buf_create_user_command(
 			bufnr,
 			"Format",

@@ -9,9 +9,9 @@ return {
 		"nvim-treesitter/playground",
 	},
 	config = function()
-		local treesitter = require "nvim-treesitter.configs"
+		local treesitter = require("nvim-treesitter.configs")
 
-		treesitter.setup {
+		treesitter.setup({
 			-- Add languages to be installed here that you want installed for treesitter
 			ensure_installed = {
 				"rust",
@@ -92,7 +92,7 @@ return {
 					},
 				},
 			},
-		}
+		})
 
 		require("nvim-ts-autotag").setup()
 	end,
