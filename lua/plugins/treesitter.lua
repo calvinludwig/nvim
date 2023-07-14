@@ -16,6 +16,9 @@ return {
 			ensure_installed = {
 				"rust",
 				"toml",
+				"go",
+				"gomod",
+				"gosum",
 				"lua",
 				"javascript",
 				"typescript",

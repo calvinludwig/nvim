@@ -25,7 +25,6 @@ null_ls.setup({
 		diagnostics.golangci_lint,
 		diagnostics.staticcheck,
 		formatting.gofmt,
-		formatting.goimports,
 		formatting.goimports_reviser,
 		formatting.golines,
 		-- rust

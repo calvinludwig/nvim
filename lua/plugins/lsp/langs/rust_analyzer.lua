@@ -1,5 +1,6 @@
 local common = require("plugins.lsp.common")
 local rt = require("rust-tools")
+local util = require("lspconfig.util")
 
 local settings = {
 	["rust-analyzer"] = {
@@ -34,12 +35,19 @@ rt.setup({
 			vim.keymap.set("n", "<Leader>cag", rt.code_action_group.code_action_group, { buffer = bufnr })
 		end,
 		capabilities = common.capabilities,
+		filetpes = { "rust" },
+		root_dir = util.root_pattern("Cargo.toml"),
 		settings = settings,
 	},
 	tools = {
 		hover_actions = {
 			auto_focus = true,
 		},
+		inlay_hints = {
+			auto = true,
+			only_current_line = false,
+			right_align = true,
+		}
 	},
 })
 

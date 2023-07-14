@@ -47,6 +47,7 @@ return {
 		local servers = {
 			"lua_ls",
 			"rust_analyzer",
+			"gopls",
 			"volar",
 			"tsserver",
 			"taplo",
