@@ -14,13 +14,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-		{ "folke/neodev.nvim", opts = {} },
-		"jose-elias-alvarez/typescript.nvim",
-		"jose-elias-alvarez/null-ls.nvim",
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"jay-babu/mason-null-ls.nvim",
+		{ "folke/neodev.nvim", opts = {}, lazy = false },
 		"simrat39/rust-tools.nvim",
 	},
 	opts = {
@@ -41,30 +35,7 @@ return {
 	},
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
-		require("plugins.lsp.null-ls")
-		require("mason").setup()
-
-		local servers = {
-			"lua_ls",
-			"rust_analyzer",
-			"gopls",
-			"volar",
-			"tsserver",
-			"taplo",
-			"bashls",
-			"jsonls",
-			"cssls",
-			"yamlls",
-			"marksman",
-			"dockerls",
-		}
-
-		require("mason-lspconfig").setup({
-			ensure_installed = servers,
-		})
-
-		for _, server in ipairs(servers) do
-			loadServer(server)
-		end
+		require "plugins.lsp.langs.lua"
+		require "plugins.lsp.langs.rust"
 	end,
 }

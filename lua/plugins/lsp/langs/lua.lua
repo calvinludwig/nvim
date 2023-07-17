@@ -4,9 +4,6 @@ require("lspconfig").lua_ls.setup({
 	capabilities = common.capabilities,
 	settings = {
 		Lua = {
-			workspace = {
-				checkThirdParty = false,
-			},
 			completion = {
 				callSnippet = "Replace",
 			},

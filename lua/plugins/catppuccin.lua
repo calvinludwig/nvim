@@ -74,7 +74,6 @@ return {
 				telescope = true,
 				alpha = true,
 				harpoon = true,
-				mason = true,
 				neotree = true,
 				treesitter_context = true,
 				which_key = true,
