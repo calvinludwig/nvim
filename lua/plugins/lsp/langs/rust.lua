@@ -47,7 +47,7 @@ rt.setup({
 			auto = true,
 			only_current_line = false,
 			right_align = true,
-		}
+		},
 	},
 })
 

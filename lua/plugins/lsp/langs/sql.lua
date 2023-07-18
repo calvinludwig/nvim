@@ -3,4 +3,3 @@ require("lspconfig").sqlls.setup({
 	on_attach = common.on_attach,
 	capabilities = common.capabilities,
 })
-
