@@ -3,6 +3,9 @@ vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.echo()
 end)
 
+vim.keymap.set("i", "jk", "<ESC>", opts)
+vim.keymap.set("i", "kj", "<ESC>", opts)
+
 vim.keymap.set({ "i", "n" }, "<up>", "<Nop>")
 vim.keymap.set({ "i", "n" }, "<down>", "<Nop>")
 vim.keymap.set({ "i", "n" }, "<left>", "<Nop>")
