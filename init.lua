@@ -1,6 +1,3 @@
-if vim.g.vscode then
-	return
-end
-
+vim.lsp.set_log_level("debug")
 require("utils")
 require("config")

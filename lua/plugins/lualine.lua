@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = false,
+	enabled = true,
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -8,7 +8,7 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "catppuccin",
+				theme = "rose-pine",
 				globalstatus = true,
 				disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 				section_separators = { left = "█", right = "█" },

@@ -1,20 +1,8 @@
-local function loadServer(server)
-	local common = require("plugins.lsp.common")
-	local lspconfig = require("lspconfig")
-	local loaded, _ = pcall(require, "plugins.lsp.langs." .. server)
-	if not loaded then
-		lspconfig[server].setup({
-			on_attach = common.on_attach,
-			capabilities = common.capabilities,
-		})
-	end
-end
-
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{ "folke/neodev.nvim", opts = {}, lazy = false },
+		{ "folke/neodev.nvim" },
 		"simrat39/rust-tools.nvim",
 	},
 	opts = {
@@ -35,7 +23,19 @@ return {
 	},
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
-		require "plugins.lsp.langs.lua"
-		require "plugins.lsp.langs.rust"
+		local langs = {
+			"lua",
+			"rust",
+			"toml",
+			"yaml",
+			"bash",
+			"docker",
+			"sql",
+			"json",
+		}
+
+		for _, lang in ipairs(langs) do
+			require("plugins.lsp.langs." .. lang)
+		end
 	end,
 }
