@@ -7,6 +7,7 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",
+		"onsails/lspkind.nvim",
 		{
 			"zbirenbaum/copilot-cmp",
 			dependencies = "copilot.lua",
@@ -26,6 +27,8 @@ return {
 	},
 	opts = function()
 		local cmp = require("cmp")
+		local lspkind = require("lspkind")
+
 		return {
 			completion = {
 				completeopt = "menu,menuone,noinsert",
@@ -57,11 +60,11 @@ return {
 				}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp", group_index = 1 },
-				{ name = "copilot", group_index = 1 },
-				{ name = "luasnip", group_index = 1 },
-				{ name = "buffer", group_index = 2 },
-				{ name = "path", group_index = 2 },
+				{ name = "nvim_lsp", group_index = 1, keyword_length = 4 },
+				{ name = "copilot",  group_index = 1, keyword_length = 4 },
+				{ name = "luasnip",  group_index = 1, keyword_length = 4 },
+				{ name = "buffer",   group_index = 2, keyword_length = 4 },
+				{ name = "path",     group_index = 2, keyword_length = 4 },
 			}),
 			formatting = {
 				format = function(_, item)
@@ -69,7 +72,9 @@ return {
 					if icons[item.kind] then
 						item.kind = icons[item.kind] .. item.kind
 					end
+
 					item.abbr = string.sub(item.abbr, 1, 20)
+					item.menu = ""
 					return item
 				end,
 			},
