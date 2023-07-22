@@ -8,6 +8,9 @@ require("lspconfig").lua_ls.setup({
 			completion = {
 				callSnippet = "Replace",
 			},
+			workspace = {
+				checkThirdParty = false,
+			},
 		},
 	},
 })

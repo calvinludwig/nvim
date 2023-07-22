@@ -1,8 +1,8 @@
 return {
 	"L3MON4D3/LuaSnip",
-	build = (not jit.os:find("Windows"))
-			and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-		or nil,
+	enabled = true,
+	version = "2.*",
+	build = "make install_jsregexp",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		config = function()
@@ -17,9 +17,7 @@ return {
 	keys = {
 		{
 			"<tab>",
-			function()
-				return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-			end,
+			function() return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>" end,
 			expr = true,
 			silent = true,
 			mode = "i",

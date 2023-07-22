@@ -4,7 +4,7 @@ return {
 	enabled = true,
 	event = "UIEnter",
 	config = function()
-		vim.o.background = 'dark'
+		vim.o.background = "dark"
 		vim.cmd.colorscheme("melange")
 	end,
 }

@@ -57,11 +57,11 @@ return {
 				}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
-				{ name = "copilot", group_index = 2 },
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "buffer" },
-				{ name = "path" },
+				{ name = "nvim_lsp", group_index = 1 },
+				{ name = "copilot", group_index = 1 },
+				{ name = "luasnip", group_index = 1 },
+				{ name = "buffer", group_index = 2 },
+				{ name = "path", group_index = 2 },
 			}),
 			formatting = {
 				format = function(_, item)
@@ -69,6 +69,7 @@ return {
 					if icons[item.kind] then
 						item.kind = icons[item.kind] .. item.kind
 					end
+					item.abbr = string.sub(item.abbr, 1, 20)
 					return item
 				end,
 			},
