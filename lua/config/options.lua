@@ -46,13 +46,8 @@ vim.opt.winminwidth = 5 -- Minimum window width
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.splitkeep = "screen"
 vim.opt.shortmess:append({ C = true })
-vim.opt.virtualedit = "block"
+vim.opt.virtualedit = "all"
+vim.wo.fillchars = "eob: "
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
-
-if vim.g.neovide then
-	vim.o.guifont = "Iosevka Term:h18"
-	vim.g.neovide_refresh_rate = 75
-	vim.g.neovide_fullscreen = true
-end

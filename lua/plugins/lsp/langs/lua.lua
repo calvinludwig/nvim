@@ -5,6 +5,9 @@ require("lspconfig").lua_ls.setup({
 	capabilities = common.capabilities,
 	settings = {
 		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
 			completion = {
 				callSnippet = "Replace",
 			},

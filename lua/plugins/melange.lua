@@ -6,5 +6,6 @@ return {
 	config = function()
 		vim.o.background = "dark"
 		vim.cmd.colorscheme("melange")
+		vim.wo.fillchars = "eob: "
 	end,
 }

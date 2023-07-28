@@ -61,10 +61,10 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp", group_index = 1 },
-				{ name = "copilot",  group_index = 1 },
-				{ name = "luasnip",  group_index = 1 },
-				{ name = "buffer",   group_index = 2 },
-				{ name = "path",     group_index = 2 },
+				{ name = "copilot", group_index = 1 },
+				{ name = "luasnip", group_index = 1 },
+				{ name = "buffer", group_index = 2 },
+				{ name = "path", group_index = 2 },
 			}),
 			formatting = {
 				format = function(_, item)
@@ -73,7 +73,7 @@ return {
 						item.kind = icons[item.kind] .. item.kind
 					end
 
-					item.abbr = string.sub(item.abbr, 1, 20)
+					item.abbr = string.sub(item.abbr, 1, 50)
 					item.menu = ""
 					return item
 				end,

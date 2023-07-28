@@ -6,5 +6,5 @@ return {
 			enabled = true,
 			event_trigger = true,
 		})
-	end
+	end,
 }
