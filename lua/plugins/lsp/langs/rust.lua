@@ -45,8 +45,7 @@ rt.setup({
 		},
 		inlay_hints = {
 			auto = true,
-			only_current_line = false,
-			right_align = true,
+			only_current_line = true,
 		},
 	},
 })
