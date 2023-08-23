@@ -25,6 +25,7 @@ return {
 		require("plugins.lsp.diagnostics").setup()
 		local langs = {
 			"lua",
+			"ts",
 			"rust",
 			"toml",
 			"yaml",
