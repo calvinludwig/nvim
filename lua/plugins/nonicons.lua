@@ -1,5 +1,5 @@
 return {
-	'yamatsum/nvim-nonicons',
+	"yamatsum/nvim-nonicons",
 	lazy = false,
-	requires = { 'kyazdani42/nvim-web-devicons' }
+	requires = { "kyazdani42/nvim-web-devicons" },
 }
