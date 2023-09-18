@@ -32,9 +32,10 @@ return {
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
 		local langs = {
-			"lua",
-			"ts",
 			"rust",
+			"lua",
+			"php",
+			"ts",
 			"toml",
 			"yaml",
 			"bash",
