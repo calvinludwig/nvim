@@ -32,10 +32,12 @@ return {
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
 		local langs = {
+			"go",
 			"rust",
+			"vue",
+			"ts",
 			"lua",
 			"php",
-			"ts",
 			"toml",
 			"yaml",
 			"bash",
