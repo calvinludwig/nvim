@@ -34,8 +34,6 @@ return {
 		local langs = {
 			"go",
 			"rust",
-			"vue",
-			"ts",
 			"lua",
 			"php",
 			"toml",
