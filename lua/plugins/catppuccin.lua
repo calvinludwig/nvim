@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	enabled = true,
 	config = function()
-		require("catppuccin").setup {
+		require("catppuccin").setup({
 			flavour = "latte",
 			integrations = {
 				alpha = true,
@@ -16,8 +16,8 @@ return {
 				harpoon = true,
 				neotree = true,
 				which_key = true,
-			}
-		}
-		vim.cmd.colorscheme "catppuccin"
+			},
+		})
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }
