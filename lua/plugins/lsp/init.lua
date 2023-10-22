@@ -32,6 +32,8 @@ return {
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
 		local langs = {
+			"typescript",
+			"eslint",
 			"go",
 			"rust",
 			"lua",
