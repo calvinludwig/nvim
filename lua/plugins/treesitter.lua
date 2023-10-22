@@ -14,6 +14,9 @@ return {
 		treesitter.setup({
 			-- Add languages to be installed here that you want installed for treesitter
 			ensure_installed = {
+				"typescript",
+				"javascript",
+				"vue",
 				"lua",
 				"go",
 				"gomod",

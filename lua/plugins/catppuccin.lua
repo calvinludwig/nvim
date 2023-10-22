@@ -5,7 +5,7 @@ return {
 	enabled = true,
 	config = function()
 		require("catppuccin").setup({
-			flavour = "latte",
+			flavour = "mocha",
 			integrations = {
 				alpha = true,
 				cmp = true,

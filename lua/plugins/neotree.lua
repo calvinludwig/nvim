@@ -23,13 +23,13 @@ return {
 					["o"] = "open",
 				},
 			},
-			sort_function = function(a, b)
-				if a.type == b.type then
-					return a.path < b.path
-				else
-					return a.type > b.type
-				end
-			end,
+			-- sort_function = function(a, b)
+			-- 	if a.type == b.type then
+			-- 		return a.path < b.path
+			-- 	else
+			-- 		return a.type > b.type
+			-- 	end
+			-- end,
 			filesystem = {
 				filtered_items = {
 					visible = true, -- when true, they will just be displayed differently than normal items
@@ -57,15 +57,15 @@ return {
 				components = {
 					icon = function(config, node, _)
 						local icon = config.default or " "
-						local padding = config.padding or " "
+						local padding = config.padding or ""
 						local highlight = config.highlight or highlights.FILE_ICON
 
 						if node.type == "directory" then
 							highlight = highlights.DIRECTORY_ICON
 							if node:is_expanded() then
-								icon = "- " .. config.folder_open
+								icon = config.folder_open
 							else
-								icon = "+ " .. config.folder_closed
+								icon = config.folder_closed
 							end
 						elseif node.type == "file" then
 							local success, web_devicons = pcall(require, "nvim-web-devicons")
@@ -101,10 +101,10 @@ return {
 				renderers = {
 					file = {
 						{ "icon" },
-						{ "name", use_git_status_colors = true },
+						{ "name",         use_git_status_colors = true },
 						{ "harpoon_index" }, --> This is what actually adds the component in where you want it
 						{ "diagnostics" },
-						{ "git_status", highlight = "NeoTreeDimText" },
+						{ "git_status",   highlight = "NeoTreeDimText" },
 					},
 				},
 			},
