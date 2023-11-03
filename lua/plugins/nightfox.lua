@@ -4,7 +4,7 @@ return {
 	enabled = true,
 	config = function()
 		-- Default options
-		require('nightfox').setup({
+		require("nightfox").setup({
 			options = {
 				transparent = true, -- Disable setting background
 				terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`

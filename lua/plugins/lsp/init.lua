@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "folke/neodev.nvim" },
+		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"simrat39/rust-tools.nvim",
 		{
 			"saecki/crates.nvim",

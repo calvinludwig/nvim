@@ -19,7 +19,7 @@ require("lazy").setup("plugins", {
 	ui = {
 		border = Icons.border,
 	},
-	change_detection = { enabled = false }
+	change_detection = { enabled = false },
 })
 
 vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")

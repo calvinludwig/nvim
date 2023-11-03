@@ -15,13 +15,12 @@ return {
 			clear = true,
 		})
 
-		vim.api.nvim_create_autocmd(
-			{ "BufEnter", "BufWritePost", "InsertLeave" }, {
-				pattern = { "*.js", "*.ts" },
-				group = lint_augroup,
-				callback = function()
-					lint.try_lint()
-				end,
-			})
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+			pattern = { "*.js", "*.ts" },
+			group = lint_augroup,
+			callback = function()
+				lint.try_lint()
+			end,
+		})
 	end,
 }
