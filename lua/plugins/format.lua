@@ -1,13 +1,16 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
+	event = { "BufReadPre", "BufNewFile" },
 	cmd = { "ConformInfo" },
 	keys = {
 		{
 			-- Customize or remove this keymap to your liking
-			"<leader>f",
+			"<leader>F",
 			function()
-				require("conform").format({ async = true, lsp_fallback = true })
+				require("conform").format({
+					timeout_ms = 500,
+					lsp_fallback = true
+				})
 			end,
 			mode = "",
 			desc = "Format buffer",
@@ -20,6 +23,11 @@ return {
 			lua = { "stylua" },
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
+			vue = { { "prettierd", "prettier" } },
+			html = { { "prettierd", "prettier" } },
+			css = { { "prettierd", "prettier" } },
+			json = { { "prettierd", "prettier" } },
+			yaml = { { "prettierd", "prettier" } },
 		},
 		-- Set up format-on-save
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },

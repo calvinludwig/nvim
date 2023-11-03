@@ -18,7 +18,7 @@ return {
 			enable_git_status = true,
 			enable_diagnostics = true,
 			window = {
-				position = "left",
+				position = "float",
 				mappings = {
 					["o"] = "open",
 				},
