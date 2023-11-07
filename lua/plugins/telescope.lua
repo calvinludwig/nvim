@@ -2,8 +2,8 @@ local Util = require("utils")
 
 return {
 	"nvim-telescope/telescope.nvim",
+	tag = "0.1.4",
 	cmd = { "Telescope" },
-	commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
 	version = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
