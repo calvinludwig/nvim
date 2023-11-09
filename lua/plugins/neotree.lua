@@ -63,9 +63,9 @@ return {
 						if node.type == "directory" then
 							highlight = highlights.DIRECTORY_ICON
 							if node:is_expanded() then
-								icon = config.folder_open
+								icon = "󰁃"
 							else
-								icon = config.folder_closed
+								icon = "󰁔"
 							end
 						elseif node.type == "file" then
 							local success, web_devicons = pcall(require, "nvim-web-devicons")
