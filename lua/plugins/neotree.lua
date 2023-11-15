@@ -72,7 +72,7 @@ return {
 							if success then
 								local devicon, hl = web_devicons.get_icon(node.name, node.ext)
 								icon = devicon or icon
-								if string.find(node.name, ".test.") then
+								if string.find(node.name, ".test.ts") then
 									icon = "󰂓"
 								end
 								highlight = hl or highlight
