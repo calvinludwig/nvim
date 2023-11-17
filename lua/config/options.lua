@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 vim.opt.autowrite = true -- Enable auto write
 -- vim.opt.clipboard = "unnamedplus"  -- Sync with system clipboard
 vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.conceallevel = 0 -- Hide * markup for bold and italic
 vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
 vim.opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.expandtab = false -- NOT Use spaces instead of tabs

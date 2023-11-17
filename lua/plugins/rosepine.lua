@@ -14,8 +14,17 @@ return {
 			disable_background = true,
 			disable_float_background = true,
 			disable_italics = false,
+			groups = {
+				error = "love",
+				hint = "iris",
+				info = "foam",
+				warn = "gold",
+				punctuation = "muted",
+			},
+			highlight_groups = {
+				Comment = { fg = "love", bold = true, italic = true },
+			},
 		})
-
 		vim.cmd.colorscheme("rose-pine")
 	end,
 }

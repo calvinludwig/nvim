@@ -3,6 +3,10 @@ vim.keymap.set("n", "<Esc>", function()
 	vim.cmd.echo()
 end)
 
+-- Increment/decrement
+vim.keymap.set("n", "+", "<C-a>")
+vim.keymap.set("n", "-", "<C-x>")
+
 -- Resize window using <shift> arrow keys
 vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
 vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
