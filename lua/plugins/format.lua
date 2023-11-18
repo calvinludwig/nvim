@@ -20,6 +20,7 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
+			go = { "golines", "gofumpt", "goimports-reviser" },
 			lua = { "stylua" },
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },

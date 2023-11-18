@@ -43,6 +43,7 @@ return {
 		log_poinnt = " ",
 		stopped = " ",
 		breakpoint_rejected = " ",
+		disconnect = "",
 		pause = " ",
 		play = " ",
 		step_into = " ",

@@ -2,7 +2,11 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{ "folke/neodev.nvim" },
+		{
+			"folke/neodev.nvim",
+			event = "BufEnter",
+			ft = "lua",
+		},
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"simrat39/rust-tools.nvim",
 		{
