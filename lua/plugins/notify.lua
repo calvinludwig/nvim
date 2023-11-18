@@ -1,6 +1,6 @@
 return {
 	"rcarriga/nvim-notify",
-	lazy = false,
+	event = "VimEnter",
 	config = function()
 		local notify = require("notify")
 		notify.setup({

@@ -1,7 +1,7 @@
 return {
 	"rose-pine/neovim",
 	name = "rose-pine",
-	lazy = false,
+	event = "VimEnter",
 	enabled = true,
 	config = function()
 		require("rose-pine").setup({

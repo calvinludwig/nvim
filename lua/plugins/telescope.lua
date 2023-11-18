@@ -11,7 +11,7 @@ return {
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
 	},
-	lazy = false,
+	event = "VimEnter",
 	keys = {
 		{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 		{
