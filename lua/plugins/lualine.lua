@@ -8,6 +8,7 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
+				theme = "gruvbox-baby",
 				globalstatus = true,
 				disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 				section_separators = { left = "█", right = "█" },

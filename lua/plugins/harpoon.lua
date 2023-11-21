@@ -1,6 +1,6 @@
 -- stylua: ignore
 local keys = {
-	{ "<leader>hh", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Add file to Harpoon", },
+	{ "<leader>hh", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Open Harpoon UI", },
 	{ "<leader>hf", function() require("harpoon.mark").add_file() end, desc = "Add file to Harpoon", },
 }
 
