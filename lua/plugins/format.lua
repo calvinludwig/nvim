@@ -21,6 +21,7 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			go = { "golines", "gofumpt", "goimports-reviser" },
+			sql = { "pg_format" },
 			lua = { "stylua" },
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
