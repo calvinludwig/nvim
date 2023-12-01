@@ -46,7 +46,6 @@ return {
 			"yaml",
 			"bash",
 			"docker",
-			"sql",
 			"json",
 		}
 

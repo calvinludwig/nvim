@@ -4,6 +4,6 @@ return {
 	lazy = false,
 	enabled = true,
 	config = function()
-		vim.cmd.colorscheme("carbonfox")
+		vim.cmd.colorscheme("dayfox")
 	end,
 }
