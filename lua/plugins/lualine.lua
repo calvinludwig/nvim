@@ -17,28 +17,6 @@ return {
 				lualine_a = { "mode", "searchcount", "selectioncount" },
 				lualine_b = {
 					{
-						"branch",
-					},
-					{
-						"diff",
-						symbols = {
-							added = Icons.git.added,
-							modified = Icons.git.modified,
-							removed = Icons.git.removed,
-						},
-					},
-					{
-						"diagnostics",
-						symbols = {
-							error = Icons.diagnostics.Error,
-							warn = Icons.diagnostics.Warn,
-							info = Icons.diagnostics.Info,
-							hint = Icons.diagnostics.Hint,
-						},
-					},
-				},
-				lualine_c = {
-					{
 						"filetype",
 						icon_only = true,
 						separator = "",
@@ -49,9 +27,29 @@ return {
 					},
 					{ "filename", path = 1, symbols = { modified = " ●", readonly = "", unnamed = "" } },
 				},
-				lualine_x = {},
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
+				lualine_c = {
+					{
+						"diagnostics",
+						symbols = {
+							error = Icons.diagnostics.Error,
+							warn = Icons.diagnostics.Warn,
+							info = Icons.diagnostics.Info,
+							hint = Icons.diagnostics.Hint,
+						},
+					},
+				},
+				lualine_x = {
+					{
+						"diff",
+						symbols = {
+							added = Icons.git.added,
+							modified = Icons.git.modified,
+							removed = Icons.git.removed,
+						},
+					},
+				},
+				lualine_y = { "branch" },
+				lualine_z = { "progress", "location" },
 			},
 			inactive_sections = {
 				lualine_a = {},
