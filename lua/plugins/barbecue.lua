@@ -7,7 +7,9 @@ return {
 		"SmiteshP/nvim-navic",
 		"nvim-tree/nvim-web-devicons", -- optional dependency
 	},
-	opts = {
-		-- theme = "catppuccin-latte",
-	},
+	config = function()
+		require("barbecue").setup({
+			theme = "catppuccin-macchiato",
+		})
+	end,
 }
