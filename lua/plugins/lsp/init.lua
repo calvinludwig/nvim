@@ -4,11 +4,7 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
-		{
-			"folke/neodev.nvim",
-			event = "BufEnter",
-			ft = "lua",
-		},
+		{ "folke/neodev.nvim", event = "BufEnter", ft = "lua" },
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"simrat39/rust-tools.nvim",
 		{
@@ -24,11 +20,7 @@ return {
 		diagnostics = {
 			underline = true,
 			update_in_insert = false,
-			virtual_text = {
-				spacing = 4,
-				source = "if_many",
-				prefix = "●",
-			},
+			virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
 			severity_sort = false,
 		},
 	},
@@ -46,11 +38,8 @@ return {
 			"dockerls",
 			"docker_compose_language_service",
 		}
-
 		require("mason").setup()
-		require("mason-lspconfig").setup({
-			ensure_installed = servers,
-		})
+		require("mason-lspconfig").setup({ ensure_installed = servers })
 		require("plugins.lsp.diagnostics").setup()
 
 		local langs = {

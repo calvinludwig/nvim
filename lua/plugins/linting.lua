@@ -8,9 +8,6 @@ return {
 		local lint = require("lint")
 		lint.linters_by_ft = {
 			go = { "golangcilint" },
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			vue = { "eslint_d" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", {
@@ -18,7 +15,13 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-			pattern = { "*.js", "*.ts", "*.go" },
+			pattern = {
+				"*.ts",
+				"*.tsx",
+				"*.js",
+				"*.jsx",
+				"*.go"
+			},
 			group = lint_augroup,
 			callback = function()
 				lint.try_lint()

@@ -20,17 +20,7 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
-			cs = { "dotnet csharpier" },
-			go = { "golines", "gofumpt", "goimports-reviser" },
-			sql = { "pg_format" },
 			lua = { "stylua" },
-			javascript = { { "prettierd", "prettier" } },
-			typescript = { { "prettierd", "prettier" } },
-			vue = { { "prettierd", "prettier" } },
-			html = { { "prettierd", "prettier" } },
-			css = { { "prettierd", "prettier" } },
-			json = { { "prettierd", "prettier" } },
-			yaml = { { "prettierd", "prettier" } },
 		},
 		-- Set up format-on-save
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },

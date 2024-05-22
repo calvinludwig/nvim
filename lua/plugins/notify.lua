@@ -1,4 +1,5 @@
 return {
+	enabled = false,
 	"rcarriga/nvim-notify",
 	event = "VimEnter",
 	config = function()

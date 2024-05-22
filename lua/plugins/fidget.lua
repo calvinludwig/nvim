@@ -1,13 +1,8 @@
 return {
-	"j-hui/fidget.nvim",
-	branch = "legacy",
 	enabled = true,
+	"j-hui/fidget.nvim",
 	event = "UIEnter",
 	config = function()
-		require("fidget").setup({
-			window = {
-				blend = 0,
-			},
-		})
+		require("fidget").setup({ notification = { window = { winblend = 0 } } })
 	end,
 }
