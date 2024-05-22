@@ -2,6 +2,8 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		"williamboman/mason-lspconfig.nvim",
+		"williamboman/mason.nvim",
 		{
 			"folke/neodev.nvim",
 			event = "BufEnter",
@@ -9,7 +11,6 @@ return {
 		},
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"simrat39/rust-tools.nvim",
-		"Decodetalkers/csharpls-extended-lsp.nvim",
 		{
 			"saecki/crates.nvim",
 			tag = "v0.3.0",
@@ -20,7 +21,6 @@ return {
 		},
 	},
 	opts = {
-		-- options for vim.diagnostic.config()
 		diagnostics = {
 			underline = true,
 			update_in_insert = false,
@@ -28,28 +28,42 @@ return {
 				spacing = 4,
 				source = "if_many",
 				prefix = "●",
-				-- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-				-- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-				-- prefix = "icons",
 			},
 			severity_sort = false,
 		},
 	},
 	config = function()
+		local servers = {
+			"lua_ls",
+			"tsserver",
+			"biome",
+			"jsonls",
+			"rust_analyzer",
+			"taplo",
+			"gopls",
+			"yamlls",
+			"bashls",
+			"dockerls",
+			"docker_compose_language_service",
+		}
+
+		require("mason").setup()
+		require("mason-lspconfig").setup({
+			ensure_installed = servers,
+		})
 		require("plugins.lsp.diagnostics").setup()
+
 		local langs = {
-			"csharp",
-			"typescript",
-			"vue",
-			"go",
-			"rust",
 			"lua",
-			"php",
+			"typescript",
+			"json",
+			"rust",
 			"toml",
+			"go",
 			"yaml",
 			"bash",
 			"docker",
-			"json",
+			-- "php",
 		}
 
 		for _, lang in ipairs(langs) do
