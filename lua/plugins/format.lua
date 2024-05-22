@@ -20,6 +20,7 @@ return {
 	opts = {
 		-- Define your formatters
 		formatters_by_ft = {
+			cs = { "dotnet csharpier" },
 			go = { "golines", "gofumpt", "goimports-reviser" },
 			sql = { "pg_format" },
 			lua = { "stylua" },

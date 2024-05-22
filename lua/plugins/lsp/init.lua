@@ -9,6 +9,7 @@ return {
 		},
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"simrat39/rust-tools.nvim",
+		"Decodetalkers/csharpls-extended-lsp.nvim",
 		{
 			"saecki/crates.nvim",
 			tag = "v0.3.0",
@@ -37,7 +38,9 @@ return {
 	config = function()
 		require("plugins.lsp.diagnostics").setup()
 		local langs = {
+			"csharp",
 			"typescript",
+			"vue",
 			"go",
 			"rust",
 			"lua",
