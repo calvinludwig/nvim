@@ -2,7 +2,7 @@ local Util = require("utils")
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.4",
+	tag = "0.1.6",
 	cmd = { "Telescope" },
 	version = false,
 	dependencies = {
@@ -142,7 +142,7 @@ return {
 				mappings = {
 					i = {
 						["<c-t>"] = function(...)
-							return require("trouble.providers.telescope").open_with_trouble(...)
+							return require("trouble.sources.telescope").open()
 						end,
 						["<a-t>"] = function(...)
 							return require("trouble.providers.telescope").open_selected_with_trouble(...)
@@ -189,6 +189,15 @@ return {
 				color_devicons = true,
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
 				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+				sorting_strategy = "ascending",
+				layout_strategy = "flex",
+				layout_config = {
+					prompt_position = "top",
+					horizontal = { preview_width = 0.65 },
+					vertical = { mirror = true, preview_cutoff = 25 },
+					width = 0.87,
+					height = 0.80,
+				},
 			},
 			extensions = {
 				["ui-select"] = {

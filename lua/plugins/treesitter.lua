@@ -35,6 +35,7 @@ return {
 					"comment",
 					"regex",
 					"query",
+					"markdown",
 				},
 				autotag = { enable = true },
 				highlight = { enable = true, additional_vim_regex_highlighting = false },

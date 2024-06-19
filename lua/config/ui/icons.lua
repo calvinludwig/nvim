@@ -102,5 +102,6 @@ return {
 		Value = " ",
 		Variable = " ",
 		Copilot = " ",
+		Supermaven = "",
 	},
 }

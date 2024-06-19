@@ -9,7 +9,7 @@ return {
 	},
 	config = function()
 		require("barbecue").setup({
-			theme = "catppuccin-macchiato",
+			-- theme = "catppuccin-latte",
 		})
 	end,
 }
