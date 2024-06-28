@@ -15,6 +15,7 @@ return {
 			treesitter.setup({
 				-- Add languages to be installed here that you want installed for treesitter
 				ensure_installed = {
+					"php",
 					"typescript",
 					"tsx",
 					"javascript",

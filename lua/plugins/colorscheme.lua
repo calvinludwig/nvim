@@ -1,75 +1,67 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		lazy = false,
 		enabled = true,
+		'catppuccin/nvim',
+		name = 'catppuccin',
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("catppuccin").setup({
-				flavour = "auto",
-				background = {
+				flavour = "latte", -- latte, frappe, macchiato, mocha
+				background = { -- :h background
 					light = "latte",
-					dark = "macchiato",
+					dark = "mocha",
 				},
-				color_overrides = {
-					macchiato = {
-						text = "#ffffff",
-						subtext1 = "#ebebeb",
-						subtext0 = "#e0e0e0",
-						overlay2 = "#cccccc",
-						overlay1 = "#b3b3b3",
-						overlay0 = "#999999",
-						surface2 = "#424242",
-						surface1 = "#3d3d3d",
-						surface0 = "#383838",
-						base = "#202020",
-						mantle = "#262626",
-						crust = "#2b2b2b",
-					},
-					latte = {
-						text = "#444444",
-						subtext1 = "#555555",
-						subtext0 = "#666666",
-						overlay2 = "#777777",
-						overlay1 = "#888888",
-						overlay0 = "#999999",
-						surface2 = "#aaaaaa",
-						surface1 = "#bbbbbb",
-						surface0 = "#cccccc",
-						base = "#ffffff",
-						mantle = "#eeeeee",
-						crust = "#dddddd",
-					},
+				transparent_background = false, -- disables setting the background color.
+				show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+				term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+				dim_inactive = {
+					enabled = true, -- dims the background color of inactive window
+					shade = "dark",
+					percentage = 0.15, -- percentage of the shade to apply to the inactive window
 				},
+				default_integrations = true,
 				integrations = {
+					barbecue = {
+						dim_dirname = true, -- directory name is dimmed by default
+						bold_basename = true,
+						dim_context = false,
+						alt_background = false,
+					},
+					colorful_winsep = {
+						enabled = true,
+						color = "rosewater",
+					},
+					fidget = true,
+					harpoon = true,
+					mason = true,
+					neotree = true,
+					gitsigns = true,
+					nvimtree = false,
+					treesitter = true,
 					telescope = {
 						enabled = true,
 						style = "nvchad",
 					},
+					lsp_trouble = true,
+					which_key = true,
 				},
 			})
-			vim.cmd.colorscheme("catppuccin")
-		end,
+
+			vim.cmd.colorscheme "catppuccin"
+		end
 	},
 	{
-		enabled = true,
-		"f-person/auto-dark-mode.nvim",
-		lazy = false,
+		enabled = false,
+		'projekt0n/github-nvim-theme',
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
-			local auto_dark_mode = require("auto-dark-mode")
-			auto_dark_mode.setup({
-				update_interval = 99999,
-				set_dark_mode = function()
-					vim.api.nvim_set_option("background", "dark")
-					vim.cmd.colorscheme("catppuccin")
-				end,
-				set_light_mode = function()
-					vim.api.nvim_set_option("background", "light")
-					vim.cmd.colorscheme("catppuccin")
-				end,
+			require('github-theme').setup({
+				-- ...
 			})
-			auto_dark_mode.disable()
+
+			vim.cmd.colorscheme('github_dark_default')
 		end,
-	},
+	}
 }

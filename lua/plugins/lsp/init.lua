@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
-		{ "folke/neodev.nvim", event = "BufEnter", ft = "lua" },
+		{ "folke/neodev.nvim",                   event = "BufEnter", ft = "lua" },
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"simrat39/rust-tools.nvim",
 		{
@@ -27,6 +27,7 @@ return {
 	config = function()
 		local servers = {
 			"lua_ls",
+			"phpactor",
 			"tsserver",
 			"biome",
 			"jsonls",
@@ -52,7 +53,7 @@ return {
 			"yaml",
 			"bash",
 			"docker",
-			-- "php",
+			"php",
 		}
 
 		for _, lang in ipairs(langs) do
